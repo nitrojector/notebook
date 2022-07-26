@@ -1,0 +1,46 @@
+\documentclass[11pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[shortlabels]{enumitem}
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{esint}
+\usepackage{units}
+\usepackage{siunitx}
+\usepackage{parskip}
+\usepackage{mdframed}
+\usepackage{amssymb}
+\usepackage{commath}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage[hidelinks]{hyperref}
+\usepackage[top=2.54cm, bottom=2.54cm]{geometry}
+
+\sisetup{
+	per-mode=fraction,
+	fraction-function=\tfrac
+}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=blue
+}
+
+\title{Notes on \textit{Quantum Mechanics \& Experience}}
+\author{Martin Gong / Nanami Kyosuke} 
+\date{July 22, 2022}
+
+\begin{document}
+	\maketitle
+
+	\tableofcontents
+	
+    \include{2-mathematical-formalism.tex}
+
+	\include{3-nonlocality.tex}
+
+	\appendix
+
+    % N/A
+\end{document}

@@ -1,0 +1,59 @@
+\documentclass[11pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[shortlabels]{enumitem}
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{esint}
+\usepackage{units}
+\usepackage{siunitx}
+\usepackage{parskip}
+\usepackage{mdframed}
+\usepackage{amssymb}
+\usepackage{commath}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage[hidelinks]{hyperref}
+\usepackage[top=2.54cm, bottom=2.54cm]{geometry}
+
+\sisetup{
+	per-mode=fraction,
+	fraction-function=\tfrac
+}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=blue
+}
+
+\title{Minimum Notes for AP Physics C: E\&M\\
+	\large A lot of invisible stuff, huh?}
+\author{Martin Gong / Nanami Kyosuke} 
+\date{March 29, 2022\\1st Revision}
+
+\begin{document}
+	\maketitle
+
+	\tableofcontents
+
+	\include{foreword.tex}
+	
+	\include{1-coulomb-law_electric-charges.tex}
+
+	\include{2-e-fields_gausss-law.tex}
+	
+	\include{3-electric-potential.tex}
+
+	\include{4-dc-circuits.tex}
+
+	\include{5-capacitance.tex}
+
+	\include{6-magnetism.tex}
+
+	\include{7-inductance.tex}
+
+	\appendix
+
+	\include{appx-resources-references.tex}
+\end{document}
