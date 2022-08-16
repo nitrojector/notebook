@@ -1,11 +1,11 @@
-\documentclass[11pt]{report}
+\documentclass[12pt]{book}
 \usepackage[utf8]{inputenc}
+\usepackage{xeCJK}
 \usepackage[shortlabels]{enumitem}
 \usepackage{cite}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{esint}
-\usepackage{units}
 \usepackage{siunitx}
 \usepackage{parskip}
 \usepackage{mdframed}
@@ -16,44 +16,50 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage[top=2.54cm, bottom=2.54cm]{geometry}
 
+
 \sisetup{
 	per-mode=fraction,
 	fraction-function=\tfrac
 }
 
+% Hyperref setup
 \hypersetup{
 	colorlinks=true,
 	linkcolor=blue,
 	urlcolor=blue
 }
 
-\title{Minimum Notes for AP Physics C: E\&M\\
+\title{A Student's Notes for AP Physics C: E\&M\\
 	\large A lot of invisible stuff, huh?}
-\author{Martin Gong / Nanami Kyosuke} 
+\author{Martin Gong / 七海喬介} 
 \date{March 29, 2022\\1st Revision}
 
 \begin{document}
 	\maketitle
 
+	\frontmatter
+
 	\tableofcontents
 
-	\include{foreword.tex}
+	\include{chapters/foreword.tex}
+
+	\mainmatter
+
+	\include{chapters/1-coulomb-law_electric-charges.tex}
+
+	\include{chapters/2-e-fields_gausss-law.tex}
 	
-	\include{1-coulomb-law_electric-charges.tex}
+	\include{chapters/3-electric-potential.tex}
 
-	\include{2-e-fields_gausss-law.tex}
-	
-	\include{3-electric-potential.tex}
+	\include{chapters/4-dc-circuits.tex}
 
-	\include{4-dc-circuits.tex}
+	\include{chapters/5-capacitance.tex}
 
-	\include{5-capacitance.tex}
+	\include{chapters/6-magnetism.tex}
 
-	\include{6-magnetism.tex}
-
-	\include{7-inductance.tex}
+	\include{chapters/7-inductance.tex}
 
 	\appendix
 
-	\include{appx-resources-references.tex}
+	\include{appendixes/1-resources-references.tex}
 \end{document}
