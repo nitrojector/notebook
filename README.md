@@ -1,6 +1,6 @@
 <h1 align="center">Notebook</h1>
 
-<p align="center">Some notebook for notes</p>
+<p align="center">A notebook for notes</p>
 
 # Table of Contents
 - [Table of Contents](#table-of-contents)
