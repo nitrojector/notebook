@@ -24,8 +24,8 @@ Applying Kirchhoff's Law on the left loop with the switch closed, we obtain
 
 \begin{align*}
     \mathcal{E} - V_C - IR &= 0\\
-    \mathcal{E} - \frac{Q}{C} &= \frac{\mathrm{d}Q}{\mathrm{d}t} R\\
-    \int \frac{\mathrm{d}t}{R} &= \int \frac{\mathrm{d}Q}{\mathcal{E} - \frac{Q}{C}}\\
+    \mathcal{E} - \frac{Q}{C} &= \frac{\dif Q}{\dif t} R\\
+    \int \frac{\dif t}{R} &= \int \frac{\dif Q}{\mathcal{E} - \frac{Q}{C}}\\
     \frac{t}{R} + C_1 &= -C \ln\abs{\mathcal{E} - \frac{Q}{C}}\\
     -\frac{t}{RC} + C_1 &= \ln\abs{\mathcal{E} - \frac{Q}{C}}\\
     Ae^{-\frac{t}{RC}} &= \mathcal{E} - \frac{Q}{C}\\
@@ -39,7 +39,7 @@ we apply the fact that the capacitor is uncharged at $t = 0$
 Taking the derivative yields the function of current over time, which is also exponential
 
 \begin{align*}
-    Q'(t) = I(t) &= \frac{\mathrm{d}}{\mathrm{d}t} C \mathcal{E} \left(1 - e^{-\frac{t}{RC}}\right)\\
+    Q'(t) = I(t) &= \frac{\dif}{\dif t} C \mathcal{E} \left(1 - e^{-\frac{t}{RC}}\right)\\
     &= \boxed{\frac{\mathcal{E}}{R} e^{-\frac{t}{RC}}}
 \end{align*}
 
@@ -55,15 +55,15 @@ Applying Kirchhoff's Law on the right loop (and with some substitution), we obta
 
 \begin{align*}
     V_C - IR &= 0\\
-    \frac{Q}{C} &= \frac{-\mathrm{d}Q}{\mathrm{d}t} R\\
-    -\frac{\mathrm{d}t}{RC} &= \frac{\mathrm{d}Q}{Q}\\
+    \frac{Q}{C} &= \frac{-\dif Q}{\dif t} R\\
+    -\frac{\dif t}{RC} &= \frac{\dif Q}{Q}\\
     -\frac{t}{RC} + C_1 &= \ln\abs{Q}\\
     Q(t) &= C_1 e^{-\frac{t}{RC}}\\
     &= Q_0 e^{-\frac{t}{RC}}\\
     &= \boxed{CV_0 e^{-\frac{t}{RC}}}
 \end{align*}
 
-Not that $I$ is $-\mathrm{d}Q / \mathrm{d}t$ but not $\mathrm{d}Q / \mathrm{d}t$ because, as the capacitor is discharging, the current is positive on the resistor; change of charge on the capacitor $\mathrm{d}Q_c$, however, is negative. We need to, thus, govern that relationship.
+Not that $I$ is $-\dif Q / \dif t$ but not $\dif Q / \dif t$ because, as the capacitor is discharging, the current is positive on the resistor; change of charge on the capacitor $\dif Q_c$, however, is negative. We need to, thus, govern that relationship.
 
 Here's a graph from \href{http://hyperphysics.phy-astr.gsu.edu/hbase/hph.html}{Hyper Physics}
 
@@ -88,22 +88,22 @@ There are many ways to find energy stored by a capacitor, there are, for example
 For the first method:
 
 \begin{align*}
-    U = W &= \int P \,\mathrm{d}t\\
-    &= \int I^2R \,\mathrm{d}t\\
-    &= \int_0^\infty \left(\frac{V_0}{R} e^{-\frac{t}{RC}}\right)^2 R \,\mathrm{d}t\\
+    U = W &= \int P \,\dif t\\
+    &= \int I^2R \,\dif t\\
+    &= \int_0^\infty \left(\frac{V_0}{R} e^{-\frac{t}{RC}}\right)^2 R \,\dif t\\
     &= \left.-\frac{1}{2} C{V_0}^2 e^{-\frac{2t}{RC}}\right\vert_0^\infty\\
     &= \boxed{\frac{1}{2} C{V_0}^2 = \frac{1}{2} \frac{Q^2}{C} = \frac{1}{2}QV_0}\\
 \end{align*}
 
 For the second method we can see this as moving charge across a certain potential (given by the amount of charge on the plates). The work done will then be
 
-\[\mathrm{d}W = V(q) \mathrm{d}q\]
+\[\dif W = V(q) \dif q\]
 
 The total work to move all the charges:
 
 \begin{align*}
-    U  = W &= \int_0^Q V(q) \,\mathrm{d}q\\
-    &= \int_0^Q \frac{q}{C} \,\mathrm{d}q\\
+    U  = W &= \int_0^Q V(q) \,\dif q\\
+    &= \int_0^Q \frac{q}{C} \,\dif q\\
     &= \boxed{\frac{1}{2} \frac{Q^2}{C} = \frac{1}{2}CV^2 = \frac{1}{2}QV}
 \end{align*}
 
