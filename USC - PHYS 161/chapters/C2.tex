@@ -1,0 +1,121 @@
+\chapter{Kinematics}
+
+We have our position vector
+
+\begin{equation}
+	\vec r(t) = (x(t), y(t))
+\end{equation}
+
+We use $\vec r$ because it seems natural, it is the direction we are pointing in.
+
+\begin{remark}
+	Sometimes when reference to radial $\vec r$ is misleading, we use $\vec x(t)$.
+\end{remark}
+
+The change of the vector in space across time sweeps over some \textbf{trajectory}.
+
+\section{Displacement}
+
+\begin{definition}[Displacement]
+	The \textit{displacement vector} $\Delta\vec r$ is a measure of where the particle went (which depends on the origin!).
+
+	\begin{equation}
+		\Delta\vec r \equiv \vec r_f - \vec r_i = \vec r(t_f) - \vec r(t_i)
+	\end{equation}
+\end{definition}
+
+\begin{enumerate}
+	\item $\norm{\Delta \vec r} \neq$ distance travelled in general
+	\begin{itemize}
+		\item distance traveled = arc length of trajectory
+	\end{itemize}
+
+	\item $\Delta \vec r$ is coordinate independent.
+	
+	Take two coordinate systems $S$ and $S'$. Let them be defined with the relation $\vec r = \vec r' + \vec R$ where $\vec r$ and $\vec r'$ are vectors in the respective coordinate systems.
+
+	\begin{equation}
+		\begin{cases}
+			S: &\Delta \vec r = \vec r_f - \vec r_i\\
+			S':&\Delta \vec r' = \vec {r_f}' - \vec {r_i}'
+		\end{cases}
+	\end{equation}
+
+	If we plug in the relation, we realize that they are the same, $\Delta \vec r = \Delta \vec r'$
+\end{enumerate}
+
+\section{Velocity}
+
+\begin{definition}[Average Velocity]
+	\begin{equation}
+		\vec v_{\mathrm{avg}} \equiv \frac{\Delta \vec r}{\Delta t}
+	\end{equation}
+\end{definition}
+
+Let $\D \vec r$ be the infinitesimal displacement.
+
+When we consider a smaller interval:
+
+\begin{equation}
+	\lim_{\Delta t \to 0} \implies \norm{\D \vec r} = \D r \quad \text{(distance traveled)}
+\end{equation}
+
+A small change to $t$ results in a small change in $\D S$ (the distance / speed), proportionally
+
+\begin{align}
+	&\D S \propto \D t\\
+	\implies &\D S = \left(\frac{\D S}{\D t}\right) \D t
+\end{align}
+
+\begin{definition}[Velocity]
+	AKA the \textit{instantaneous velocity}
+
+	\begin{equation}
+		\vec v (t) \equiv \frac{\D \vec r}{\D t}
+	\end{equation}
+
+	\begin{itemize}
+		\item $\norm{\vec v}$ = speed
+		\item $\hat v$ = direction of motion
+	\end{itemize}
+\end{definition}
+
+\begin{remark}
+	A note on average velocity:
+
+	\begin{equation}
+		\vec v_{\mathrm{avg}} = \frac{1}{\Delta t} \int_{t_i}^{t_f} \vec v(t) \D t = \frac{1}{\Delta t} \int_{t_i}^{t_f} \frac{\D \vec r}{\D t} \D t = \frac{\Delta \vec r}{\Delta t}
+	\end{equation}
+
+	Note also if we find the magnitude, it would not be the same as the average speed since the norm would go over the integrals instead of what is being integrated.
+\end{remark}
+
+\begin{itemize}
+	\item $\vec v$ a vector, so write $\vec v(t) = \dot x \hat x + \dot y \hat y = \dot{\vec{r}}$
+	\item Compare to frames of reference, $S$ \& $S'$
+	
+	Suppose $\dot{\vec{R}} \neq 0$.
+
+	Then we have
+
+	\begin{equation}
+		\begin{cases}
+			\vec r &= \vec r' + \vec R\\
+			\vec v &= \vec v' + \vec V
+		\end{cases}
+	\end{equation}
+
+	This is known as the Galilean transformations, which, at higher velocities, ``translates'' to the Lorentz transformations.
+\end{itemize}
+
+We can also obtain $\vec r(t)$ given $\vec v(t)$
+
+\begin{equation}
+	\Delta \vec r = \int \D \vec r = \int_{t_i}^{t_f} \vec v \D t
+\end{equation}
+
+and
+
+\begin{align}
+	\vec r(t) &= \vec r_i + \vec v_i (t - t_i)
+\end{align}

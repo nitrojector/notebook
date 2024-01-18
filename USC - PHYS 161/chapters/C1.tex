@@ -1,0 +1,398 @@
+\chapter{Mathematical Interlude}
+
+\begin{definition}
+	Kinematics is the study of motion without regard to its cause.
+\end{definition}
+
+\section{Units \& Dimensions}
+
+In \textit{Classical Mechanics} all quantities are expressed in terms of three dimensions, and we use SI units to define them:
+
+\begin{itemize}
+	\item length -- meters, m
+	\item time -- seconds, s
+	\item mass -- kilograms, kg
+\end{itemize}
+
+How do we measure distance? Sometimes it is easier to use the \textbf{point particle} approximation where we think of an object just as a point object with all of its mass concentrated at that point.
+
+\section{Coordinate System}
+
+A \textbf{coordinate system} is a collection of coordinate axis \& a point called the origin.
+
+A coordinate system is often called a \textbf{frame of reference}.
+
+Physics should apply in whatever coordinate system (\textbf{covariant}), so scalars, vectors, tensors, \ldots
+
+\subsection{Cartesian Coordinates}
+
+\begin{equation}
+	\{(x, y, z) \vert x, y, z \in \mathbb{R}\}
+\end{equation}
+
+\subsection{Spherical Coordinates}
+
+\begin{equation}
+	\{(r, \theta, \phi) \vert 0 \leq r \leq \infty, 0 \leq \theta \leq 2 \pi, 0 \leq \phi \leq \pi\}
+\end{equation}
+
+where $\phi$ is the angle of the radius deviating from the $z$-axis and $\theta$ is the deviation from the $x$-axis.
+
+The coordinate converstions are
+
+\begin{equation}
+	\begin{cases}
+		r &= \sqrt{x^2 + y^2 + z^2}\\
+		\theta &= \arctan(\nicefrac{y}{x})\\
+		\phi &= \arctan(\nicefrac{\sqrt{x^2 + y^2}}{z})
+	\end{cases}
+\end{equation}
+
+\subsection{Cylindrical Coordinates}
+
+\begin{equation}
+	\{(s,\theta,z) \vert 0 \leq s \leq \infty, 0 \leq \theta \leq 2\pi, -\infty \leq z \leq \infty\}
+\end{equation}
+
+\begin{equation}
+	\begin{cases}
+		s &= \sqrt{x^2 + y^2}\\
+		\theta &= \arctan(\nicefrac{y}{x})\\
+		z &= z
+	\end{cases}
+\end{equation}
+
+\section{Position Vectors}
+
+The position of a particle can be specified by its \textit{unique} coordinates or by a \textbf{position vector}, $\vec{r}$.
+
+A vector is just an arrow, an arrow is a vector -- a geometric quantity.
+
+\begin{definition}[Vector]
+	A \textbf{vector} is a directed line segment, i.e. an arrow.
+\end{definition}
+
+A vector has both \textbf{magnitude} and \textbf{direction}.
+
+\section{Vector Algebra}
+
+\textbf{Notation}
+
+\begin{description}
+	\item[$\vec{A}$] the vector
+	\item[$A = \abs{\vec{A}}$] the magnitude
+	\item[$\hat{A} = \nicefrac{\vec{A}}{A}$] direction / unit vector
+\end{description}
+
+\begin{remark}
+	Technically, magnitude cannot be negative, but notation wise we do that anyways. $- \vec{A} = A (- \hat{A})$
+\end{remark}
+
+\subsection{Vector Addition}
+
+\begin{equation}
+	\vec{C} = \vec{A} + \vec{B}
+\end{equation}
+
+Note that addition is commutative and associative. 
+
+\subsection{Vector Subtraction}
+
+\begin{equation}
+	\vec{C} = \vec{A} - \vec{B} = \vec{A} + (-\vec{B})
+\end{equation}
+
+Final - Initial
+
+\subsection{Vector Multiplication}
+
+\textbf{Dot product}
+
+\begin{equation}
+	\vec{A} \cdot \vec{B} = AB \cos(\theta)
+\end{equation}
+
+Facts:
+
+\begin{itemize}
+	\item if $\vec{A} \perp \vec{B} \iff \vec{A} \cdot \vec{B} = 0$
+	\item if $\vec{A} \parallel \vec{B} \iff \vec{A} \cdot \vec{B} = AB$ is maximal
+	\item \begin{equation*}
+		\begin{cases}
+			\vec{A} \cdot \vec{B} > 0 &\implies \text{point in similar directions}\\
+			\vec{A} \cdot \vec{B} < 0 &\implies \text{point in opposite directions}
+		\end{cases}
+	\end{equation*}
+	\item $\vec{A} \cdot \vec{A} = A^2$
+\end{itemize}
+
+Also defined component wise
+
+\begin{equation}
+	\vec A \cdot \vec B = \sum_i A_i B_i
+\end{equation}
+
+\begin{example}
+	Prove the law of cosines.
+
+	Consider the triangle, $ABC$ where $\theta$ is the angle between vectors $\vec{A}$ and $\vec{B}$.
+
+	\begin{equation}
+		c^2 = a^2 + b^2 - 2ab\cos(\theta)
+	\end{equation}
+\end{example}
+
+\begin{proof}
+	Define $\vec{A}, \vec{B}, \vec{C}$ by $A = a, B = b, C = c; \vec{C} = \vec{A} - \vec B$
+
+	Then,
+
+	\begin{align}
+		\vec C \cdot \vec C = C^2 &= (\vec A - \vec B) \cdot (\vec A - \vec B)\\
+		&= A^2 - 2 \vec A \cdot \vec B + B^2\\
+		&= a^2 + b^2 - 2ab\cos(\theta)
+	\end{align}
+\end{proof}
+
+\textbf{Cross Product}
+
+\begin{equation}
+	\vec A \cross \vec B \equiv AB\sin(\theta) \hat n
+\end{equation}
+
+Facts:
+
+\begin{itemize}
+	\item If $\vec A \parallel \vec B$ or antiparallel $\implies \vec A \cross \vec B = 0$
+	\item If $\vec A \perp \vec B \implies \vec A \cross \vec B$ is maximal.
+	\item $\vec A \cross \vec B = - \vec B \cross \vec A$
+	\item $\vec A \cross \vec A = \vec 0$
+\end{itemize}
+
+Also defined component wise as
+
+\begin{equation}
+	\vec A \cross \vec B = \begin{vmatrix}
+		\vec x & \vec y & \vec z\\
+		A_x & A_y & A_z\\
+		B_x & B_y & B_z\\
+	\end{vmatrix}
+\end{equation}
+
+\section{Components of Vectors Basis Vectors}
+
+Say we have in Cartesian coordinates $(x, y)$
+
+\begin{equation}
+	\vec A = \vec A_x + \vec A_y
+\end{equation}
+
+Then,
+
+\begin{equation}
+	\begin{cases}
+		A_x &= A\cos\theta\\
+		A_y &= A\sin\theta
+	\end{cases}
+\end{equation}
+
+\begin{equation}
+	\begin{cases}
+		\vec A_x &= A\cos\theta\vec x\\
+		\vec A_y &= A\sin\theta\vec y
+	\end{cases}
+\end{equation}
+
+\begin{equation}
+	\begin{cases}
+		\hat{x} &= \langle 1, 0, 0 \rangle\\
+		\hat{y} &= \langle 0, 1, 0 \rangle\\
+		\hat{z} &= \langle 0, 0, 1 \rangle\\
+	\end{cases}
+\end{equation}
+
+\section{Vectors in Different Basis}
+
+\subsection{Cartesian Coordinates}
+
+This is to say the same vectors but different components represented in different coordinates.
+
+We can express them in the same way where $\theta$ is the original relative angle and $\theta'$ is the new relative angle:
+
+\begin{equation}
+	\begin{cases}
+		\vec A &= A\cos\theta\hat x + A\sin\theta\hat y\\
+		\vec A' &= A\cos\theta'\hat x + A\sin\theta'\hat y
+	\end{cases}
+\end{equation}
+
+Now, say we want to express our components in a different basis that rotates our standard basis by an angle of $\phi$ in the counterclockwise direction.
+
+\begin{equation}
+	\begin{bmatrix}
+		A_x'\\B_x'
+	\end{bmatrix} = \begin{bmatrix}
+		\cos(\phi) & -\sin(\phi)\\
+		\sin(\phi) & \cos(\phi)
+	\end{bmatrix} \begin{bmatrix}
+		A_x\\B_x
+	\end{bmatrix}
+\end{equation}
+
+\subsection{Polar Coordinates}
+
+We have two basis vectors defined by the following
+
+\begin{equation}
+	\vec A = A_r \hat r + A_\theta \hat \theta
+\end{equation}
+
+$\hat r$ is in the direction 
+
+The conversion between the bases of Cartesian and Polar are the following:
+
+\begin{equation} \label{eq:polar-cartesian-basis}
+	\begin{bmatrix}
+		\hat r\\\hat \theta
+	\end{bmatrix} = \begin{bmatrix}
+		\cos\theta & \sin\theta\\
+		-\sin\theta & \cos\theta
+	\end{bmatrix} \begin{bmatrix}
+		\hat x\\\hat y
+	\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+	\begin{bmatrix}
+		\hat x\\\hat y
+	\end{bmatrix} = \begin{bmatrix}
+		\cos\theta & -\sin\theta\\
+		\sin\theta & \cos\theta
+	\end{bmatrix} \begin{bmatrix}
+		\hat r\\\hat \theta
+	\end{bmatrix}
+\end{equation}
+
+\begin{remark}
+	It can be useful because coordinates will be much easier to express with
+
+	\begin{equation}
+		\vec A = A(\theta, r) \hat r
+	\end{equation}
+\end{remark}
+
+\section{Calculus with Vectors}
+
+\begin{equation}
+	\frac{\D \vec A}{\D t} \equiv \lim_{\Delta t \to 0} \frac{\vec A(t + \Delta t) - \vec A(t)}{\Delta t}
+\end{equation}
+
+$\vec A(t)$ generally changes in magnitude and direction and this does capture both.
+
+There are two cases:
+
+\textbf{Case 1: $\vec A(t)$ changes in magnitude only}
+
+Then $\D \vec A$ is parallel to $\vec A(t)$ (or antiparallel).
+
+Let $\frac{\D \vec A_\parallel}{\D t}$ the component of $\frac{\D \vec A}{\D t} \parallel \vec A$.
+
+then here
+
+\begin{equation}
+	\norm{\frac{\D \vec A_\parallel}{\D t}} = \frac{\D A}{\D t}
+\end{equation}
+
+\textbf{Case 2: $\vec A(t)$ changes in direction only}
+
+Then $\D \vec A$ is perpendicular to $\vec A(t)$ (Almost, if we see the angle as small enough, the $\D \vec A$ would be at a right angle).
+
+Call $\frac{\D \vec A_\perp}{\D t}$ the component of $\frac{\D \vec A}{\D t} \perp \vec A(t)$.
+
+then here
+
+\begin{equation}
+	\norm{\frac{\D \vec A_\perp}{\D t}} = A \frac{\D \theta}{\D t}
+\end{equation}
+
+\textbf{Generally}
+
+\begin{equation}
+	\frac{\D \vec A}{\D t} = \frac{\D \vec A_\parallel}{\D t} + \frac{\D \vec A_\perp}{\D t}
+\end{equation}
+
+But $\vec A = A \hat A$ is naively
+
+\begin{equation}
+	\frac{\D \vec A}{\D t} = \frac{\D A}{\D t} \hat A + A \frac{\D \hat A}{\D t}
+\end{equation}
+
+and
+
+\begin{equation}
+	\frac{\D \vec A_\parallel}{\D t} = \frac{\D A}{\D t} \hat A \qquad \frac{\D \vec A_\perp}{\D t} = A \frac{\D \hat A}{\D t}
+\end{equation}
+
+\subsection{With Cartesian Components}
+
+\textbf{Derivative}
+
+\begin{equation}
+	\vec A(t) = A_x(t) \hat x + A_y(t) \hat y \to \frac{\D \vec A}{\D t} = \frac{\D A_x}{\D t} \hat x + \frac{\D A_y}{\D t} \hat y
+\end{equation}
+
+\textit{Notation}
+
+\begin{equation}
+	\dot f \equiv \frac{\D f}{\D t} \qquad f' = \frac{\D f}{\D x} \quad \text{space derivative}
+\end{equation}
+
+Hence
+
+\begin{equation}
+	\dot{\vec{A}} = \dot A_x \hat x + \dot A_y \hat y
+\end{equation}
+
+\textbf{Integral}
+
+\begin{equation}
+	\int \vec A(t) \D t \equiv (\int A_x \D t) \hat x + (\int A_y \D t) \hat y
+\end{equation}
+
+Note that the fundamental theorem of calculus still applies.
+
+\subsection{With Polar Components}
+
+\begin{equation}
+	\vec A(t) = A_r(t) \hat r(t) + A_\theta(t) \hat \theta(t)
+\end{equation}
+
+Then
+
+\begin{equation}
+	\frac{\D \vec A}{\D t} = \frac{\D A_r}{\D t} \hat r + A_r \frac{\D \hat r}{\D t} + \frac{\D A_\theta}{\D t} \hat \theta + A_\theta \frac{\D \hat\theta}{\D t}
+\end{equation}
+
+If we derive \cref*{eq:polar-cartesian-basis}, we obtain
+
+\begin{equation}
+	\begin{cases}
+		\dot{\hat{r}} &= (-\sin\theta) \dot\theta \hat x + (\cos\theta) \dot\theta \hat y = \dot\theta \hat\theta\\
+		\dot{\hat{\theta}} &= (-\cos\theta)\dot\theta \hat x + (-\sin\theta) \dot\theta \hat y = -\dot\theta \hat r
+	\end{cases}
+\end{equation}
+
+which means that
+
+\begin{equation}
+	\dot{\hat{r}} = \dot\theta \hat\theta \qquad \dot{\hat{\theta}} = - \dot\theta \hat r
+\end{equation}
+
+which makes sense if we think about it.
+
+And if we put it together
+
+\begin{align}
+	&\dot{\vec{A}} = \dot A_r \hat r + A_r \dot\theta \hat\theta + \dot A_\theta \hat\theta - A_\theta \dot\theta \hat r\\
+	&\implies \dot{\vec{A}} = (\dot A_r - A_\theta \dot\theta) \hat r + (A_r \dot\theta + \dot A_\theta) \hat \theta
+\end{align}

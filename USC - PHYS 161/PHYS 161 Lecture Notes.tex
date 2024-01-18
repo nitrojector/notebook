@@ -1,0 +1,146 @@
+\documentclass[oneside, 11pt]{book}
+\usepackage{xeCJK} % Support for CJK texts
+\usepackage[letterpaper]{geometry} % Geometry (or a4paper)
+\usepackage{multicol} % Flexibility in columns
+% \usepackage[subtle]{savetrees} % For saving trees, perhaps
+\usepackage[shortlabels]{enumitem} % Better enumerate
+\usepackage[hidelinks]{hyperref} % Hyperref
+\usepackage[parfill]{parskip} % Skip ahead, not indent
+\usepackage{amsmath, amssymb, amsthm} % Math, symbols, and theorems
+\usepackage{physics}
+\usepackage{esint} % Extended set of integrals
+\usepackage{commath} % Makes typing certain math expressions much easier!
+\usepackage{siunitx} % Unit typesetting
+\usepackage{graphicx} % Better graphics
+\usepackage{cleveref} % Better references
+\usepackage{booktabs} % Better tables
+% \usepackage{tikz} % Figures!
+% \usepackage{biblatex}
+
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{blindtext}
+\usepackage[most, breakable]{tcolorbox}
+\usepackage{nicefrac}
+\usepackage{changepage}
+\usepackage{bm}
+\usepackage{stmaryrd}
+
+% cleveref setup
+\crefname{figure}{Figure}{Figure}
+\crefname{table}{Table}{Table}
+\crefname{equation}{Eq.}{Eq.}
+
+% geometry
+\geometry{margin=1in}
+
+% siunitx setup
+\sisetup{
+    per-mode=fraction,
+    fraction-function=\tfrac
+}
+
+% hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+% change QED square to black square
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+% reset enumeration at the start of align
+%\AtBeginEnvironment{align}{\setcounter{equation}{0}}
+
+% change emptyset symbol
+\renewcommand*{\emptyset}{\varnothing}
+
+% make differentials easier to type
+\newcommand*{\D}{\,\differential}
+
+% range and span
+\newcommand*{\spn}{\ensuremath{\mathrm{span}}}
+\newcommand*{\rng}{\ensuremath{\mathrm{rng}}}
+\newcommand*{\diag}{\ensuremath{\mathrm{diag}}}
+
+% vector bold text
+\newcommand{\bv}[1]{\bm{\mathrm{#1}}}
+
+% add environments for different theorems and definitions
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\normalfont}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+
+\newtheoremstyle{other}
+  {\topsep}{\topsep}%
+  {\normalfont}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+
+\theoremstyle{break}
+\newtheorem{theo}{Theorem}[section]
+
+\theoremstyle{other}
+\newtheorem{corollary}[theo]{Corollary}
+\newtheorem{lemma}[theo]{Lemma}
+\newtheorem{defi}{Definition}[section]
+\newtheorem*{remark}{Remark}
+\newtheorem{examp}{Example}[section]
+
+\newtcolorbox{theorembox}{
+	breakable,
+	colframe=blue
+}
+
+\newtcolorbox{defbox}{
+	breakable,
+	colback=pink,
+	boxrule=0pt
+}
+
+\newenvironment{theorem}
+  {\begin{theorembox}\begin{theo}}
+  {\end{theo}\end{theorembox}}
+
+\newenvironment{definition}
+	{\begin{defbox}\begin{defi}}
+	{\end{defi}\end{defbox}}
+
+\newenvironment{example}
+	{\begin{tcolorbox}[breakable]\begin{examp}}
+	{\end{examp}\end{tcolorbox}}
+
+\newenvironment{indt}
+	{\begin{adjustwidth}{3em}{0em}}
+	{\end{adjustwidth}}
+
+\newenvironment{sol}
+	{\bigskip\textbf{\textit{Solution:}}\begin{indt}}{\end{indt}}
+
+
+\title{PHYS 161 Lecture Notes\\
+	\large Prof. Scott MacDonald}
+\author{Martin Gong / 七海喬介} 
+\date{Jan 9 - ??, 2024}
+
+\begin{document}
+	\maketitle
+
+	\frontmatter
+
+	\tableofcontents % Foreword ⬇
+
+	\mainmatter % Chapters ⬇
+
+	\include{chapters/C1}
+
+	\include{chapters/C2}
+
+	\appendix
+
+	
+\end{document}
