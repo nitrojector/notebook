@@ -1,0 +1,275 @@
+\chapter{Vector and the Geometry of Space}
+
+\section{3-Dimensional Space}
+
+\subsection{2D Coordinates}
+
+\begin{equation}
+	\mathbb{R}^2 = \left\{(x,y) \mid x,y \in \mathbb{R}\right\}
+\end{equation}
+
+\subsection{3D Coordinates}
+
+\begin{equation}
+	\mathbb{R}^3 = \left\{(x,y,z) \mid x,y,z \in \mathbb{R}\right\}
+\end{equation}
+
+\begin{lemma}[Distance Between 2 Points]
+	\begin{equation}
+		\abs{P_1 P_2} = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2 + (z_1 - z_2)^2}
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Easily proven by using the Pythagorean Theorem twice.
+\end{proof}
+
+\begin{lemma}[Spherical Surface]
+	Given point $C(a,b,c)$ and $P(x,y,z)$ where $P$ is a point on the spherical surface and $r$ is the radius of the sphere.
+	
+	\begin{equation}
+		(x - a)^2 + (y - b)^2 + (z - c)^2 = r^2
+	\end{equation}
+
+	To define a solid spherical space
+
+	\begin{equation}
+		\sqrt{(x - a)^2 + (y - b)^2 + (z - c)^2} \leq r
+	\end{equation}
+\end{lemma}
+
+\section{Vectors}
+
+\begin{definition}[Vector]
+	Vector is a quantity that has a \textbf{magnitude} and a \textbf{direction}.
+\end{definition}
+
+We say that two vectors $\vec{u}$ and $\vec{v}$ are equal if they have the same length and direction.
+
+\subsection{Vector Operation}
+
+Omitted
+
+\subsection{Components}
+
+In $\mathbb{R}^2$
+
+\begin{equation}
+	\vec{a} \equiv \langle a_1, a_2 \rangle
+\end{equation}
+
+In $\mathbb{R}^3$
+
+\begin{equation}
+	\begin{cases}
+		\vec{a} &\equiv \langle a_1, a_2, a_3 \rangle\\
+		\vec{0} &\equiv \langle 0, 0, 0, \rangle
+	\end{cases}
+\end{equation}
+
+\begin{definition}
+	Length of $\vec{a} \equiv \langle a_1, a_2, a_3 \rangle$ is
+
+	\begin{equation}
+		\abs{\vec{a}} = \sqrt{{a_1}^2 + {a_2}^2 + {a_3}^2}
+	\end{equation}
+\end{definition}
+
+\subsection{Standard Basis Vectors}
+
+\begin{equation}
+	\begin{cases}
+		\hat{i} &= \langle 1, 0, 0 \rangle\\
+		\hat{j} &= \langle 0, 1, 0 \rangle\\
+		\hat{k} &= \langle 0, 0, 1 \rangle\\
+	\end{cases}
+\end{equation}
+
+\section{The Dot Products}
+
+\begin{definition}
+	\begin{equation}
+		\vec a = \langle a_1, a_2, a_3 \rangle \qquad \vec b = \langle b_1, b_2, b_3 \rangle
+	\end{equation}
+
+	Then, the dot product is
+
+	\begin{equation}
+		\vec a \cdot \vec b \equiv a_1 b_1 + a_2 b_2 + a_3 b_3 
+	\end{equation}
+\end{definition}
+
+\textbf{Properties}
+
+\begin{enumerate}[1.]
+	\item $\vec a \cdot \vec a = {a_1}^2 + {a_2}^2 + {a_3}^2 = \abs{\vec a}^2$
+	\item $\vec a \cdot \vec b = \vec b \cdot \vec a$
+	\item $\vec a \cdot (\vec b + \vec c) = \vec a \cdot \vec b + \vec a \cdot \vec c$
+	\item $(c\vec a) \cdot \vec b = c(\vec a \cdot \vec b)$
+	\item $\vec 0 \cdot \vec a = 0$
+\end{enumerate}
+
+\begin{theorem}
+	\begin{align}
+		\vec a \cdot \vec b &= \abs{\vec a} \abs{\vec b} \cos\theta\\
+		\cos\theta &= \frac{\vec a \cdot \vec b}{\abs{\vec a} \abs{\vec b}}, 0 \leq \theta \leq \pi
+	\end{align}
+\end{theorem}
+
+\begin{lemma}
+	\begin{itemize}
+		\item If $\vec a \cdot \vec b > 0$ then $\cos \theta > 0 \implies \theta < \frac{\pi}{2}$
+		\item If $\vec a \cdot \vec b < 0$ then $\cos \theta < 0 \implies \theta > \frac{\pi}{2}$
+		\item If $\vec a \cdot \vec b = 0$, then $\theta = \frac{\pi}{2}, \vec a \perp \vec b$
+	\end{itemize}
+\end{lemma}
+
+\subsection{Law of Cosine}
+
+\begin{equation}
+	\abs{\vec a - \vec b}^2 = \abs{\vec a}^2 + \abs{\vec b}^2 - 2 \abs{\vec a}\abs{\vec b}\cos\theta
+\end{equation}
+
+\begin{proof}
+	\begin{align}
+		\abs{\vec a - \vec b}^2 &= (\vec a - \vec b) \cdot (\vec a - \vec b)\\
+		&= \abs{\vec a}^2 - 2 \vec a \cdot \vec b + \abs{\vec b}^2\\
+		&= \abs{\vec a}^2 + \abs{\vec b}^2 - 2ab\cos(\theta)
+	\end{align}	
+\end{proof}
+
+\subsection{Projection}
+\begin{figure}[H]
+	\centering
+		\begin{tikzpicture}[dot/.style={circle,inner sep=1pt,fill,label={#1},name=#1},
+			extended line/.style={shorten >=-#1,shorten <=-#1},
+			extended line/.default=1cm]
+			\draw[thick,-stealth] (-4.5,0) -- (4.5,0);
+			\draw[thick,-stealth] (0,0) -- (0,4.5);
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (-4,3);
+			\draw [extended line=0.5cm, stealth-stealth] (A) -- (B) node[pos=1.15,font=\small]{$\vec a$};     
+			\draw [ -stealth] (0,0) -- (-2.6, 4.3) coordinate (yn) node[right]{$\,\vec b$}; 
+			\draw[dashed] (yn) --  node[midway,above left]{$\varepsilon$} ($(A)!(yn)!(B)$) node[below left]{$\vec b_p$};
+		\end{tikzpicture}  
+	\caption{Projection}
+	\label{fig:projection}
+\end{figure}
+
+\textbf{Add to this.}
+
+\begin{align}
+	\abs{\vec b}
+\end{align}
+
+\begin{example}
+	\begin{equation}
+		\vec u = \langle 1,1,2\rangle \qquad \vec v = \langle -2,3,1\rangle
+	\end{equation}
+
+	Find projection of $\vec u$ onto $\vec v$
+\end{example}
+
+\begin{sol}
+	\begin{align}
+		\mathrm{comp}_{\vec c} \vec u &= \vec u \cdot \frac{\vec v}{\abs{\vec v}}\\
+		&= \frac{-2 + 3 + 2}{\sqrt{14}} = \frac{3}{\sqrt{14}}
+	\end{align}
+
+	\begin{equation}
+		\mathrm{proj}_{\vec v} \vec u = \left(\mathrm{comp}_{\vec v} \vec u\right) \frac{\vec v}{\abs{\vec v}} = \frac{3}{\sqrt{14}} \cdot \frac{\vec v}{\sqrt{v}} = \frac{3}{14} \vec v
+	\end{equation}
+\end{sol}
+
+\subsection{Work}
+
+Move an an object from $P$ to $Q$ with a force $\vec F$ forming an angle $\theta$ with the displacement vector $\vec D$.
+
+\begin{align}
+	\text{Work} &\equiv \text{Force} \cross \text{Dist}\\
+	W &= (\abs{\vec F}\cos \theta) \abs{\vec D}\\
+	&= \abs{\vec F}\abs{\vec D}\cos \theta\\
+	&= \vec F \cdot \vec D\\
+	&\implies W = \vec F \cdot \vec D
+\end{align}
+
+\begin{example}
+	Move a particle from $P(2,1,0)[m]$ to $Q(4,6,2)$ with a force $\vec F = \langle 3, 4, 5 \langle [N]$.
+
+	What is the work done by $\vec F$?
+\end{example}
+
+\begin{sol}
+	\begin{align}
+		W &= \vec F \cdot \vec{PQ}\\
+		&= \langle 3, 4, 5 \rangle \cdot \langle 2, 5, 2\rangle\\
+		&= \SI{36}{\N\m}
+	\end{align}
+\end{sol}
+
+\section{The Cross Product}
+
+\begin{definition}
+	Given the vectors
+
+	\begin{equation}
+		\vec a = \langle a_1, a_2, a_3 \rangle, \vec b = \langle b_1, b_2, b_3 \rangle
+	\end{equation}
+
+	The cross product is defined as
+
+	\begin{equation}
+		\vec a \cross \vec b = \begin{vmatrix}
+			\hat i & \hat j & \hat k\\
+			a_1 & a_2 & a_3\\
+			b_1 & b_2 & b_3
+		\end{vmatrix} = \langle a_2 b_3 - a_3 b_2, a_3 b_1 - a_1 b_3, a_1 b_2 - a_2 b_1 \rangle
+	\end{equation}
+\end{definition}
+
+\textbf{Properties of the Dot Product}
+
+\begin{enumerate}[1.]
+	\item $(\vec a \cross \vec b) \perp \vec a \& \vec b$ and the direction follows the right-hand rule.
+	\item $\abs{\vec a \cross \vec b} = \abs{\vec a} \abs{\vec b} \sin\theta, 0 \leq \theta \leq \pi$
+	\item $\abs{\vec a \cross \vec b} = $ the area of the parallelogram formed by the two vectors.
+	\item If $\vec a \parallel \vec b$, then $\vec a \cross \vec b = \vec 0$
+	\item Cross product of basis vectors
+	
+	\begin{equation}
+		\begin{cases}
+			\hat i \cross \hat j &= \hat k\\
+			\hat j \cross \hat k &= \hat i\\
+			\hat k \cross \hat i &= \hat j
+		\end{cases}
+	\end{equation}
+
+	\item The cross product is not commutative
+	\item The cross product is not associative
+
+	\begin{example}
+		\begin{equation}
+			\begin{cases}
+				\hat i \cross (\hat i \cross \hat j) &= \hat i \cross \hat k = -\hat j\\
+				(\hat i \cross \hat i) \cross \hat j &= \vec 0 \cross \hat j = \vec 0
+			\end{cases}
+		\end{equation}
+	\end{example}
+
+	\item You can find the normal vector to a plane by applying the cross product to two non-parallel vectors on that plane.
+\end{enumerate}
+
+\begin{example}
+	Given points
+
+	\begin{equation*}
+		P(1,4,6), Q(-2,5,1), R(1,-1,1)
+	\end{equation*}
+
+	that lie on a plane
+
+	\begin{enumerate}[a)]
+		\item Find the vector normal to the plane
+		\item Find the area of $\triangle{PQR}$
+	\end{enumerate}
+\end{example}
