@@ -1,0 +1,74 @@
+\documentclass[oneside, 12pt]{book}
+\usepackage{xeCJK} % Support for CJK texts
+\usepackage[letterpaper]{geometry} % Geometry (or a4paper)
+% \usepackage[subtle]{savetrees} % For saving trees, perhaps
+\usepackage[shortlabels]{enumitem} % Better enumerate
+\usepackage[hidelinks]{hyperref} % Hyperref
+\usepackage[parfill]{parskip} % Skip ahead, not indent
+\usepackage{fancyhdr} % Fancy headers
+\usepackage{amsmath, amssymb, amsthm} % Math, symbols, and theorems
+\usepackage{esint} % Extended set of integrals
+\usepackage{commath} % Makes typing certain math expressions much easier!
+\usepackage{siunitx} % Unit typesetting
+\usepackage{graphicx} % Better graphics
+\usepackage{cleveref}
+\usepackage{booktabs} % Better tables
+% \usepackage{tikz} % Figures!
+% \usepackage{biblatex}
+
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{tcolorbox}
+
+% fancyhdr setup
+\fancyhf{}
+\fancyhead[RE]{\small\scshape\nouppercase{\leftmark}}
+\fancyhead[LO]{\small\scshape\nouppercase{\rightmark}}
+\fancyhead[LE,RO]{\small\thepage}
+\pagestyle{fancy}
+
+% cleveref setup
+\crefname{figure}{Figure}{Figure}
+\crefname{table}{Table}{Table}
+\crefname{equation}{Eq.}{Eq.}
+
+% geometry
+\geometry{top=1in, bottom=1in}
+
+% siunitx setup
+\sisetup{
+    per-mode=fraction,
+    fraction-function=\tfrac
+}
+
+% hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+
+\title{The TCP/IP Guide\\
+    \large A Reader's Notes}
+\author{Martin Gong / 七海喬介} 
+\date{March 31, 2023}
+
+\begin{document}
+    \maketitle
+
+    \frontmatter
+
+    \tableofcontents % Foreword ⬇
+
+    
+
+    \mainmatter % Chapters ⬇
+
+    \include{chapters/1.tex}
+
+    \appendix
+
+    
+\end{document}
