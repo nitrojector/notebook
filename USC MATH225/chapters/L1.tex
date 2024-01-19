@@ -1,0 +1,60 @@
+\chapter{Matrices}
+
+\section{Definitions and Examples}
+
+\begin{definition}
+	A $m \cross n$ matrix $A$ is a rectangular array with $m$ rows and $n$ columns.
+
+	\[\begin{bmatrix}
+		a_{11} & a_{12} & \cdots & a_{1n}\\
+		a_{21} & a_{22} & & a_{2n}\\
+		\vdots & & \ddots & \vdots \\
+		a_{m1} & a_{m2} & \cdots & a_{mn}
+	\end{bmatrix}\]
+\end{definition}
+
+\begin{remark}
+	If $m=n$, matrix $A$ is called a \textbf{square matrix}.
+\end{remark}
+
+\begin{example}[Three Matrices]
+	\begin{align}
+		A &= \begin{bmatrix}
+			1&2&3\\-2&5&7
+		\end{bmatrix} &2 \cross 3\\
+		A &= \begin{bmatrix}
+			1&2&7\\1&1&0\\0&0&0\\1&0&4\\1&0&2
+		\end{bmatrix} &5 \cross 3\\
+		I_3 &= \begin{bmatrix}
+			1&0&0\\
+			0&1&0\\
+			0&0&1
+		\end{bmatrix} = \begin{bmatrix}
+			1&&\\&1&\\&&1
+		\end{bmatrix} &\text{Identity Matrix}
+	\end{align}
+\end{example}
+
+\begin{definition}[Equality]
+	Two matrices $A$ and $B$ are equal if they have the same dimension and all entries are the same
+
+	\[\forall(i, j) \in \llbracket 1, m \rrbracket \cross \llbracket 1, n \rrbracket \quad a_{ij} = b_{ij}\]
+
+	where
+
+	\[\llbracket x, y \rrbracket = \left\{x \vert n \in \mathbb{Z}, x \leq n \leq y\right\}\]
+\end{definition}
+
+\begin{definition}[Transpose]
+	The \textbf{transpose} of a matrix $A = \left[a_{ij}\right]_{1 \leq i \leq m, 1 \leq i \leq n}$ is the $n \cross m$ matrix $A^T = \left[a_{ij}\right]_{1 \leq i \leq n, 1 \leq i \leq m}$ defined by
+
+	\[\forall (i, j) \in \llbracket 1, n \rrbracket \cross \llbracket 1, m \rrbracket, c_{ij} := a_{ji}\]
+\end{definition}
+
+\begin{definition}[Diagonal]
+	Let $A$ be a $n$-dimensional square matrix.
+
+	The diagonal of $A$ is the list
+
+	\[\diag(A) = (a_{11}, a_{22}, \ldots, a_{nn})\]
+\end{definition}

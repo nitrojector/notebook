@@ -1,0 +1,151 @@
+\chapter{Rank-Nullity Theorem}
+
+\section{The Rowspace and the Colspace of a $m \cross n$ matrix $A$}
+
+\begin{definition}
+	$\mathrm{Rowspace}(A) = \mathrm{span}\left\{\text{rows of $A$}\right\} \subseteq \mathbb{R}^n$
+\end{definition}
+
+\begin{definition}
+	$\mathrm{Colspace}(A) = \mathrm{span}\left\{\text{columns of $A$}\right\} \subseteq \mathbb{R}^n$
+
+	$\mathrm{Col}(A) = \mathrm{Row}(A^T)$
+\end{definition}
+
+\begin{theorem}[Rowspace]
+	\begin{enumerate}
+		\item If $A$ and $B$ are matrices that are row-eqivalent:
+		
+		$\mathrm{Row}(A) = \mathrm{Row}(B)$
+
+		\item In particular, $\mathrm{Row}(A) = \mathrm{Row}(\mathrm{ref}(A)) = \mathrm{Row}(\mathrm{rref}(A)\footnotemark)$ \footnotetext{yields an optimally simplified basis of $\mathrm{Row}(A)$}
+		\item The rows containing the leading ``1'' form a basis of $\mathrm{Row}(A)$
+		
+		As a resulve, $\dim(\mathrm{Row}(A)) = \rank(A)$
+	\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Colspace]
+	\begin{enumerate}
+		\item $\dim(\mathrm{Col}(A)) = \dim(\mathrm{Row}(A)) = \rank(A)$
+		\item A basis of $\mathrm{Col}(A)$ is given by the columns of $A$ containing the leading ``1''.
+	\end{enumerate}
+\end{theorem}
+
+\begin{remark}
+	$\mathrm{Col}(A) \neq \mathrm{Col}(\mathrm{ref}(A)) \neq \mathrm{Col}(\mathrm{rref}(A))$
+\end{remark}
+
+\begin{example}
+	Let $A = \begin{bmatrix}
+		1&2&3\\5&6&7\\9&10&11
+	\end{bmatrix}$
+
+	Find \begin{enumerate}[i)]
+		\item A basis of $\mathrm{Row}(A)$
+		\item An optimally simplified basis of $\mathrm{Row}(A)$
+		\item A basis of $\mathrm{Col}(A)$
+		\item An optimally simplified basis of $\mathrm{Col}(A)$
+	\end{enumerate}
+\end{example}
+
+\begin{sol}
+	\[\mathrm{Row}(A) = \mathrm{span}\left\{\begin{bmatrix}
+		1\\2\\3
+	\end{bmatrix}, \begin{bmatrix}
+		4\\5\\6
+	\end{bmatrix}, \begin{bmatrix}
+		9\\10\\11
+	\end{bmatrix}\right\}\]
+
+	\begin{enumerate}[i)]
+		\item See below, since they are the same
+		\item $\mathrm{ref}(A) = \begin{bmatrix}
+			1&2&3\\
+			0&1&2\\
+			0&0&0
+		\end{bmatrix}$
+		$\mathrm{rref}(A) = \begin{bmatrix}
+			1&0&-1\\
+			0&1&2\\
+			0&0&0
+		\end{bmatrix}$
+
+		\[\mathrm{Row}(A) = \mathrm{span}\left\{
+			\begin{bmatrix}
+				1\\2\\3
+			\end{bmatrix}, \begin{bmatrix}
+				5\\6\\7
+			\end{bmatrix}
+		\right\} = \mathrm{span}\left\{
+			\begin{bmatrix}
+				1\\2\\3
+			\end{bmatrix}, \begin{bmatrix}
+				0\\1\\2
+			\end{bmatrix}
+		\right\} = \mathrm{spam}\left\{
+			\begin{bmatrix}
+				1\\0\\-1
+			\end{bmatrix}, \begin{bmatrix}
+				0\\1\\2
+			\end{bmatrix}
+		\right\}\]
+
+		$\dim(\mathrm{Row}(A)) = 2$
+
+		\item $\mathrm{ref}(A) = \begin{bmatrix}
+			1&2&3\\
+			0&1&2\\
+			0&0&0
+		\end{bmatrix}$
+
+		\[\mathrm{Row}(A^T) = \mathrm{Col}(A) = \mathrm{span}\left\{
+			\begin{bmatrix}
+				1\\5\\9
+			\end{bmatrix}, \begin{bmatrix}
+				2\\6\\10
+			\end{bmatrix}
+		\right\}\]
+
+		$\dim(\mathrm{Col}(A)) = 2$
+	\end{enumerate}
+\end{sol}
+
+\begin{remark}
+	\begin{enumerate}[i)]
+		\item Check that the redundant vector is actually a linear combination of the other vectors.
+		\item $\mathrm{Col}(A) = \mathrm{Row}(A^T) = \mathrm{Row}(\mathrm{rref}(A^T))$\footnote{This yields a optimally simplified basis of $\mathrm{Col}(A)$}
+	\end{enumerate}
+\end{remark}
+
+\subsection{Applications}
+
+\begin{enumerate}
+	\item Given a family $\{v_i\}_{i = 1,\ldots, p}$ of vectors in $\mathbb{R}^n$, one can consider the $n \cross p$ matrix $A = \begin{bmatrix}
+		v_1 \mid v_2 \mid \cdots \mid v_p
+	\end{bmatrix}$, then apply either the colspace theorem (for $A$) or the rowspace theorem (for $A^T$) to extract a subfamily $\{v_{i_1}, v_{i_2}, \ldots, v_{i_q}\} (q \leq p)$ of linear independent set of maximal order, that is to say a basis of $\mathrm{span}\{v_1, \ldots, v_p\}$. ($q = \rank(A)$)
+
+	\item If $\{v_1, \ldots, v_p\}$ in a abstract vector space $V$, ten choose a basis $B$ of $V$ and apply colspace/rowspace Theorem to the family $\left\{[v_i]_B\right\}_{i=1,\ldots,p} \subseteq \mathbb{R}^n$
+	\item \# of linearly independent columns = \# of linearly independent rows
+	\item If $A$ is a square matrix, all columns are linearly independent $\iff$ all rows are linearly independent.
+\end{enumerate}
+
+\section{Rank-Nullity Theorem}
+
+\begin{definition}
+	Given a $m \cross n$ matrix $A$
+
+	\begin{equation} \label{eq:nullspace}
+		\mathrm{Nullspace}(A) = \left\{x \in \mathbb{R}^n \mid Ax = 0\right\} : \text{Nullspace of } \mathbb{R}^n
+	\end{equation}
+
+	We already know that: $\dim(\mathrm{Null}(A)) = n - \rank(A)$
+\end{definition}
+
+\begin{theorem}
+	Let $A$ be a $m \cross n$ matrix
+
+	\begin{equation} \label{eq:rank-nullity}
+		\rank(A) + \dim(\mathrm{Null}(A)) = n
+	\end{equation}
+\end{theorem}

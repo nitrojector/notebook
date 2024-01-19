@@ -1,0 +1,540 @@
+\chapter{Vector Spaces}
+
+\section{Definitions and Examples}
+
+\begin{definition}
+	Let $V$ be a nonempty set equipped with an addition operation (+), and a scalar multiplication ($\cdot$), scalars being in $\mathbb{R}$ (or in $\mathbb{C}$).
+
+	$V$ is a $\mathbb{R}$-vector space (or a $\mathbb{C}$-vector space) if\footnote{To check a vector space, all 10 of these conditions need to be checked. Good to be memorized.}
+
+	\begin{enumerate}[1.]
+		\item $\forall u, v \in V, u + v \in V$
+		\item $\forall \lambda \in \mathbb{R}, \forall u \in V, \lambda u \in V$\footnote{This is called being closed under addition and scalar multiplication.}
+		\item $\forall u, v \in V, u+v=v+u$
+		\item $\forall u,v,w \in V, u+v+w=(u+v)+w=u+(v+w)$
+		\item $\exists 0_v \in V, \forall u \in V, u + 0_v = u$
+		\item $\forall u \in V, \exists -u \in V : u + (-u) = 0_v$\footnote{Try: Show that $-u = (-1) \cdot u$}
+		\item $\forall u \in V, 1 \cdot u = u$
+		\item $\forall u \in V, \forall \lambda, \mu, \lambda \cdot (\mu \cdot u) = (\lambda \mu) \cdot u$
+		\item $\forall \lambda \in \mathbb{R},  \forall u, v \in V,  \lambda \cdot (u + v) = \lambda \cdot u + \lambda \cdot v$
+		\item $\forall \lambda, \mu \in \mathbb{R}, \forall u,  (\lambda + \mu) \cdot u = \lambda \cdot u + \mu \cdot u$
+	\end{enumerate}
+
+	\textbf{Note:} Statements 3 - 6 defines a commutative group (Abelian Group)
+\end{definition}
+
+\textbf{Examples}
+
+\begin{example}
+	$\mathbb{R}^n$ is a $\mathbb{R}$-vector space
+\end{example}
+
+\begin{example}
+	$\mathbb{C}^n$ is a $\mathbb{C}$-vector space, it can also be seen as a $\mathbb{R}$-vector space.
+\end{example}
+
+\begin{example}
+	$M_{mn}(\mathbb{R})$\footnote{Set of all $m\cross n$ matrices with real entries} is a $\mathbb{R}$-vector space
+\end{example}
+
+\begin{example}
+	$C^k (I, \mathbb{R})$\footnote{Set of all real-valued functions that are $C_k$ on the interval $I \subset \mathbb{R}$} is a $\mathbb{R}$-vector space.
+\end{example}
+
+\begin{example}
+	$P_n (\mathbb{R}) = \left\{a_n x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + 1_0 \mid a_i \in \mathbb{R}\right\}$\footnote{All polynomial functions of degree at most $n$ with real coefficients.} is a $\mathbb{R}$-vector space.
+\end{example}
+
+\begin{remark}
+	\[f \qquad f(x)\]
+
+	$f$ is technically the function, and $f(x)$ is not the function but the image of $f$ at $x$.
+\end{remark}
+
+\begin{example}
+	$V = \left\{A \in M_n(\mathbb{R}) \mid \tr(A) = 0\right\}$ is a $\mathbb{R}$-vector space.
+
+	\[\tr(A) = \sum_{i=1}^{n} a_ii\]
+\end{example}
+
+\begin{example}
+	$V = \left\{0_v\right\}$ is a vector space.
+\end{example}
+
+\begin{example}
+	$V = \left\{y \in C^\infty (\mathbb{R}, \mathbb{R}) \mid y^{(n)} + a_{n-1}y^{(n-1)} + \cdots + a_1 y^{(1)} + a_0 y^{(0)} = 0\right\}$\footnote{(linear) differential equation of order $n$} where $a_i$ are given coefficients.
+
+	0 is the zero function, because it is the linear combination of a series of functions.
+\end{example}
+
+\section{Subspaces}
+
+\begin{definition}
+	Let $V$ be a vector space. A subset $S$ of $V$ is a subspace of the vector space $V$ if $S$ is itself a vector space.
+\end{definition}
+
+\begin{theorem}
+	Let $S$ be a subset of a vector space $V$. Then, $S$ is a subspace of $V$
+
+	\begin{equation} \label{eq:subspace}
+		\iff \left(\forall u, v \in S, \forall \lambda \in \mathbb{R}, u + \lambda v \in S\right)
+	\end{equation}
+\end{theorem}
+
+\begin{example}
+	$S = \left\{A\in M_n (\mathbb{R}) | \tr(A) = 0\right\}$ is a subspace of the vector space $V=M_n(\mathbb{R})$
+\end{example}
+
+\begin{proof}
+	Let $A,B \in S$, let $\lambda \in \mathbb{R}$
+
+	Is $A + \lambda B \in S$?
+
+	\begin{align}
+		\tr(A + \lambda B) &= \sum_{i=1}^{n} a_{ii} + \lambda b_{ii}\\
+		&= \sum_{i=1}^{n} (a_{ii}) + \lambda \sum_{i=1}^{n} (b_{ii})\\
+		&= 0 + \lambda 0\\
+		&= 0 \implies \boxed{A + \lambda B \in S}
+	\end{align}
+
+	by Theorem, $S$ is a subspace of the vector space $V=M_n(\mathbb{R})$
+\end{proof}
+
+\begin{example}
+	$S = \left\{x = \begin{bmatrix}
+		x_1\\x_2\\x_3
+	\end{bmatrix} \in \mathbb{R} \mid x_1 -2x_2 +3x_3 = 0\right\}$ is a subapce of the vector space $V = \mathbb{R}^3$
+\end{example}
+
+\begin{example}
+	$S = \left\{y \in C^{\infty} (\mathbb{R}, \mathbb{R}) \mid y^{(n)} + a_{n-1}y^{(n-1)} + \cdots + a_0 y^{(0)} = 0\right\}$ is a subspace of the vector space $V = C^{\infty}(\mathbb{R}, \mathbb{R})$
+\end{example}
+
+\begin{proof}
+	Let $y_1, y_2 \in S$, let $\lambda \in \mathbb{R}$
+
+	Does $y_1 + \lambda y_2 = S$?
+
+	\begin{align}
+		&(y_1 + \lambda y_2)^{(n)} + \cdots + a_0(y_1 + \lambda y_2)^{(0)}\\
+		&= (y_1^{(n)} + a_{n-1}y_1^{(n-1)} + \cdots + a_0y_1) + \lambda (y_2^{(n)} + a_{n-1}y_2^{(n-1)} + \cdots + a_0y_2)\\
+		&\implies y_1 + \lambda y_2 \in S
+	\end{align}
+
+	$\implies$, by the theorem, $S$ is a subspace of the vector space $v \in C^{\infty}(\mathbb{R}, \mathbb{R})$
+\end{proof}
+
+\begin{example}
+	$S = \left\{A \in M_n(\mathbb{R}) \mid A^T = A\right\}$ is a subspace of the vector space $V = M_n(\mathbb{R})$
+\end{example}
+
+\begin{example}
+	$S = \left\{x = \begin{bmatrix}
+		x_1\\x_2\\x_3
+	\end{bmatrix} \mid x_1 - 2x_2+3x_3=1\right\}$
+\end{example}
+
+\begin{sol}
+	This is NOT a subspace of $V = \mathbb{R}^3$ since $\begin{bmatrix}
+		0\\0\\0
+	\end{bmatrix} \not\in S$
+\end{sol}
+
+\begin{example}
+	$S = \left\{0_v\right\}$ is a subspace of the vector space $V$
+\end{example}
+
+\begin{sol}
+	It is indeed the smallest subspace 
+\end{sol}
+
+\begin{example}[Quiz 4]
+	Determine whether $S = \{A \in M_3(\mathbb{R}) \mid A(I_3 + A) = 2A\}$ is a subspace.
+\end{example}
+
+\begin{sol}
+	It is not a subspace. It is easier to show counterexamples since intuitively it is not a subspace.
+\end{sol}
+
+\begin{example}
+	Let $V$ be a vecto space. Let $\left\{v_1, v_2, \cdots, v_n\right\} \subset V$
+
+	Then: $\spn\{v_i\}_{i=1, \cdots, p}$ is a subspace of the vector space $V$
+\end{example}
+
+\begin{example}
+	Proposition: If $S_1, S_2$ be subspaces of a vector spac $V$
+
+	Then: $S_1 \cap S_2$ is a subspace of $V$
+\end{example}
+
+\begin{proof}
+	Let $u, v \in S_1 \cap S_2$, let $\lambda \in \mathbb{R}$
+
+	\begin{equation}
+		u, v \in S_1 \cap S_2 \implies \begin{cases}
+			u, v \in S_1 &\implies u + \lambda v \in S_1 \text{ since } S_1 \text{ is a subspace}\\
+			u, v \in S_2 &\implies u + \lambda v \in S_2 \text{ since } S_2 \text{ is a subspace}
+		\end{cases}
+	\end{equation}
+
+	Which implies $u + \lambda v \in S_1 \cap S_2 \implies S_1 \cap S_2$ is a subspace
+\end{proof}
+
+\begin{remark}
+	$S_1, S_2$ subspaces of a $v = V \not\implies S_1 \cup S_2$ is a subspace of $V$
+\end{remark}
+
+\begin{example}
+	$ $\\
+	$V = \mathbb{R}^2$
+
+	$S_1 = \left\{\begin{bmatrix}
+		x\\y
+	\end{bmatrix} \in \mathbb{R}^2 \mid y = x\right\}$
+
+	$S_2 = \left\{\begin{bmatrix}
+		x\\y
+	\end{bmatrix} \in \mathbb{R}^2 \mid y = -x\right\}$
+
+	$S_1 \cup S_2 = \left\{\begin{bmatrix}
+		x\\y
+	\end{bmatrix} \in \mathbb{R}^2 \mid y^2 = x^2\right\}$
+
+	Given two vectors $\begin{bmatrix}
+		-1\\1
+	\end{bmatrix}$ and $\begin{bmatrix}
+		1\\1
+	\end{bmatrix}$ there will be a disagreement
+\end{example}
+
+\section{Spanning Set, Linear Independency, Basis}
+
+\subsection{Spanning Set}
+
+\begin{definition}
+	Let $V$ be a vector space. A family $\{v_i\}_{i=1,2,\ldots,p} \subset V$ is a spanning set of $V$ if $V=\spn\{v_1, v_2, \ldots, v_p\}$
+\end{definition}
+
+\begin{example}
+	\begin{equation} \label{eq:span-ex-1}
+		\mathbb{R}^n = \spn\left\{\begin{bmatrix}
+			1\\0\\\vdots\\0
+		\end{bmatrix}, \begin{bmatrix}
+			0\\1\\\vdots\\0
+		\end{bmatrix}, \cdots, \begin{bmatrix}
+			0\\0\\\vdots\\1
+		\end{bmatrix}\right\}
+	\end{equation}
+\end{example}
+
+\begin{sol}
+	Let $x = \begin{bmatrix}
+		x_1\\\vdots\\x_n
+	\end{bmatrix} \in \mathbb{R}^n, x_i \in \mathbb{R}$
+
+	Then, $x = x_1 e_1 + x_2 e_2 + \cdots + x_n e_n$
+
+	$\implies x \subseteq \spn\left\{e_1, \ldots, e_n\right\}$
+
+	$\mathbb{R}^n \subseteq \spn\left\{e_i\right\}_i$
+
+	\bigskip
+
+	Note that $\{e_i\}_i \subset \mathbb{R}^n \implies \spn\{e_i\}_i \subset \mathbb{R}^n$
+
+	$\mathbb{R}^n$ is a vector space hence closed under combination.
+
+	Thus, $\spn\{e_i\}_i = \mathbb{R}^n$
+\end{sol}
+
+\begin{example}
+	\begin{equation} \label{eq:span-ex-2}
+		P_n(\mathbb{R}) = \left\{p \in C^\infty(\mathbb{R}, \mathbb{R}) \mid \exists a_i \in \mathbb{R}, \forall x \in \mathbb{R}, p(x)=a_nx^n + \cdots + a_1 x + a_0\right\}
+	\end{equation}
+
+	is spanned by the family
+
+	\[1, x, x^2, \ldots, x^n\]
+\end{example}
+
+\begin{example}
+	The plane $P: x_1 + 3x_2 - 2x_3 = 0$ is a subspace of $\mathbb{R}^3$ spanned by $\left\{v_1=\begin{bmatrix}
+		2\\0\\1
+	\end{bmatrix}, v_2=\begin{bmatrix}
+		0\\2\\3
+	\end{bmatrix}\right\}$
+
+	$P$ is a subspace of $\mathbb{R}^3$ (Homework)
+
+	Let $x \in P: x_1 = -3x_2 + 2x_3 \implies x = x_2 \begin{bmatrix}
+		-3\\1\\0
+	\end{bmatrix} + x_3 \begin{bmatrix}
+		2\\0\\1
+	\end{bmatrix}, x_2, x_3 \in \mathbb{R}$
+
+	i.e. $x \in \spn\left\{\begin{bmatrix}
+		-3\\1\\0
+	\end{bmatrix}, \begin{bmatrix}
+		2\\0\\1
+	\end{bmatrix}\right\}$, $P \subset \spn\{w_1, w_2\}$
+
+	Note that also $w_1, w_2 \in P$
+
+	$\spn\{w_1, w_2\} \subset P$
+
+	$\therefore \spn\{w_1, w_2\} = P$
+
+	\bigskip
+
+	Now show that $\spn\{w_1, w_2\} = \spn\{v_1, v_2\}$
+
+	\begin{enumerate}[i)]
+		\item $v_1=w_2\implies v_1\in \spn\{w_i\}_i$
+		
+		$v_2=\begin{bmatrix}
+			0\\2\\3
+		\end{bmatrix}=2w_1+3w_2\implies v_2\in\spn\{w_i\}_i$
+
+		$\spn\{w_i\}_i \subset \therefore \spn\{v_i\}_i$
+
+		\item $w_2=v_1\implies w_2\in\spn\{v_i\}_i$
+		
+		$w_1=-\frac{3}{2}v_1+\frac{1}{2}v_2\implies w_1\in\spn\{v_i\}_i$
+
+		$\therefore {span}\{v_i\}_i \subset \spn\{w_i\}_i$
+	\end{enumerate}
+
+	$\therefore P = \spn\{v_1, v_2\}$
+\end{example}
+
+\begin{example}
+	The space of solutions of the homogenous LDE
+
+	\begin{equation} \label{eq:span-ex-LDE}
+		y''-3y'+2y=0
+	\end{equation}
+
+	is a vector space spanned by 
+
+	\begin{equation} \label{eq:span-ex-LDE-span}
+		\left\{y_1(t)=e^t, y_2(t) = e^{2t}\right\}
+	\end{equation}
+\end{example}
+
+\begin{definition}
+	Let $\left\{v_i\right\}_{i=1,2,\ldots,p}$
+
+	The family $\{v_1, \ldots, v_p\}$ is linearly independent if the vector equation
+
+	\begin{equation} \label{eq:lin-ind}
+		\alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_p v_p = 0
+	\end{equation}
+
+	only has the zero solution, namely $a_1=a_2=\ldots=a_3=0$
+\end{definition}
+
+\begin{example}\footnote{A reference example for proof of linear independence}
+	\begin{equation} \label{eq:lin-ind-ex}
+		\left\{e_i\right\}_{i=1,\ldots,n}
+	\end{equation}
+
+	in $\mathbb{R}^n$ is linearly independent
+
+	Let $\alpha_1, \alpha_2, \ldots, \alpha_n \in \mathbb{R}$
+
+	\[\alpha_1e_1 + \alpha_2e_2 + \cdots + \alpha_n e_n = 0\]
+
+	\[\begin{bmatrix}
+		\alpha_1\\\alpha_2\\\vdots\\\alpha_n
+	\end{bmatrix} = 0 \implies \alpha_1=\alpha_2=\cdots=\alpha_n=0\]
+
+	Therefore $\left\{e_i\right\}_i$ is linearly independent in $\mathbb{R}^n$
+\end{example}
+
+\begin{example}
+	\[y_1(t)=e^t, y_2(t)=e^{2t}\]
+
+	is linearly independent in $C^\infty(\mathbb{R}, \mathbb{R})$
+
+	Let $\alpha_1, \alpha_2 \in \mathbb{R}$ such that
+
+	\begin{equation} \label{eq:ex15-q}
+		\alpha_1 y_1 + \alpha_2 y_2 = 0
+	\end{equation}
+
+	$\iff \forall t \in \mathbb{R}, \alpha_1 y_1(t) + \alpha_2 y_2(t) = 0$
+
+	\textbf{$t=0$ in \cref*{eq:ex15-q}}\footnote{Sometimes it can be that we chose two $t$ and we get the exact same equation. Get a feel for whether they are linearly independent first}: $\alpha_1 + \alpha_2 = 0$
+
+	\textbf{$t=\ln(2)$ in \cref*{eq:ex15-q}}: $2\alpha_1 + 4\alpha_2 = 0$
+
+	Solve to obtain that $\alpha_1 = \alpha_2 = 0$
+
+	$\therefore \left\{y_1, y_2\right\}$ is linearly independent in $C^\infty(\mathbb{R}, \mathbb{R})$
+\end{example}
+
+\begin{example}
+	\[\left\{\cos(2x), \cos^2(x), \sin^2(x)\right\}\]
+
+	is linearly independent in $C^\infty(\mathbb{R}, \mathbb{R})$?
+
+	No, because $\cos(2x) = \cos^2(x) - \sin^2(x)$.
+
+	\[(1)\cos(2x) + (-1)\cos^2(x) + (1)\sin^2(x) = 0\]
+\end{example}
+
+\subsection{Basis}
+
+\begin{definition}
+	Let $V$ be a vector space.
+
+	A family of vectors $\{v_1, \ldots, v_n\}$ is a finite basis of $V$ if 
+
+	\begin{enumerate}
+		\item $\{v_i\}_i$ is a spanning set of $V$
+		\item $\{v_i\}_i$ is linearly independent in $V$
+	\end{enumerate}
+
+	A vector space $V$ that has a finite basis is said ot be finite dimensional.
+\end{definition}
+
+\begin{example}
+	$\{e_i\}_{i=1,\ldots,n}$\footnote{This is know as the standard basis of $\mathbb{R}^n$} is a basis of $\mathbb{R}^n$ as it is both a spanning set of $\mathbb{R}^n$ and is linearly independent in $\mathbb{R}^n$.
+\end{example}
+
+\begin{example}\footnote{\textbf{EXERCISE}}
+	$P_n(\mathbb{R}^n) = \left\{a_nx^n+a_{n-1}x^{x-1}+\cdots+a_1x+a_0 | a_i \in \mathbb{R}\right\}$
+
+	The family $\left\{1,x,x^2,\ldots,x^n\right\}$ is a basis of $P_n(\mathbb{R})$ since it is a spanning set of $P_n(\mathbb{R})$ \textit{by the definition of polynomial}. And, is linearly independent in $P_n(\mathbb{R})$
+\end{example}
+
+\begin{theorem}
+	Let $V$ be a vector space that has a finite basis.
+
+	Then any basis of $V$ contains the same \textit{number} of elements.
+
+	The \textit{number} of vectors in any basis of $V$ is called the \textit{dimension of $V$}, denoted by
+
+	\[\dim(V)\]
+\end{theorem}
+
+\begin{proof}
+	\textbf{LATER}, he said.
+\end{proof}
+
+\begin{theorem}
+	Let $V$ be a finite dimensional vector space, $\dim(V)=n$
+
+	Let $\{v_1, v_2, \ldots, v_n\}$ be a family of $n$ vectors in $V$.
+
+	\textit{The following statements are all equivalent.}\footnote{Proving that a set of vectors are linearly independent is enough to prove that it is a basis.}
+
+	\begin{enumerate}
+		\item $\{v_1, v_2, \ldots, v_n\}$ is a basis of $V$
+		\item $\{v_1, v_2, \ldots, v_n\}$ is a spanning set of $V$
+		\item $\{v_1, v_2, \ldots, v_n\}$ is linearly independent in $V$
+	\end{enumerate}
+\end{theorem}
+
+\begin{example}
+	Given three vectors $\{v_1, v_2, v_3\} =  \left\{x^2-2x-3, x^2+1,x-1\right\}$ is a basis of $P_2(\mathbb{R})$.
+
+	We want to prove that the three are linearly independent.
+
+	Consider $\alpha_1, \alpha_2, \alpha_3$
+
+	\begin{equation} \label{eq:ex-basis}
+		\alpha_1v_1 + \alpha_2v_2 + \alpha_3v_3 = 0
+	\end{equation}
+
+	$x = 0$ in \cref*{eq:ex-basis}: $-3\alpha_1+\alpha_2-\alpha_2=0$
+
+	$x = 1$ in \cref*{eq:ex-basis}: $-4\alpha_1+2\alpha_2 = 0$
+
+	$x = -1$ in \cref*{eq:ex-basis}: $2\alpha_2 - 2\alpha_3 = 0$
+
+	And the above three implies that $\alpha_1=\alpha_2=\alpha_3=0$, which implies that $\{v_1, v_2, v_3\}$ is linearly independent. Then, by the theorem, $\dim(P_2(\mathbb{R})) = 3$. $\{v_i\}_i$ is a basis of $P_2(\mathbb{R})$
+\end{example}
+
+\begin{theorem}
+	Let $S$ be a subspace of a finite dimensional vector space $V$.
+
+	Then, $S$ is finite dimensional as well and $\dim(S)\leq \dim(V)$.
+
+	Moreover, any basis $\{v_1, \ldots, v_p\}$ of $S$ can be extended to a basis $\{v_1, \ldots, v_p, v_{p+1}, \ldots v_n\}$ of $V$.
+\end{theorem}
+
+\begin{corollary}
+	\begin{enumerate}[i)]
+		\item If $S$ is a subspace of a finite dimensional vector space $V$, and $\dim(S) = \dim(V)$, then $S = V$
+		
+		\item If $\{v_1, v_2, \ldots, v_p\}$ be a family of non-zero vectors in $V$ with $p > \dim(V)$, then the family $\{v_i\}_i$ is linearly dependent.
+	\end{enumerate}
+\end{corollary}
+
+\begin{example}
+	Let $V = \spn\{\cos^2(x), cos(2x), sin^2(x)\}$
+
+	\begin{enumerate}
+		\item Find  the $\dim(V)$
+		\item Show that $\spn\{\cos(2x), 1\} = V$
+	\end{enumerate}
+\end{example}
+
+\begin{sol}
+	\begin{enumerate}[i)]
+		\item Note that $\cos(2x) = (1)\cos^2(x) + (-1) \sin^2(x) \implies \cos(2x) \in \spn\{\cos^2(x), \sin^2(x)\} \implies V = \boxed{\spn\{\cos^2(x), \sin^2(x)\}}$
+
+		Let $\alpha_1, \alpha_2 \in \mathbb{R}$ such that $\forall x, \alpha_1 \cos^2(x) + \alpha_2 \sin^2(x) = 0$
+
+		$\begin{cases}
+			x = 0:& \alpha_1 + 0 = 0 \implies \alpha_1 = 0\\
+			x = \frac{\pi}{2}:& 0 + \alpha_2 = 0 \implies \alpha_2 = 0
+		\end{cases}$
+
+		$\alpha_1 = \alpha_2 = 0$ implies that $\{\cos^2(x), \sin^2(x)\}$ is linearly independent. Thus $V = \spn\{\cos^2(x), \sin^2(x)\}$ is 2-dimensional.
+
+		\item $\cos(2x) \in V$ since i)
+		
+		$1 = \cos^2 + \sin^2 \implies \boxed{1 \in V}$
+
+		\[\spn\{\cos(2x), 1\} \subseteq V\]
+
+		Let $\alpha_1, \alpha_2$ such that $\forall x, \alpha_1 \cos(2x) + \alpha_2 (1) = 0$
+
+		$\begin{cases}
+			x = \frac{\pi}{4}:& 0 + \alpha_2 = 0 \implies \alpha_2 = 0\\
+			x = 0:& \alpha_1 + \alpha_2 = 0 \implies \alpha_1 = 0
+		\end{cases}$
+
+		$\{\cos(2x), 1\}$ is linearly independent, thus $H = \spn\{\cos(2x), 1\}$ is 2 dimensional.
+
+		By the corollary, since $\dim(H) = \dim(V)$, $H = V$.
+	\end{enumerate}
+\end{sol}
+
+\begin{example}
+	Find a basis of the set of solutions of $Ax = 0$ where $A = \begin{bmatrix}
+		4&2&2&-2\\
+		3&-1&0&2\\
+		7&1&2&0\\
+		-2&4&2&-6
+	\end{bmatrix}$
+\end{example}
+
+\begin{sol}
+	\[\mathrm{rref}\left(\begin{bmatrix}
+		4&2&2&-2\\
+		3&-1&0&2\\
+		7&1&2&0\\
+		-2&4&2&-6
+	\end{bmatrix}\right) = \begin{bmatrix}
+		1&0&\nicefrac{1}{5}&\nicefrac{1}{5}\\
+		0&1&\nicefrac{3}{5}&-\nicefrac{7}{5}\\
+		0&0&0&0\\
+		0&0&0&0
+	\end{bmatrix}\]
+
+	After listing the solution set, and thus the two vectors that form the basis. Check the definition of the basis: 1) Whether they span the set 2) Whether they are linearly independent.
+\end{sol}

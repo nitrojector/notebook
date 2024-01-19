@@ -1,0 +1,859 @@
+\chapter{Spectral Theory}
+
+\section{Eigenvectors and Eigenvalues of a Matrix / Linear Map}
+
+\begin{definition}
+	\label{def:ev1}
+	Let $A$ be a $n \cross n$ matrix.
+
+	A non-zero vector $x \in \mathbb{R}^n$ is a (real) \textbf{eigenvector} of $A$ if
+
+	\begin{equation} \label{eq:ev-def}
+		Ax = \lambda_x x
+	\end{equation}
+
+	for some scalar $\lambda_x \in \mathbb{R}$
+
+	Such a scalar $\lambda_x \in \mathbb{R}$ is called a (real) \textbf{eigenvalue} of $A$, associated with the eigenvector $x$.
+\end{definition}
+
+\begin{definition}
+	\label{def:ev2}
+	Let $T:V \to V$ be an endomorphism
+
+	A non-zero vector $v \in V$ is an \textit{eigenvector} of $T$ if
+
+	\begin{equation} \label{eq:ev-def-2}
+		T(v) = \lambda_x v
+	\end{equation}
+
+	for some scalar $\lambda_x \in \mathbb{R}$
+
+	Such a scalar $\lambda_x$ is called an \textit{eigenvalue} of $T$, associated with the eigenvector $v$.
+\end{definition}
+
+\begin{remark}
+	With \cref*{def:ev2}, with $T = T_A: \mathbb{R}^n \to \mathbb{R}^n \implies$ \cref*{def:ev1}
+\end{remark}
+
+\begin{example}
+	\[A = \begin{bmatrix}
+		2&0&0\\0&-1&3\\0&1&1
+	\end{bmatrix}\]
+
+	Observe that
+
+	\[A \begin{bmatrix}
+		1\\0\\0
+	\end{bmatrix} = \begin{bmatrix}
+		2\\0\\0
+	\end{bmatrix} = 2 \begin{bmatrix}
+		1\\0\\0
+	\end{bmatrix}\] 
+	
+	i.e. $x = \begin{bmatrix}
+		1\\0\\0
+	\end{bmatrix}$ is an eigenvector of $A$ with associated eigenvalue $\lambda = 2$
+
+	Also observe that 
+
+	\[A \begin{bmatrix}
+		0\\1\\1
+	\end{bmatrix} = \begin{bmatrix}
+		0\\2\\2
+	\end{bmatrix} = 2 \begin{bmatrix}
+		0\\1\\1
+	\end{bmatrix}\]
+	
+	i.e. $x = \begin{bmatrix}
+		0\\1\\1
+	\end{bmatrix}$ is an eigenvector of $A$ with associated eigenvalue $\lambda = 2$
+
+	Also observe that 
+
+	\[A \begin{bmatrix}
+		0\\-3\\1
+	\end{bmatrix} = \begin{bmatrix}
+		0\\6\\2
+	\end{bmatrix} = 2 \begin{bmatrix}
+		0\\-3\\1
+	\end{bmatrix}\]
+	
+	i.e. $x = \begin{bmatrix}
+		0\\-3\\1
+	\end{bmatrix}$ is an eigenvector of $A$ with associated eigenvalue $\lambda = -2$
+\end{example}
+
+\begin{example}
+	\[\begin{cases}
+		T:&P_2(\mathbb{R}) \to P_2(\mathbb{R})\\
+		&p(x) \mapsto p(x) - (x+1)p'(x)
+	\end{cases}\]
+	
+	Observe that
+
+	$T(x+1) = (x+1) - (x+1)(x+1)' = 0 = 0 (x+1)$
+
+	Thus, the vector $x+1$ is an eigenvector with associated eigenvalue $\lambda = 0$
+
+	$T(1) = 1 = (1) 1$
+
+	Thus, the vector 1 is an eigenvector with associated eigenvalue $\lambda = 1$
+\end{example}
+
+\section{Tracking Eigenvalues and Eigenvectors of a Matrix A/Linear Map T}
+
+\subsection{Finding the Eigenvalues}
+
+\begin{definition}
+	Let $A$ be a $n \cross n$ matrix.
+
+	The \textbf{characteristic polynomial} of $A$, denoted by $P_A(\lambda)$, is defined as
+
+	\begin{equation} \label{eq:char-poly}
+		P_A(\lambda) = \det(A - \lambda I_n)
+	\end{equation}
+\end{definition}
+
+\begin{theorem}
+	The roots of $P_A(\lambda)$ are the eigenvalues of $A$.
+
+	\begin{proof}
+		Later...
+	\end{proof}
+\end{theorem}
+
+\begin{example}
+	Fking missing? WTF??? Did OneDrive just overwrite my local copy?
+
+	Missing:
+	\begin{enumerate}
+		\item Example of finding eigenvalues
+		\item Finding eigenvalues in different basis which doesn't matter. Even with a change of basis to another space, we see that we are left with the same characteristic polynomial
+	\end{enumerate}
+\end{example}
+
+\subsection{Finding the eigenvectors}
+
+\begin{example}
+	\[A = \begin{bmatrix}
+		2&0&0\\0&-1&3\\0&1&1
+	\end{bmatrix}\]
+
+	$-2$ and $2$ are the eigenvalues of $A$
+	
+\end{example}
+
+\begin{sol}
+	\textbf{Basis of $E_2$}
+
+	Solve the system
+
+	\[(A - 2I_3)x = 0\]
+
+	We observe that 
+
+	\[\mathrm{rref}(A - 2I_3) = \begin{bmatrix}
+		0&-1&-1\\0&0&0\\0&0&0
+	\end{bmatrix}\]
+
+	we see that the rank is 1, thus the dimension of the nullspace can be determined by the rank-nullity theorem.
+
+	\[\dim(\null(A - 2I_3)) = \dim(\mathbb{R}^3) - \rank(A) = 3 - 1 = 2\]
+
+	We can then kind of guess
+
+	\[\begin{bmatrix}
+		1\\0\\0
+	\end{bmatrix}, \begin{bmatrix}
+		0\\1\\1
+	\end{bmatrix} \in E_2\]
+
+	and that they are linearly independent, so given the dimension of $E_2$ we conclude
+
+	\[E_2 = \spn\left\{\begin{bmatrix}
+		1\\0\\0
+	\end{bmatrix}, \begin{bmatrix}
+		0\\1\\1
+	\end{bmatrix}\right\}\]
+
+	\textbf{Basis of $E_{-2}$}
+
+	Solve $(A + 2 I_3) x = 0$
+
+	\[\begin{bmatrix}
+		4&0&0\\0&1&3\\0&1&3
+	\end{bmatrix} \sim \begin{bmatrix}
+		1&0&0\\0&1&3\\0&0&0
+	\end{bmatrix}\]
+
+	Again, by theorem, we observe that
+
+	\[\dim(E_{-2}) = \dim(\mathbb{R}^3) - \rank(A + 2 I_3) = 1\]
+
+	We can make out the vector $\begin{bmatrix}
+		0\\-3\\1
+	\end{bmatrix} \in E_{-2}$ and given the dimension we calculated above, we can say
+
+	\[E_{-2} = \spn\left\{\begin{bmatrix}
+		0\\-3\\1
+	\end{bmatrix}\right\}\]
+\end{sol}
+
+\begin{example}
+	Another example from discussion
+\end{example}
+
+\section{Properties of Eigenvectors}
+
+Let $A$ be a $n\cross n$ matrix.
+
+Let $P_A(\lambda)$ be its characteristic polynomial.
+
+Let $\lambda_1, \lambda_2, \ldots, \lambda_p \in \mathbb{C}$ be the distinct eigenvalues of $A$.
+
+After full factorization:
+
+\[P_A(\lambda) = (-1)^n (\lambda - \lambda_1)^{m_1} (\lambda - \lambda_2)^{m_2} \cdots (\lambda - \lambda_p)^{m_p}\]
+
+$m_i$ is called the \textbf{multiplicity} of the eigenvalue $\lambda_i$
+
+\begin{remark}
+	$n = \sum_{i=1}^{p} m_i$
+\end{remark}
+
+\begin{theorem}
+	\[\dim(E_{\lambda_i}) \leq m_i\]
+\end{theorem}
+
+\begin{definition}
+	Let $\lambda_i$ be an eigenvalue of a $n\cross n$ matrix $A$. The eigenspace associated with $\lambda_i$ is
+
+	\begin{enumerate}[i)]
+		\item $E_{\lambda_i} = \left\{x \in \mathbb{R}^n \mid Ax = \lambda_i x\right\} = \null(A - \lambda_i I_n)$ if $\lambda_i \in \mathbb{R}$
+		\item $E_{\lambda_i} = \left\{x \in \mathbb{C}^n \mid Ax = \lambda_i x\right\} $ if $\lambda_i \in \mathbb{C} \setminus \mathbb{R}$
+		\item The theorem also applies
+	\end{enumerate}
+
+\end{definition}
+
+\subsection{A Little Dispersion} 
+
+\begin{definition}
+	Let $S_1, \ldots, S_m$ be the subspaces of a vector space $V$.
+
+	\begin{enumerate}
+		\item The sum of the $S_i$ is the subspace of $V$ defined as:
+		
+		\[S_1 + S_2 + \cdots + S_m = \left\{v \in \mathbb{R}^n \mid v = v_1 + v_2 + \cdots + v_m, v_i \in S_i\right\}\]
+
+		\item The sum of $S_i$ is said to be \textbf{direct} if $\forall i, j, i\neq j, S_i \cup S_j = \{0\}$
+
+		When the sum of $S_1 + \cdots + S_n$ is direct, we use the notation
+
+		\[S_1 \oplus S_2 \oplus \cdots \oplus S_m\]
+
+		\item The vector space $V$ is said to split as the direct sum of the $S_i$ if
+		
+		\[V = S_1 \oplus S_2 \oplus\cdots\oplus S_m\]
+	\end{enumerate}
+\end{definition}
+
+\begin{example}
+	Take $\mathbb{R}^2$ for example, say we have two vector spaces $S_1, S_2$ such that
+
+	\[\mathbb{R}^2 = S_1 \oplus S_2\]
+
+	Then any arbitrary vector $v \in \mathbb{R}^2$ can be reconstructed by a linear combination of the vectors $v_1 \in S_1, v_2 \in S_2$
+
+	This similarly applies to $\mathbb{R}^3$ and higher dimensions, with 3 subspaces.
+
+	We could also have a plane in $\mathbb{R}^3$ along with another 1 dimensional subspace in $\mathbb{R}^3$ and we still see how any arbitrary vector can be constructed with a linear combination of vectors in these spaces.
+\end{example}
+
+\begin{theorem}
+	Let $V$ be a finite dimensional vector space.
+
+	Let $S_1, \ldots, S_m$ be subspaces of $V$. The following statements are equivalent:
+
+	\begin{enumerate}
+		\item $V = S_1 \oplus \cdots \oplus S_m$
+		\item $\begin{cases}
+			V = S_1 + \cdots + S_m\\
+			\dim(V) = \sum_{i=1}^{m} \dim(S_i)
+		\end{cases}$
+		\item The family of vectors $B_1 \cup B_2 \cup \cdots \cup B_m$, where $B_i$ is a basis of $S_i$, form a basis of $V$.\footnote{The vectors that span $V$ won't be a basis for $V$ if any of them are linearly dependent.}
+	\end{enumerate}
+\end{theorem}
+
+\begin{tcolorbox}
+	Since projections, orthogonal or not, are linear, they can expressed in terms of a matrix.
+\end{tcolorbox}
+
+\begin{theorem}
+	Let $a$ be a $n \cross n$ matrix ($T:V \to V$ be an end of a $\mathbb{R}$ vector space $V$)
+
+	Let $\lambda_1, \lambda_2, \ldots, \lambda_3 \in \mathbb{C}$ be the distinct eigenvalues of $A$ ($T$, respectively)
+
+	Let $E_{\lambda_1}, E_{\lambda_2}, \ldots, E_{\lambda_p}$ be the eigenspaces.
+
+	Let $S = E_{\lambda_1}+ E_{\lambda_2}+ \ldots+ E_{\lambda_p}$: this is a subspace of $\mathbb{R}^n, \mathbb{C}^n, V, V^\mathbb{C}$.
+		
+	Then,
+
+	\[S = E_{\lambda_1}\oplus E_{\lambda_2}\oplus \cdots\oplus E_{\lambda_p}\]
+
+	In particular:
+
+	\begin{itemize}
+		\item $\dim(S) = \sum_{i=1}^{p} \dim(E_{\lambda_i})$
+		\item The family of vectors $B_1 \cup B_2 \cup \cdots \cup B_p$, where $B_i$ is a basis of $E_{\lambda_i}$ is linearly independent.
+	\end{itemize}
+\end{theorem}
+
+In other words, if $B_i = \{v_1^i, v_2^i, \ldots, v_{n_i}^i\}$, where $n_i = \dim(E_{\lambda_i})$ is a basis of $E_{\lambda_i}$, then $B_1 \cup B_2 \cup \cdots \cup B_p = \left\{v_1^1, v_2^1, \ldots, v_{n_i}^1, v_1^2, v_2^2, \ldots, v_{n_i}^2, \cdots, v_1^p, v_2^p, \ldots, v_{n_p}^p\right\}$
+
+\begin{definition}
+	Let $A$ be a $n \cross n$ matrix ($T:V \to V$ be an endomorphism)
+
+	$A$ ($T$, respectively) is said to be diagonalizable/nondefective if:
+
+	\[\mathbb{R}^n, \mathbb{R}^n, V, V^{\mathbb{C}} = E_{\lambda_1} \oplus \cdots \oplus E_{\lambda_p}\]
+\end{definition}
+
+\begin{theorem}
+	Let $A$ be a $n\cross n$ matrix ($T:V \to V$ be an endomorphism, respectively)
+
+	$A$ ($T$, respectively) is diagonalizable if any of the following condition are satisfied:
+
+	\begin{enumerate}
+		\item $\dim(\mathbb{R}^n, \mathbb{C}^n, V, V^\mathbb{C}) = \sum^{p} \dim(E_{\lambda_i})$
+		\item There exists a basis of $\mathbb{R}^n, \mathbb{C}^n, V, V^\mathbb{C}$ made of eigenvectors.\footnote{This is probably the definition that we want to use most}
+		\item $\forall i = 1, \ldots, p, \dim(E_{\lambda_i}) = m_i$ ($m_i$ is the multiplicity in the characteristic polynomial $P_A(\lambda)$)
+	\end{enumerate}
+\end{theorem}
+
+\begin{remark}[Lecture Oct 25, 2023]
+	Given $A \in M_n(\mathbb{R})$, there are two cases for the eigenvectors/values of matrices:
+
+	\begin{itemize}
+		\item All eigenvalues are real: we stay in $\mathbb{R}^n$
+		\item Otherwise, we need to switch to $\mathbb{C}^n$
+	\end{itemize}
+
+	Given $T:V \to V, V: \mathbb{R}$
+
+	$A = [T]_B \in M_n(\mathbb{R})$
+
+	\begin{itemize}
+		\item All eigenvalues $\lambda_i$ of $A$ are real: stick with the $\mathbb{R}$ vector space $V$.
+		\item One of the eigenvalues is in $\mathbb{C}\setminus\mathbb{R}$: Need to switch to $\mathbb{C}$ vector space
+		
+		\[V^\mathbb{C} = V \otimes_\mathbb{R} \mathbb{C}\]
+	\end{itemize}
+\end{remark}
+
+\begin{theorem}
+	Let $A$ be in $M_n(\mathbb{C})$ 
+	
+	$A$ is diagonalizable \textit{iff} $A = PDP^{-1}$, where $P$ is invertible, and $D$ is a \textbf{diagonal matrix}.
+
+	More precisely, let $\lambda_1, \lambda_2, \ldots, \lambda_p$ be the distinct eigenvalues of $A$.
+
+	Let $C\footnotemark = \left\{v_1^1, v_2^1, \ldots, v_{n_i}^1, v_1^2, v_2^2, \ldots, v_{n_i}^2, \cdots, v_1^p, v_2^p, \ldots, v_{n_p}^p\right\}$\footnotetext{This is the basis of eigenvectors, which is the basis of the entire vector space (since $A$ is diagonalizable.)}
+
+	\[P = P_{\mathcal{B}_{\mathrm{canonical}}\footnotemark\leftarrow \mathcal{C}}\]\footnotetext{This is the canonical basis of $\mathbb{R}^n$ or $\mathbb{C}^n$}
+
+	And, we know that the matrix $D$ has eigenvalues along the diagonal, starting with a series of $\lambda_1$ on the top left, and ending with $\lambda_p$. The number of these eigenvalues on the diagonal is the multiplicity of the eigenvalue itself.
+\end{theorem}
+
+\begin{theorem}
+	Let $T:V \to V$ be an endomorphism.
+
+	$T$ is diagonalizable \textit{iff} There exists a basis $\mathcal{C}$ such that $[T]_{\mathcal{C}}$ is a diagonal matrix.
+
+	\textit{iff} There exists a basis of $\mathcal{C}$ made of eigenvectors.
+
+	(basis of $\begin{cases} V\\V^\mathbb{C}\end{cases}$ depending on the ??)
+\end{theorem}
+
+\begin{example}
+	Let $A = \begin{bmatrix}
+		2&0&0\\0&-1&3\\0&1&1
+	\end{bmatrix}$
+
+	\begin{enumerate}
+		\item Find a basis of each eigenspace
+		\item Calculate $A^n, \forall n \geq 0$
+	\end{enumerate}
+\end{example}
+
+\begin{sol}
+	\begin{enumerate}
+		\item $E_2 = \spn\left\{
+				\begin{bmatrix}
+					0\\1\\1
+				\end{bmatrix}, \begin{bmatrix}
+					1\\0\\0
+				\end{bmatrix}
+			\right\}$; $E_{-2} = \spn\left\{
+				\begin{bmatrix}
+					0\\-3\\1
+				\end{bmatrix}
+			\right\}$
+
+			\item Note that $\left\{
+				\begin{bmatrix}
+					0\\1\\1
+				\end{bmatrix}, \begin{bmatrix}
+					1\\0\\0
+				\end{bmatrix}, \begin{bmatrix}
+					0\\-3\\1
+				\end{bmatrix}
+				\right\}$ is a basis of $\mathbb{R}^3$ made of eigenvectors $\implies$ $A$ is diagonalizable.
+
+				$P = P_{\mathcal{B}_{\mathrm{can}} \leftarrow \mathcal{C}}$ and $D$ is a diagonal matrix:
+
+				\[P = \begin{bmatrix}
+					0&1&0\\1&0&-3\\1&0&1
+				\end{bmatrix}; D = \begin{bmatrix}
+					2&0&0\\0&2&0\\0&0&-2
+				\end{bmatrix}\]
+
+				We hshould note that the first column of $P$ is $\left[\begin{bmatrix}
+					0\\1\\1
+				\end{bmatrix}\right]$
+
+				Now, when we consider 
+
+				\begin{align*}
+					A^n &= (PDP^{-1})^n\\
+					&= (PDP^{-1})(PDP^{-1}) \cdots (PDP^{-1})\\
+					&= PD^nP^{-1}
+				\end{align*}
+
+				Now, for the actual calculation:
+
+				\[A^n = \begin{bmatrix}
+					0&1&0\\1&0&-3\\1&0&1
+				\end{bmatrix} \begin{bmatrix}
+					2^n&0&0\\0&2^n&0\\0&0&(-2)^n
+				\end{bmatrix}\begin{bmatrix}
+					0&\nicefrac{1}{4}&\nicefrac{3}{4}\\
+					1&0&0\\
+					0&-\nicefrac{1}{4}&\nicefrac{1}{4}
+				\end{bmatrix}\]
+
+				To calculate we should simplify:
+
+				\[\begin{bmatrix}
+					0&1&0\\1&0&-3\\1&0&1
+				\end{bmatrix} (2^n) \begin{bmatrix}
+					1&0&0\\0&1&0\\0&0&(-1)^n
+				\end{bmatrix}\frac{1}{4}\begin{bmatrix}
+					0&1&3\\
+					4&0&0\\
+					0&-1&1
+				\end{bmatrix}\]
+	\end{enumerate}
+\end{sol}
+
+\section{Exponential of a Matrix / Endomorphism}
+
+\subsection{Definitions and Theorems}
+
+\begin{definition}
+	Let $A$ be a $n \cross n$ matrix. ($T: V \to V$, respectively)
+
+	We define the exponential of a matrix $A$ as:
+
+	\[e^A=\sum_{k=0}^{+\infty} \frac{1}{k!} A^k\]
+
+	The expression $\frac{1}{k!} A^k$ is $n\cross n$ since $A$ is $n\cross n$. Thus, $e^A$ is also a $n\cross n$ matrix.
+\end{definition}
+
+\begin{theorem}
+	$\forall A \in M_n(\mathbb{C})$, the above series is convergent $\implies$ $e^A$ is a well defined ``value''
+\end{theorem}
+
+\begin{theorem}
+	If $A, B \in M_n(\mathbb{C})$ such that $AB = BA$
+
+	then $e^{A+B} = e^A \cdot e^B = e^B \cdot e^A$
+\end{theorem}
+
+\begin{proof}
+	If $A, B$ commute, then
+
+	\[(A + B)^N = \sum_{k=0}^N \begin{pmatrix}
+		N\\k
+	\end{pmatrix} A^k B^{N-k}\]
+
+	where $\begin{pmatrix}
+			N\\k
+	\end{pmatrix} = \frac{N!}{k! (N-k)!}$
+
+	(aka the Binomial Formula)
+
+	\begin{align}
+		e^{A + B} &= \sum_{k=0}^{+\infty} \frac{1}{k!} (A + B)^k\\
+		&= \sum_{k=0}^{+\infty} \frac{1}{k!} \sum_{l=0}^k \begin{pmatrix}
+			k\\l
+		\end{pmatrix} A^l B^{k-l}\\
+		&= \sum_{k=0}^{+\infty} \sum_{l=0}^k \frac{1}{k!}  \begin{pmatrix}
+			k\\l
+		\end{pmatrix} A^l B^{k-l}\\
+		&= \sum_{k=0}^{+\infty} \sum_{l=0}^k \left(\frac{1}{l!} A^l\right) \left(\frac{1}{(k-1)!} B^{k-l}\right)\footnotemark\\
+		&= \left( \sum_{k=0}^{+\infty} \frac{1}{l!}A^l\right)\left(\sum_{k=0}^{+\infty} \frac{1}{k!} B^k\right)\\
+		&= e^A \cdot e^B
+	\end{align}
+
+	\footnotetext{The second summation is the general term of the product of 2 power series}
+
+	All this is under the assumption that $AB$ commute.
+
+	Since $e^{A+B} = e^{B + A}$, we have also proven the other case. (if $AB = BA$)
+\end{proof}
+
+\begin{theorem}
+	$e^0 = I_n$ (0 is the zero-matrix)
+\end{theorem}
+
+\begin{proof}
+	\begin{align}
+		e^A &=\sum_{k=0}^{+\infty} \frac{1}{k!} A^k\\
+		&=\frac{1}{0!} (0)^0 + \sum_{k=1}^{+\infty} \frac{1}{k!} A^k\\
+		&= I_n + 0\\
+		&= I_n
+	\end{align}
+\end{proof}
+
+\begin{theorem}
+	$\forall A \in M_n(\mathbb{C}), e^A$ is invertible, and $\left(e^A\right)^{-1} = e^{-A}$
+\end{theorem}
+
+\begin{proof}
+	\[e^0 = e^{A - A} = e^A \cdot e^{-A}\]
+
+	since $A$ and $-A$ commute.
+
+	Therefore, $e^A$ is invertible, and $\left(e^A\right)^{-1} = e^{-A}$ by property of the inverse.
+\end{proof}
+
+\subsection{Calculating $e^A$ where $A$ is Diagonalizable}
+
+If $A$ is diagonalizable, i.e. $A = PDP^{-1}$ where $D$ is a diagonal matrix.
+
+\begin{proof}
+	\begin{align}
+		e^A &=\sum_{k=0}^{+\infty} \frac{1}{k!} PD^kP^{-1}\\
+		&= P \left(\sum_{k=0}^{+\infty} \frac{1}{k!} D^k\right) P^{-1}\\
+		&= P \left(\sum_{k=0}^{+\infty} \frac{1}{k!} \begin{bmatrix}
+			{\lambda_1}^k&&\\
+			&\ddots&\\
+			&&{\lambda_n}^k
+		\end{bmatrix}\right) P^{-1}\\
+		&= P \begin{bmatrix}
+			\sum_{k=0}^{+\infty} \frac{1}{k!} {\lambda_1}^k&&\\
+			&\ddots&\\
+			&&\sum_{k=0}^{+\infty} \frac{1}{k!} {\lambda_n}^k
+		\end{bmatrix} P^{-1}\\
+		&= P e^D P^{-1}
+	\end{align}
+\end{proof}
+
+where $e^D = \mathrm{diag}(e^\lambda_1, e^\lambda_2, \ldots, e^\lambda_n)$
+
+\begin{example}
+	Taking the last example, (can ref), where
+
+	\[D = \begin{bmatrix}
+		2&&\\&2&\\&&-2
+	\end{bmatrix}, e^D = \begin{bmatrix}
+		e^2&&\\&e^2&\\&&e^{-2}
+	\end{bmatrix}\]
+\end{example}
+
+Now what if the matrix is not diagonalizable? We will consider that case now.
+
+\section{Jordan Matrix}
+
+Take this $13 \cross 13$ matrix for example
+
+\[J = \left[
+	\begin{array}{ccc|cc|cc|c|c|ccc|c}
+		-1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+		0 & -1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+		0 & 0 & -1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ \hline
+		0 & 0 & 0 & -1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+		0 & 0 & 0 & 0 & -1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ \hline
+		0 & 0 & 0 & 0 & 0 & 2 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+		0 & 0 & 0 & 0 & 0 & 0 & 2 & 0 & 0 & 0 & 0 & 0 & 0 \\ \hline
+		0 & 0 & 0 & 0 & 0 & 0 & 0 & 2 & 0 & 0 & 0 & 0 & 0 \\ \hline
+		0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 2 & 0 & 0 & 0 & 0 \\ \hline
+		0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 3 & 1 & 0 & 0 \\
+		0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 3 & 1 & 0 \\
+		0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 3 & 0 \\ \hline
+		0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 7
+	\end{array}
+\right]\]
+
+The different gridded sections separated along the diagonal are \textit{Jordan Blocks}.
+
+\begin{theorem}
+	\[\forall A \in M_n(\mathbb{C}), A = PJP^{-1}\] where $J$ is the \textit{Jordan Matrix}.
+\end{theorem}
+
+\begin{remark}[Important Facts:]
+	If $A = PJP^{-1}$, where $J$ is as above, we have:
+
+	\begin{enumerate}[i)]
+		\item $P_A(\lambda) = P_J(\lambda) = (-1)^{13}(\lambda+1)^5(\lambda-2)^4(\lambda-3)^3(\lambda-7)$
+		\item Dimensions of the eigenspaces
+		\begin{itemize}
+			\item $\dim(E_{-1}) = 2 =$ number of Jordan Blocks associated with $\lambda = -1$
+			\item $\dim(E_2) = 3$
+			\item $\dim(E_3) = 1$
+			\item $\dim(E_7) = 1$
+		\end{itemize}
+		\item Dimension of the generalized eigenspace $G_{\lambda_i}$
+		
+		\[E_{\lambda_i} \subset G_{\lambda_i}\]
+
+		\[\dim(G_{\lambda_i}) = m_i \implies \begin{cases}
+			\dim(G_{-1}) &= 5\\
+			\dim(G_{2})	&= 4\\
+			\dim(G_{3})	&= 3\\	
+			\dim(G_{7})	&= 1
+		\end{cases}\]
+	\end{enumerate}
+\end{remark}
+
+\begin{example}
+	\[A = \begin{bmatrix}
+		-2&-1&0\\0&-2&0\\0&1&-2
+	\end{bmatrix}\]
+
+	Find the Jordan decomposition $A = PJP^{-1}$
+\end{example}
+\begin{sol}
+	\[P_A(\lambda) = \det(A - \lambda I) = \begin{vmatrix}
+		-2-\lambda&-1&0\\0&-2-\lambda&0\\0&1&-2-\lambda
+	\end{vmatrix} = - (\lambda+2)^3\]
+
+	Thus, $\lambda = -2$ is the only eigenvalue.
+
+	\bigskip
+
+	\textbf{Basis of $E_{-2}$}
+
+	\[(A + 2 I)x = \begin{bmatrix}
+		0&-1&0\\0&0&0\\0&1&0
+	\end{bmatrix} x = 0 \implies E_{-2} = \spn\left\{\begin{bmatrix}
+		1\\0\\0
+	\end{bmatrix}, \begin{bmatrix}
+		0\\0\\1
+	\end{bmatrix}\right\}\]
+
+	\bigskip
+
+	\textbf{Basis for $G_{-2}$}
+
+	We know that $\dim(G_{-2}) = 3$ given its multiplicity, and that $E_{-2} \subset G_{-2}$.\footnote{Note that the generalized eigenspace is going to contain the eigenvectors. Thus, in this case, there are two eigenvectors for the basis of the generalized eigenspace.}
+
+	Now we try to find the third vector $w$ that satisfies $(A + 2I) w = v$ where $v \in E_{-2}$
+
+	Usually, we can try setting $v$ to each of the bases of the eigenspace. In this case, however
+
+	\[\begin{bmatrix}
+		0&-1&0\\0&0&0\\0&1&0
+	\end{bmatrix} w = (-1) \begin{bmatrix}
+		1\\0\\0
+	\end{bmatrix} + (1) \begin{bmatrix}
+		0\\0\\1
+	\end{bmatrix}, w = \begin{bmatrix}
+		0\\1\\0
+	\end{bmatrix}\]
+
+	where $w$ is a generalized eigenvector.
+
+	More formally:
+
+	\[\left[\begin{array}{ccc|c}
+		0&-1&0&\alpha\\
+		0&0&0&0\\
+		0&1&0&\beta
+	\end{array}\right]\]
+
+	\[\begin{bmatrix}
+		0&-1&0&\\
+		0&0&0\\
+		0&1&0\\
+	\end{bmatrix}\begin{bmatrix}
+		0\\1\\0
+	\end{bmatrix} = \begin{bmatrix}
+		-1\\0\\1
+	\end{bmatrix}\]
+
+	Thus, we have:
+
+	\[\mathcal{C} = \left\{
+	\begin{bmatrix}
+		1\\0\\0
+	\end{bmatrix}, \begin{bmatrix}
+		-1\\0\\1
+	\end{bmatrix}, \begin{bmatrix}
+		0\\1\\0
+	\end{bmatrix}
+	\right\}\]
+
+	Respectively, we have $v_1, v_3, w$ where $v_3$ is chosen because it is a pair\footnote{need clarification} with $w$.
+	
+	Now we create the $PJP^{-1}$ decomposition.
+
+	\begin{align*}
+		P &= P_{\mathcal{B_{\mathrm{canonical}} \leftarrow \mathcal{C}}} = \begin{bmatrix}
+			[v_1]_\mathcal{B} \vert [v_3]_\mathcal{B} \vert [w]_\mathcal{B}
+		\end{bmatrix} = \begin{bmatrix}
+			1&-1&0\\0&0&1\\0&1&0
+		\end{bmatrix}\\
+		J &= \left[\begin{array}{c|cc}
+			-2&0&0\\\hline 0&-2&1\\0&0&-2
+		\end{array}\right] = [T_A]_\mathcal{C}
+	\end{align*}
+\end{sol}
+
+\begin{example}
+	\[\begin{bmatrix}
+		1&-1&0\\0&0&1&\\0&1&0
+	\end{bmatrix} \begin{bmatrix}
+		-2&&\\&-2&1\\&&-2
+	\end{bmatrix} \begin{bmatrix}
+		1&0&1\\0&0&1\\0&1&0
+	\end{bmatrix}\]
+
+	We notice that
+
+	\[J = D + N = \begin{bmatrix}
+		-2&&\\&-2&\\&&-2
+	\end{bmatrix} + \begin{bmatrix}
+		0&0&0\\0&0&1\\0&0&0
+	\end{bmatrix}\]
+
+	where $N$ is a nilpotent matrix. A special property we have is $DN = ND$ -- they are commutative.
+\end{example}
+
+\subsection{Applications}
+
+\textbf{Power of a Matrix}
+
+$A^n = PJ^nP^{-1}$
+
+What we are concerned with here is $J^n$
+
+\begin{align*}
+	J^n &= (D+N)^n\footnotemark\\
+	&= \sum_{k=0}^{n} \begin{pmatrix}
+		n\\k
+	\end{pmatrix} D^{n-k} N^{k}\\
+	&= \begin{pmatrix}
+		n\\0
+	\end{pmatrix} D^n N^0 + \begin{pmatrix}
+		n\\1
+	\end{pmatrix} D^{n-1} N + \begin{pmatrix}
+		n\\2
+	\end{pmatrix} D^{n-2} N^2 + \cdots\\
+	&= (1)D^n I + n D^{n-1} N + 0 + \cdots\\
+	&= D^n + n D^{n-1} N
+\end{align*}
+
+Because of the nilpotent matrix, in this case, all powers above 1 are 0, thus we get the result.
+
+\footnotetext{We can do this here because these two matrices are commutable}
+
+\textbf{Exponential $e^A$ of a Matrix $A$}
+
+We know that
+
+\[e^A = P e^{J} P^{-1}\]
+
+where
+
+\[e^J = e^{D + N} = e^D \cdot e^N\]
+
+we know that
+
+\[e^D = \begin{bmatrix}
+	e^{-2}&&\\&e^{-2}&\\&&e^{-2}
+\end{bmatrix}\]
+
+so we are done with that.\footnote{Check previous section}
+
+Now,
+
+\begin{align*}
+	e^N &= \sum_{k=0}^{+\infty} \frac{1}{k!} N^k\\
+	&= \frac{1}{0!} N^0 + N + \frac{1}{2!} N^2 + \cdots\\
+\end{align*}
+
+i.e. $e^N = I + N$
+
+\begin{tcolorbox}
+	\textbf{A Few Questions}
+
+	\begin{enumerate}
+		\item How come that, through the process that we went through of solving $(A - \lambda I)w = x$ where $x \in \null(A - \lambda I_n)$ (i.e. eigenvector), we are creating new linearly independent vectors that what we had before?
+		\item How exactly does the general eigenvector calculation on wikipedia relate to the way we are calculating it? (i.e. $(A - \lambda I_n)^k w_k = 0$ where $w_k$ is called the ``generalized eigenvector of rank $k$'')
+		\item When I tried to continue the generalized eigenvector computation, I reached a degenerate matrix. Is this always the case? How does this work?
+		\item What exactly is a Jordan Chain? How do the 1s in the superdiagonal of a Jordan block act as a ``chaining mechanism''?
+		\item Are we replacing the second eigenvector with the one that is linked because that is a part of the \textit{Jordan Chain}?
+		\item If we see the $S$ in $SJS^{-1}$ as a change-of-basis matrix, how do we have multiple $S$ that works with the same $J$? If we are changing from different bases, doesn't that mean that $J$ is the same linear transformation in different bases that eventually end up being the same matrix that we are trying to decompose?
+		\item Given a $4 \cross 4$ matrix of geometric multiplicity 2, how do we decided if we want a $1\cross 1$ and $3 \cross 3$ Jordan block or two $2 \cross 2$ Jordan blocks?
+	\end{enumerate}
+\end{tcolorbox}
+
+\section{Generalized Eigenvectors}
+
+\begin{definition}
+	Let $A \in M_n(\mathbb{C})$; let $\lambda_1, \lambda_2, \ldots, \lambda_p$ be its distinct eigenvalues.
+
+	\begin{enumerate}[1)]
+		\item The generalized eigenspace associated with $\lambda_i$ is
+		
+		\[G_{\lambda_i} = \null(A - \lambda_i I_n)^{m_i}\]
+
+		where $m_i$ is the multiplicity of $\lambda_i$ in $P_A(\lambda)$
+
+		\item A generalized eigenvector associated with $\lambda_i$ is any non-zero vector $w \in G_{\lambda_i}$
+	\end{enumerate}
+\end{definition}
+
+\begin{remark}
+	Note that $E_{\lambda_i} \subseteq G_{\lambda_i}$
+\end{remark}
+
+\begin{theorem}[Cayley-Hamilton]
+	Let $A \in M_n(\mathbb{C})$, and let $P_A(\lambda)$ be its characteristic polynomial.
+
+	\[P_A(A) = 0\]
+\end{theorem}
+
+\begin{theorem}
+	\begin{equation} \label{eq:g-eigenspace}
+		\mathbb{R}^n, \mathbb{C}^n = G_{\lambda_1} \oplus \cdots \oplus G_{\lambda_p}
+	\end{equation}
+\end{theorem}
+
+\begin{theorem}
+	$\forall i = 1, \ldots, p$, there exists a basis $\mathcal{C}_i$ of $G_{\lambda_i}$ such that
+
+
+	next
+
+	\[J = [T_A]_\mathcal{C} = \left[\begin{array}{c|c|c|c}
+		[T_A]_{C_1}&&&\\\hline
+		&[T_A]_{C_2}&&\\\hline
+		&&\ddots&\\\hline
+		&&&[T_A]_{C_p}
+	\end{array}\right]\]
+\end{theorem}
