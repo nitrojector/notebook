@@ -119,3 +119,208 @@ and
 \begin{align}
 	\vec r(t) &= \vec r_i + \vec v_i (t - t_i)
 \end{align}
+
+\section{Acceleration}
+
+\begin{definition}
+	\begin{equation}
+		\vec a(t) = \frac{\D \vec v}{\D t} = \frac{\D^2 \vec r}{\D^2 t}
+	\end{equation}
+\end{definition}
+
+Similar to what is mentioned in \cref*{sect:calc-with-vec}, $\vec a_\parallel$ is change in speed, $\vec a_\perp$ is change in direction of motion.
+
+\begin{remark}
+	We do have the \textit{jerk}, but it just seems that it never really matters, and acceleration is fully sufficient.
+\end{remark}
+
+\subsection{Cartesian Coordinates}
+
+\begin{equation}
+	\begin{cases}
+		\vec r(t) &= x(t)\hat x + y(t)\hat y + z(t)\hat z\\
+		\vec v(t) &= \dot x(t)\hat x + \dot y(t)\hat y + \dot z(t)\hat z\\
+		\vec a(t) &= \ddot x(t)\hat x + \ddot y(t)\hat y + \ddot z(t)\hat z
+	\end{cases}
+\end{equation}
+
+\begin{example}
+	Suppose particle's position is $\vec r(t) = A(e^{\alpha t} \hat x + e^{-\alpha t} \hat y)$ with $A$ and $\alpha$ constants. ($[A] = \mathrm{m}, [\alpha] = \mathrm{m}^{-1}$) Find $\vec v(t)$ and $\vec a(t)$ and sketch trajectory.
+\end{example}
+
+\begin{sol}
+	\textbf{Velocity}
+
+	\begin{align}
+		\vec v(t) &= \frac{\D \vec r}{\D t}\\
+		&= A(\alpha e^{\alpha t} \hat x - \alpha e^{-\alpha t} \hat y)\\
+		&= \alpha A(e^{\alpha t} \hat x - e^{-\alpha t} \hat y)
+	\end{align}
+
+	\textbf{Acceleration}
+
+	\begin{align}
+		\vec a(t) &= \frac{\D \vec v}{\D t}\\
+		&= \alpha^2 A(e^{\alpha t} \hat x + e^{-\alpha t} \hat y)\\
+		&= \alpha^2 \vec r(t)
+	\end{align}
+
+	\textbf{Speed}
+
+	\begin{align}
+		\abs{\vec v} &= \sqrt{\vec v \cdot \vec v}\\
+		&= \sqrt{(\alpha A)^2 \left[e^{2\alpha t} + e^{-2\alpha t}\right]}\\
+		&= \alpha A \sqrt{2\cosh(2\alpha t)}
+	\end{align}
+
+	Note that (by definition)
+
+	\begin{equation}
+		\begin{cases}
+			x(t) &= Ae^{\alpha t}\\
+			y(t) &= Ae^{-\alpha t}
+		\end{cases}
+	\end{equation}
+
+	We can try to find $y(x)$ by eliminating $t$, which is the equation for the trajectory, we obtain:
+
+	\begin{equation}
+		y(x) = \frac{A^2}{x} \qquad y \propto \frac{1}{x}
+	\end{equation}
+
+	So although the velocity and acceleration changes at a exponential rate, the trajectory that it produces exhibits the inverse curve.
+\end{sol}
+
+\begin{example}
+	A particle moves in the plane with trajectory of a circle of radius $R$. The particle sweeps out the circle at a uniform and constant rate. That is, it undergoes uniform circular motion. Find $\vec r(t), \vec v(t),$ and $\vec a(t)$.
+\end{example}
+
+\begin{sol}
+	% diagram
+
+	We know that the magnitude of the position vector $\abs{\vec r} = R$ and that
+
+	\begin{equation}
+		\vec r = R\cos\theta(t) \hat x + R\sin\theta(t) \hat y
+	\end{equation}
+
+	\begin{remark}
+		$\vec v$ changes direction, but with uniform rate $\abs{\vec v} = c$.
+	\end{remark}
+
+	From our $\vec r(t)$ we have that
+
+	\begin{align}
+		\vec v(t) &= -R\sin\theta(t) \left(\frac{\D \theta}{\D t}\right) \hat x + R\cos\theta(t) \left(\frac{\D \theta}{\D t}\right) \hat y\\
+		&= R\dot\theta \left[-\sin\theta \hat x + \cos\theta \hat y\right]
+	\end{align}
+
+	We know that $v$ is constant and that $v = R\dot\theta$, so $R\dot\theta$ must also be constant. Since $R$ is constant, $\dot\theta$ is constant.
+
+	\begin{equation}
+		\dot\theta \equiv \omega \implies \theta(t) = \omega t
+	\end{equation}
+
+	This is assuming $\theta(0) = 0$.
+
+	As a result of our derivation, we find
+
+	\begin{equation}
+		\begin{cases}
+			\vec r(t) &= R\cos(\omega t)\hat x + R\sin(\omega t) \hat y\\
+			\vec v(t) &= -\omega R\sin(\omega t) \hat x + \omega R\cos(\omega t) \hat y
+		\end{cases}
+	\end{equation}
+
+	Now, noting the magnitude:
+
+	\begin{equation}
+		\begin{cases}
+			r &= R\\
+			v &= \omega R\\
+			a &= \omega^2 R = \frac{v^2}{R}
+		\end{cases}
+	\end{equation}
+
+	\textbf{Acceleration}
+
+	\begin{align}
+		\vec a(t) &= -\omega^2 R \cos(\omega t) \hat x - \omega^2 R \sin(\omega t) \hat y\\
+		&= -\omega^2 \vec r(t)
+	\end{align}
+
+	\begin{remark}
+		Because $\hat a$ points towards the origin [$\hat a = - \hat r$], we call it ``centripetal'' ($\leftarrow$ central seeking).
+	\end{remark}
+\end{sol}
+
+\section{Formal Solution of Kinematic Equations}
+
+We want to obtain $\vec v(t)$ and $\vec r(t)$ given $\vec a(t)$.
+
+\subsection{$\vec v$ from $\vec a$}
+
+\begin{align}
+	\int_0^t \vec a(t) \D t' &= \int_{\vec v_0}^{\vec v} \frac{\D \vec v}{\D t'} \D t'\\
+	&= \vec v(t) - \vec v_0\\
+	\vec v(t) &= \boxed{\vec v_0 + \int_0^t \vec a(t') \D t'}
+\end{align}
+
+\subsection{$\vec r$ from $\vec v$ (from $\vec a$)}
+
+\begin{align}
+	\int_0^t \vec v(t') \D t' &= \int_{\vec r_0}^{\vec r} \frac{\D \vec r}{\D t} \D t\\
+	&= \vec r(t) - \vec r_0\\
+	\vec r(t) &= \boxed{\vec r_0 + \int_0^t \vec v(t') \D t'}\\
+	&= \vec r_0 + \int_0^t \left[\vec v_0 + \int_0^{t'} \vec a(t'') \D t''\right] \D t'\\
+	\vec r(t) &= \boxed{\vec r_0 + \vec v_0 t + \int_0^t \int_0^{t'} \vec a(t'') \D t'' \D t'}
+\end{align}
+
+\begin{remark}
+	We need to know $\vec r_0$.
+
+	To find $\vec r(t)$ given $\vec a(t)$ we need also to know the initial conditions, $\vec r_0$ and $\vec v_0$.
+\end{remark}
+
+\section{Constant Acceleration Motion}
+
+There are many cases of constant $\vec a$ motion. With our previous analysis, the cases of when $\vec a =$ const gives:
+
+\begin{equation}
+	\begin{cases}
+		\vec v(t) &= \vec v_0 + \int_0^t \vec a \D t' = \vec v_0 + \vec a t\\
+		\vec r(t) &= \vec r_0 + \vec v_0 t + \frac{1}{2} \vec a t^2\\
+		v^2 &= {v_0}^2 + 2 \vec a \cdot \Delta \vec r
+	\end{cases}
+\end{equation}
+
+\begin{remark}
+	if $t_0 \neq 0$, the $t \to \Delta t$ in formulas.
+\end{remark}
+
+Let's eliminate $t$ from these equations:
+
+From $\vec v = \vec v_0 + \vec a t$, compute $v^2 = \vec v \cdot \vec v$
+
+\begin{align}
+	v^2 &= {v_0}^2 + 2 \vec v_0 \cdot \vec a t + a^2t^2\\
+	\frac{1}{2} v^2 &= \frac{1}{2} {v_0}^2 + \vec v_0 \cdot \vec a t + \frac{1}{2}a^2t^2
+\end{align}
+
+Now, from $\vec r$ compute
+
+\begin{equation}
+	\vec a \cdot \vec r = \vec a \cdot \vec r_0 + \vec a \cdot \vec v_0 t + \frac{1}{2} a^2 t^2
+\end{equation}
+
+Then, we take the difference, we have
+
+\begin{align}
+	\frac{1}{2} v^2 - \vec a \cdot \vec r &= \frac{1}{2} {v_0}^2 - \vec a \cdot \vec r_0\\
+	\frac{1}{2} v^2 &= \frac{1}{2} {v_0}^2 + \vec a \cdot (\vec r - \vec r_0)\\
+	\Aboxed{v^2 &= {v_0}^2 + 2 \vec a \cdot \Delta \vec r}
+\end{align}
+
+\subsection{Components of the Equations}
+
+
