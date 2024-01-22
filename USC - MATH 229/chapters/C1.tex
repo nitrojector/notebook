@@ -298,7 +298,7 @@ Move an an object from $P$ to $Q$ with a force $\vec F$ forming an angle $\theta
 
 \section{Lines and Planes}
 
-\begin{definition}
+\begin{definition}[Line]
 	We define a line with a direction vector $\vec v = \langle a, b, c \rangle$
 
 	\begin{equation}
@@ -327,3 +327,104 @@ Move an an object from $P$ to $Q$ with a force $\vec F$ forming an angle $\theta
 \begin{example}
 	Intersection problem
 \end{example}
+
+\begin{definition}[Plane]
+	Given a point $P_0 \equiv \vec r_0$ and another point $P \equiv \vec r$ on the plane, along with the normal vector $\hat n = \langle a, b, c \rangle$.
+
+	Now, we see that $\vec r - \vec r_0$ is always on the plane, so that it follows that
+
+	\begin{align}
+		\hat n \cdot (\vec r - \vec r_0) &= 0\\
+		a(x - x_0) + b(y - y_0) + c(z - z_0) &= 0\\
+		ax + by + cx &= d
+	\end{align}
+
+	where $d = ax_0 + by_0 + cz_0$
+\end{definition}
+
+\begin{example}
+	Given $A(2, 0, 3), B(0, -4, 6), C(-3, 6, 0)$,  on a plane, find the equation of the plane.
+\end{example}
+
+\begin{sol}
+	We find that
+
+	\begin{equation}
+		\overrightarrow{AB} \cross \overrightarrow{AC} = -8 \langle 2, 3, 4 \rangle
+	\end{equation}
+
+	We take any point and compute $d$
+
+	\begin{equation}
+		d = 2\cdot 2 + 0 \cdot 3 + 3 \cdot 4 = 16
+	\end{equation}
+	
+	so the equation is
+
+	\begin{equation}
+		2x + 3y + 4z = 16
+	\end{equation}
+	
+	\textit{What if we want to sketch the plane?}
+
+	We simply find the $x,y,z$-intersection of the plane, label them on a skeleton, then connect they for a triangle.
+\end{sol}
+
+\begin{example}
+	Given two planes
+
+	\begin{equation}
+		\begin{cases}
+			x+y+z &= 1\\
+			x-2y+3z &= 1
+		\end{cases}
+	\end{equation}
+
+	\begin{enumerate}[a)]
+		\item Find the angle between the two planes
+		\item Find the equation of the intersecting line
+	\end{enumerate}
+\end{example}
+
+\begin{sol}
+	\begin{enumerate}[a)]
+		\item We have the normal vectors
+
+		\begin{equation}
+			\begin{cases}
+				\hat n_1 &= \langle 1, 1, 1 \rangle\\
+				\hat n_2 &= \langle 1, -2, 3 \rangle
+			\end{cases}
+		\end{equation}
+
+		We simply find the angle between them using the dot product.
+
+		\begin{equation}
+			\arccos\left(\frac{\vec a \cdot \vec b}{ab}\right) = \arccos\left(\frac{2}{\sqrt{42}}\right)
+		\end{equation}
+
+		\item We need the direction vector and a point on the line.
+		
+		We can find a point on the line by defining either $x, y,$ or $z$ for the two equations and solve for the other variables. (e.g. A point here on the line is $P(1,0,0)$)
+
+		For the direction vector, we can cross the normal vectors $\vec{n_1} \cross \vec{n_2}$ to find the vector.
+	\end{enumerate}
+\end{sol}
+
+\begin{definition}[Distance Between a Point and a Plane]
+	Given some point $P$ and a random point $A$ on the plane, we can have some vector $\overrightarrow{AP}$, which, if we project onto the normal vector $\hat n$ of the plane, will give us the component of the vector $\overrightarrow{AP}$ parallel to the normal vector.
+
+	\begin{equation}
+		d = \abs{\overrightarrow{AP}} \abs{\cos\theta} = \abs{\overrightarrow{AP} \cdot \hat n}
+	\end{equation}
+
+	where $\theta$ is the angle between the $\overrightarrow{AP}$ and $\hat n$
+\end{definition}
+
+\begin{example}
+	We want to find the distance between two paralle planes.
+\end{example}
+
+\begin{sol}
+	Simply find a vector that ``connects'' the two planes, let that vector be $\vec v$. Then, calculate $\abs{\vec v \cdot \hat n}$ where $\hat n$ is the normal vector of the plane.
+\end{sol}
