@@ -273,3 +273,57 @@ Move an an object from $P$ to $Q$ with a force $\vec F$ forming an angle $\theta
 		\item Find the area of $\triangle{PQR}$
 	\end{enumerate}
 \end{example}
+
+\begin{sol}
+	TBA
+\end{sol}
+
+\begin{definition}[Triple Products]
+	\begin{equation} \label{eq:scalar-triple}
+		\vec a \cdot (\vec b \cross \vec c) = \vec b \cdot (\vec c \cross \vec a) = \vec c \cdot (\vec a \cross \vec b)
+	\end{equation}
+
+	\cref*{eq:scalar-triple} shows the scalar triple product. This is also the volume of the parallelepiped.
+
+	\begin{equation} \label{eq:vector-triple}
+		\vec a \cross (\vec b \cross \vec c) = (\vec a \cdot \vec c) \vec b - (\vec a \cdot \vec b) \vec c
+	\end{equation}
+
+	\cref*{eq:vector-triple} shows the vector triple product.
+\end{definition}
+
+\begin{lemma}
+	If $\vec a, \vec b$, and $\vec c$ are on the same plane (\textit{coplanar}), then $\vec a \cdot (\vec b \cross \vec c) = 0$
+\end{lemma}
+
+\section{Lines and Planes}
+
+\begin{definition}
+	We define a line with a direction vector $\vec v = \langle a, b, c \rangle$
+
+	\begin{equation}
+		\vec r = \vec v_0 + t \vec v
+	\end{equation}
+
+	\textbf{Parametric Form}
+
+	\begin{equation}
+		\begin{cases}
+			x &= x_0 + at\\
+			y &= y_0 + bt\\
+			z &= z_0 + ct
+		\end{cases}
+	\end{equation}
+
+	\textbf{Symmetric Form}
+
+	\begin{equation}
+		t = \frac{x - x_0}{a} = \frac{y - y_0}{b} = \frac{z - z_0}{c}
+	\end{equation}
+
+	Notice how the symmetric form does not require parameters, it tells the relationship between the coordinates.
+\end{definition}
+
+\begin{example}
+	Intersection problem
+\end{example}
