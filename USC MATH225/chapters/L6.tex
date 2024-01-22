@@ -1,0 +1,167 @@
+\chapter{System of Coordinates}
+
+\section{Coordinate of a Vector Relative to a Basis}
+
+Let $B = \{v_1, v_2,\ldots,v_n\}$ be a basis of a vector space $V$.
+
+Then $\forall v \in V, v = x_1 v_1 + x_2 v_2 + \cdots x_n v_n, x_i \in \mathbb{R}$
+
+The set of scalars $x_1, x_2, \ldots, x_n$ are unique.
+
+\begin{definition}
+	$[v]_B = \begin{bmatrix}
+		x_1\\x_2\\\vdots\\x_n
+	\end{bmatrix}$ is the coordinate vector of $v$ relative to the basis $B$.
+\end{definition}
+
+\begin{example}
+	$V = \mathbb{R}^2, B' = \left\{
+		\begin{bmatrix}
+			1\\1\\0
+		\end{bmatrix}, \begin{bmatrix}
+			1\\-1\\0
+		\end{bmatrix}, \begin{bmatrix}
+			0\\2\\1
+		\end{bmatrix}
+	\right\}$
+
+	Let $v = \begin{bmatrix}
+		1\\2\\3
+	\end{bmatrix}$
+
+	One verifies that 
+
+	\[v = \left(-\frac{1}{4}\right)v_1 + \left(\frac{5}{4}\right)v_2 + \left(\frac{7}{4}\right)v_3\]
+
+	\[[v]_{B'} = \begin{bmatrix}
+		-\frac{1}{4}\\\frac{5}{4}\\\frac{7}{4}
+	\end{bmatrix}\]
+\end{example}
+
+\begin{example}
+	$V = P_2(\mathbb{R}), B' = \left\{1, x+1, (x+1)^2\right\}$
+
+	Let $p(x) = x^2 + 2x - 1$
+
+	Then, $[p(x)]_{B'} = \renewcommand{\arraystretch}{1.5}\begin{bmatrix}
+		-2\\0\\1
+	\end{bmatrix}$
+\end{example}
+
+\begin{example}
+	$V = P_n(\mathbb{R}), B = \left\{1,x,x^2,\ldots,x^n\right\}$
+
+	Let $p(x) = a_nx^n + a_{-1}x^{n-1}+\cdots + a_1 x + a_0$ be a vector in $P_n(\mathbb{R})$
+
+	Then, $[p(x)]_{B'} = \begin{bmatrix}
+		a_0\\a_1\\\vdots\\a_n
+	\end{bmatrix}$
+\end{example}
+
+\begin{example}
+	$V = \mathbb{R}^n, B = \{e_1, e_2, \ldots, e_n\}$ canonical basis of $\mathbb{R}^n$
+
+	Let $x = \begin{bmatrix}
+		x_1\\\vdots\\x_n
+	\end{bmatrix}$ be a vector in $\mathbb{R}^n$
+
+	Then $[x]_B = \begin{bmatrix}
+		x_1\\\vdots\\x_n
+	\end{bmatrix}$
+\end{example}
+
+\section{Change of Basis}
+
+Let $B = \{v_1, \ldots, v_n\}$ and $\mathcal{C} = \{w_1, \ldots, w_n\}$ be two bases of a vector space $V$.
+
+Then, $\forall v \in V$, $[v]_B$: coordinate vector of $V$ relative to $B$, $[v]_\mathcal{C}$: ~ $\mathcal{C}$
+
+We wish to relate the quantities $[v]_B$ and $[v]_\mathcal{C}$
+
+\begin{definition}
+	Let $P_{\mathcal{C} \leftarrow B}$ be the $n\cross n$ matrix defined by
+
+	\begin{equation} \label{eq:change-of-basis}
+		P_{\mathcal{C} \leftarrow B} = \begin{bmatrix}
+			\left[v_1\right]_{\mathcal{C}} \mid \left[v_2\right]_{\mathcal{C}} \mid \cdots\mid \left[v_n\right]_{\mathcal{C}}
+		\end{bmatrix}
+	\end{equation}
+
+	$P_{\mathcal{C} \leftarrow B}$ is the \textit{change of basis matrix} from $B$ to $\mathcal{C}$; change of coordinate.
+\end{definition}
+
+\begin{theorem}
+	\begin{equation} \label{eq:cob-theorem}
+		\forall v \in V, [v]_\mathcal{C} = P_{\mathcal{C} \leftarrow B} \cdot [v]_B
+	\end{equation}
+\end{theorem}
+
+\begin{example}
+	$V = \mathbb{R}^n, B = \left\{
+		\begin{bmatrix}
+			1\\0\\0
+		\end{bmatrix}, \begin{bmatrix}
+			0\\1\\0
+		\end{bmatrix}, \begin{bmatrix}
+			0\\0\\1
+		\end{bmatrix}\right\}, B' = \left\{
+			\begin{bmatrix}
+				1\\1\\0
+			\end{bmatrix}, \begin{bmatrix}
+				1\\-1\\1
+			\end{bmatrix}, \begin{bmatrix}
+				0\\2\\1
+			\end{bmatrix}
+		\right\}$
+
+	\begin{enumerate}[i)]
+		\item Find $P_{B' \leftarrow B}$
+		\item If $x = \begin{bmatrix}
+			1\\2\\3
+		\end{bmatrix}$, find $[x]_{B'}$
+	\end{enumerate}
+\end{example}
+
+\begin{sol}
+	\begin{enumerate}[i)]
+		\item $P_{B' \leftarrow B} = \begin{bmatrix}
+			3/4,1/4,-1/2\\1/4,-1/4,1/2\\-1/4,1/4,1/2
+		\end{bmatrix}$
+		
+		\item $[x]_{B' \leftarrow B} [x]_B = \begin{bmatrix}
+			-1/4\\5/4\\7/4
+		\end{bmatrix}$
+	\end{enumerate}
+\end{sol}
+
+\begin{theorem}
+	\begin{equation} \label{eq:cob-inv}
+		P_{B \leftarrow \mathcal{C}} = \left(P_{B \leftarrow \mathcal{C}}\right)^{-1}
+	\end{equation}
+\end{theorem}
+
+\begin{example}
+	$V = P_2(\mathbb{R}), B = \left\{1,x,x^2\right\}, \mathcal{C} = \left\{1, x+1, (x+1)^2\right\}$
+
+	Let $p(x) = ax^2 + bx + c$. Find $[p(x)]_\mathcal{C}$ Then write down $p(x)$ as a linear combination of the elements in $\mathcal{C}$
+\end{example}
+
+\begin{sol}
+	$[p(x)]_B = \begin{bmatrix}
+		c\\b\\a
+	\end{bmatrix}$
+
+	$P_{B \leftarrow \mathcal{C}} = \begin{bmatrix}
+		1 & 1 & 1\\
+		0 & 1 & 2\\
+		0 & 0 & 1
+	\end{bmatrix}$
+
+	$P_{B \leftarrow \mathcal{C}} = \left(P_{\mathcal{C} \leftarrow B}\right)^{-1}$
+
+	$p(x) = (c-b+a)(1) + (b-2a)(x+1) + a(x+1)^2$
+\end{sol}
+
+\begin{theorem}
+	$P_{\mathcal{D} \leftarrow B} = P_{\mathcal{D} \leftarrow \mathcal{C}} \cdot P_{\mathcal{C} \leftarrow B}$
+\end{theorem}

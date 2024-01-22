@@ -1,0 +1,669 @@
+\chapter{Linear Differential Equations}
+
+\section{Introduction}
+
+	\begin{example}
+		\[y' = y\]
+	\end{example}
+
+	we know that the solution to this differential equation is
+
+	\[y(t) = c_0 e^t, t \in \mathbb{R}\]
+
+	we can rewrite this as $y' - y = 0$ -- we observe here that we have a linear combination between $y$ and $y'$.
+
+	\begin{example}
+		\[y' = ay\]
+	\end{example}
+
+	we know that the solution to this DE is
+
+	\[y(t) = c_0 e^{at}, c_0, a \in \mathbb{R}\]
+
+	\begin{proof}
+		Let $y(t)$ s.t.
+
+		\begin{align*}
+			y' &= ay\\
+			\int \frac{y'}{y} \D t &= \int a \D t\\
+			\ln \abs{y(t)} &= at + c, c \in \mathbb{R}\\
+			\abs{y(t)} &= e^c e^{at}\\
+			&= c_1 e^{at}\\
+			y(t) &= \pm c_1 e^{at}
+		\end{align*}
+	\end{proof}
+
+	\begin{example}
+		\[\begin{cases}
+			y_1' &= 4y_1 - 9y_2\\
+			y_2' &= 4y_1 - 8y_2
+		\end{cases}\]
+	\end{example}
+
+	\begin{sol}
+		We can express this system as
+
+		\begin{align*}
+			\bv{y}' &= A \bm{y}\\
+			\begin{bmatrix}
+				y_1'\\y_2'
+			\end{bmatrix} &= \begin{bmatrix}
+				4&-9\\4&-8
+			\end{bmatrix} \begin{bmatrix}
+				y_1 \\ y_2
+			\end{bmatrix}
+		\end{align*}
+
+		We can see the general solution as (this is in fact true for ALL LDE)
+
+		\[\bv{y} = e^{tA} \cdot C, C \in \mathbb{R}^2\]
+
+		\textit{Note that:}
+		
+		Let
+
+		\[e^{At} = \begin{bmatrix}
+			\bv{y}_1(t) \vert \bv{y}_t(t)
+		\end{bmatrix}\]
+
+		then,
+
+		\[\begin{bmatrix}
+			\bv{y}_1(t) \vert \bv{y}_t(t)
+		\end{bmatrix} \begin{bmatrix}
+			c_1\\c_2
+		\end{bmatrix} = c_1 \bv{y}_1(t) +  c_2 \bv{y}_2(t)\]
+
+		\begin{proof}
+			By the theorem, we find
+
+			\[A = PJP^{-1}, A = \begin{bmatrix}
+				2&2\\2&1
+			\end{bmatrix} J = \begin{bmatrix}
+				-2&1\\0&-2
+			\end{bmatrix}\]
+
+
+			\[e^{tA} = e^{tPJP^{-1}} = P e^{tJ} P^{-1}\]
+
+
+			Now we apply this to the solution
+
+			\begin{align}
+				\bv{y}(t) &= e^{tA} c\\
+				&= P e^{tJ} P^{-1} c\\
+				&= (P e^{tJ}) c\\
+				&= c_1 y_1(t) + c_2 y_2(t)
+			\end{align}
+		\end{proof}
+	\end{sol}
+
+	\begin{definition}[1st Order ODE]
+		A \textit{1st order linear differential equation} is a differential equation of the form
+
+		\begin{equation} \label{eq:1ode}
+			\bv{y}' = A(t) \bv{y} + b(t), t \in I\footnotemark
+		\end{equation}
+		\footnotetext{This is the interval}
+
+		where $A(t)$ is a function valued in $M_n(\mathbb{R}) / M_n(\mathbb{C})$, and $b(t)$ is a function valued in $\mathbb{R}^n / \mathbb{C}^n$
+
+		\cref*{eq:1ode} is said to be homogeneous if $b(t) \equiv 0$ on $I$. Nonhomogeneous otherwise.
+	\end{definition}
+
+	\begin{definition}[Initial Value Problem]
+		constraint of a differential equation and an initial condition.
+
+		\begin{equation} \label{eq:ivp}
+			\begin{cases}
+				\bv{y}' &= A(t) \bv{y} + b(t), t \in I\\
+				\bv{y}(t_0) &= \bv{y}_0, \text{where } t_0 \in I, \bv{y}_0 \in \mathbb{R}^n / \mathbb{C}^n
+			\end{cases}
+		\end{equation}
+	\end{definition}
+
+	\begin{theorem}[Cuachy-Lipschitz]
+		\label{theo:cauchy-lip}
+		There exists a unique solution $\bv{y}(t)$ defined on the interval $I$ such that $\bv{y}(t_0) = \bv{y}_0$.
+	\end{theorem}
+
+	\begin{corollary}
+		The space of solutions $\mathcal{S}_H$, where $H$ is \cref*{eq:1ode}, of the homogenous equation 
+		
+		\[\bv{y}' = A(t) \bv{y}\]
+		
+		is a vector space of dimension $n$.
+	\end{corollary}
+
+	\begin{proof}
+		Note that $\mathcal{S}_H$ is a subset of the vector space $V = \{\text{all }\mathbb{R}^n / \mathbb{C}^n \text{-- valued functions defined on } I\}$
+
+		Let $y_1, y_2$ be in $\mathcal{S}_H$; let $\lambda \in \mathbb{R}$. The following is true.
+
+		\[y_1 + \lambda y_2 \in \mathcal{S}_H\]
+
+		\begin{align*}
+			(\bv{y}_1 + \lambda\bv{y}_2)' &= \bv{y}_1' + \lambda\bv{y}_2'\\
+			&= A(t) \bv{y}_1 + \lambda A(t) \bv{y}_2\\
+			&= A(t) (\bv{y}_1 + \lambda \bv{y}_2)
+		\end{align*}
+
+		Thus, $\bv{y}_1 + \lambda \bv{y}_2$ is in $\mathcal{S}_H$, and by the theorem, it is a vector space.
+		
+		Next, by \cref*{theo:cauchy-lip}, we have as many solutions in $\mathcal{S}_H$ as vector $\bv{y}_0$ in $\mathbb{R}^n / \mathbb{C}^n$. This implies $\dim(\mathcal{S}_H) = n$
+	\end{proof}
+
+	\begin{theorem}
+		\label{theo:homoform}
+		If $A(t) = A$, i.e. $A(t)$ is constant, then any solution of the homogeneous linear differential system
+
+		\[\bv{y}' = A\bv{y}\]
+
+		is of the form
+
+		\[\bv{y}(t) = e^{tA} \cdot C, C \in \mathbb{R}^n / \mathbb{C}^n\]
+	\end{theorem}
+
+	\begin{proof}
+		\[\{\bv{y}(t) = e^{tA} \cdot C, C\in \mathbb{R}^n / \mathbb{C}^n\} \subseteq \mathcal{S}_H\]
+
+		we see that both sets are $n$-dimensional. Thus, the two sets are equal.
+	\end{proof}
+
+	\begin{example}
+		Find a fundamental set of solutions of
+
+		\[\bv{y}' = \begin{bmatrix}
+			-1&0&1\\0&2&-6\\0&0&-1
+		\end{bmatrix}\bv{y}\]
+	\end{example}
+
+	\begin{sol}
+		By \cref*{theo:homoform}, since $A(t) = A$ is constant, any solution of the homogenous linear differential system is of the form
+
+		\[\bv{y}(t) = e^{tA}\cdot C, C \in \mathbb{R}^n / \mathbb{C}^n\]
+
+		We complete our jordan decomposition and obtain:
+
+		\begin{equation} \label{eq:ex1.4pjp}
+			P = P_{\mathcal{B} \leftarrow \mathcal{C}} = \begin{bmatrix}
+				0&1&0\\1&0&2\\0&0&1
+			\end{bmatrix}, J = \left[\begin{array}{c|cc}
+				2&&\\\hline
+				&-1&1\\
+				&&-1
+			\end{array}\right]
+		\end{equation}
+
+		Given the decomposition, the solution is
+
+		\begin{equation}
+			e^{tA} = \cdots = Pe^{tJ}P^{-1}
+		\end{equation}
+
+		\begin{equation} \label{eq:ex1.4etd}
+			e^{tD} = \begin{bmatrix}
+				e^{2t}&&\\&e^{-t}&\\&&e^{-t}
+			\end{bmatrix}, e^{tN} = I + (tN) + \frac{1}{2!} (tN)^2 + \frac{1}{3!}(tN)^3 = \left[\begin{array}{c|cc}
+				1&&\\\hline
+				&1&t\\
+				&&1
+			\end{array}\right]
+		\end{equation}
+
+		note that $N^k = 0, k \geq 2$
+
+		Thus, the solution is
+
+		\begin{align}
+			\bv{y}(t) &= e^{tA} \cdot C\\
+			&= Pe^{tD} e^{tN} P^{-1}C\\
+			&= \begin{bmatrix}
+				0&1&0\\1&0&2\\0&0&1
+			\end{bmatrix} \begin{bmatrix}
+				e^{2t}&&\\&e^{-t}&\\&&e^{-t}
+			\end{bmatrix} \left[\begin{array}{c|cc}
+				1&&\\\hline
+				&1&t\\
+				&&1
+			\end{array}\right] C'
+		\end{align}
+	\end{sol}
+
+	\section{Section 2?}
+
+	\section{Nonhomogeneous LDE/LDS}
+
+	\subsection{Undetermined Coefficients}
+
+	\begin{example}
+		\[y'' + 4y' + 4y = t^2 -t+3\]
+
+		Let's find a particular solution $y_p$
+
+		We can simply guess what the solution is -- it has to be a polynomial.
+	\end{example}
+
+	\begin{definition}
+		Consider the following
+
+		\begin{equation} \label{eq:nonhomoex}
+			y' = A(t) y + b(t)
+		\end{equation}
+
+		A \textbf{particular/specific} solution $y_p(t)$ of \cref*{eq:nonhomoex} is a solution of \cref*{eq:nonhomoex}.
+	\end{definition}
+
+	\begin{theorem}
+		The general solution $y(t)$ is of the form:
+
+		\begin{equation} \label{eq:general-sol-form}
+			\bv{y}(t) = \bv{y}_H(t) + \bv{y}_P(t)
+		\end{equation}
+
+		where $\bv{y}_H(t)$ is the general solution of $\bv{y}' = A(t) \bv{y}$\footnote{This is the associated homogenous case}, and $\bv{y}_P(t)$ is a particular solution of the DE.
+	\end{theorem}
+
+	\begin{example}
+		Find the general solution of
+
+		\[\bv{y}' = \begin{bmatrix}
+			4&-9\\4&-8
+		\end{bmatrix}\bv{y} + \begin{bmatrix}
+			e^{-t}\\0
+		\end{bmatrix}\]
+	\end{example}
+
+	\begin{sol}
+		First, we find the solution to the homogeneous case
+
+		\[\mathcal{S}_H = \spn\left\{
+			e^{-2t} \begin{bmatrix}
+				3\\2
+			\end{bmatrix}, e^{-2t} \begin{bmatrix}
+				3t+2\\2t+1
+			\end{bmatrix}
+		\right\}\]
+
+		Then (non-homogeneous case), we can guess using the method called \textbf{Undetermined Coefficients}
+
+		\begin{equation}
+			\begin{bmatrix}
+				-ae^{-t}\\-be^{-t}
+			\end{bmatrix} = \begin{bmatrix}
+				4&-9\\4&-8
+			\end{bmatrix} \begin{bmatrix}
+				ae^{-t}\\be^{-t}
+			\end{bmatrix} + \begin{bmatrix}
+				e^{-t}\\0
+			\end{bmatrix}
+		\end{equation}
+
+		\begin{equation}
+			\begin{cases}
+				e^{-t}(5a - 9b) &= e^{-t}\\
+				e^{-t}(4a - 7b) &= 0
+			\end{cases} \longrightarrow \begin{cases}
+				5a - 9b &= -1\\
+				4a - 7b &= 0
+			\end{cases} \longrightarrow \begin{cases}
+				a &= 7\\
+				b &= 4
+			\end{cases}
+		\end{equation}
+
+		\begin{equation}
+			\bv{y}(t) = \bv{y}_H(t) + \bv{y}_P(t) = \left(c_1 e^{-2t} \begin{bmatrix}
+				3\\2
+			\end{bmatrix} + c_2 e^{-2t} \begin{bmatrix}
+				3t+2\\2t+1
+			\end{bmatrix} \right) + \left(\begin{bmatrix}
+				7\\4
+			\end{bmatrix} e^{-t}\right)
+		\end{equation}
+	\end{sol}
+	
+	\begin{example}
+		\textit{A couple of examples}
+
+		Find the general solution of
+
+		\begin{align}
+			y'' + 4y' + 4y &= t^2 - t + 3\\
+			y'' + 4y' + 4y &= -52\sin(2t)\\
+			y'' + 4y' + 4y &= e^{-3t}\\
+			y'' + 4y' + 4y &= e^{-2t}\\
+			y'' + 4y' + 4y &= -52\sin(2t) + e^{-2t}\\
+			y'' + 4y' + 4y &= t^2 e^{-2t}
+		\end{align}
+	\end{example}
+
+	\begin{sol}
+		First, find the solution to the homogeneous case
+
+		\begin{equation}
+			\mathcal{S}_H = \spn\left\{e^{-2t}, te^{-2t}\right\}
+		\end{equation}
+
+		Note here that we think of it as: the right hand side is a linear combination of the things on the left hand side. So, how do we structure it so that there is a specific solution?
+
+		\begin{align}
+			\bv{y}_P(t) &= at^2 + bt + c, a,b,c \in \mathbb{R}\\
+			\bv{y}_P(t) &= a \cos(2t) + b \sin(2t), a,b\in\mathbb{R}\\
+			\bv{y}_P(t) &= a e^{-3t}, a \in \mathbb{R}\\
+			\bv{y}_P(t) &= a e^{-2t}, a \in \mathbb{R} \text{ \textbf{This is not going to work...}}
+		\end{align}
+
+		There is something tricky with the last case, since $e^{-2t} \in \mathcal{S}_H$.
+		
+		We would then try something as $\bv{y}_P(t) = at^2 e^{-2t}$ or $\bv{y}_P(t) = at^3 e^{-2t}$
+		
+		In this case, it should be $\bv{y}_P(t) = at^3 e^{-2t}$. 
+
+		\bigskip
+
+		Another tricky one is $b(t) = t^2 e^{-2t}$.\footnote{For the technique and what to choose, check page $524 \pm 10$ pages of the textbook.}
+
+		In this case we use $\bv{y}_P(t) = t^2 (at^2 + bt + c)e^{-2t}$
+	\end{sol}
+
+	\subsection{Variation of Constant Method}
+
+
+	\begin{remark}
+		\textbf{MISSING NOV 27 LECTURE NOTES}
+
+		\textbf{MISSING NOV 28 DISCUSSION PROBLEMS}
+	\end{remark}
+
+	\begin{example}
+		Consider $y''-2y'+5y=e^t\cos(2t)$.
+
+		Given that $\mathcal{S}_H = \spn\left\{e^2\cos(2t), e^t\sin(2t)\right\}$, find a specific solution $y_P$ of the DE.
+	\end{example}
+
+	\begin{sol}
+		Set $\bv{y} = \begin{bmatrix}
+			y\\y'
+		\end{bmatrix}$
+
+		Because we need a first order differential equation, we need to first ``reduce'' it.
+		\begin{align}
+			\bv{y}' &= A \bv{y} + b(t)\\
+			\begin{bmatrix}
+				y'\\y''
+			\end{bmatrix} &= \begin{bmatrix}
+				0&1\\-5&2
+			\end{bmatrix} \begin{bmatrix}
+				y\\y'
+			\end{bmatrix} + \begin{bmatrix}
+				0\\e^t\cos(2t)
+			\end{bmatrix}
+		\end{align}
+
+		Note that $\left\{\bv{y_1} = \begin{bmatrix}
+			y_1\\y_1'
+		\end{bmatrix}, \bv{y_2} = \begin{bmatrix}
+			y_2\\y_2'
+		\end{bmatrix}
+		\right\}$ is a fundamental set of solution of $\mathcal{S}_H$
+
+		which means
+
+		\begin{align}
+			X(t) &= \begin{bmatrix}
+				e^t\cos(2t) & e^t\sin(2t)\\
+				e^t\cos(2t) - 2e^t\sin(2t) & e^t\sin(2t) + 2e^t\cos(2t)
+			\end{bmatrix}\\
+			&= e^t \begin{bmatrix}
+				\cos(2t) & \sin(2t)\\
+				\cos(2t) - 2\sin(2t) & \sin(2t) + 2\cos(2t)
+			\end{bmatrix}
+		\end{align}
+
+		is a fundamental matrix for the DE.
+
+		Realize that
+
+		\[\det\left(\begin{bmatrix}
+				\cos(2t) & \sin(2t)\\
+				\cos(2t) - 2\sin(2t) & \sin(2t) + 2\cos(2t)
+			\end{bmatrix}\right) = 2\cos^2(2t) + 2\sin^2(2t) = 2\]
+		
+		Thus,
+
+		\[X^{-1}(t) = e^{-t} \frac{1}{2} \begin{bmatrix}
+			\sin(2t) + 2\cos(2t) & -\sin(2t)\\
+			2\sin(2t) - \cos(2t) & \cos(2t)
+		\end{bmatrix}\]
+
+		For what we have to integrate, we have
+
+		\begin{align}
+			X^{-1}(t)b(t) &= \begin{bmatrix}
+				\sin(2t) + 2\cos(2t) & -\sin(2t)\\
+				2\sin(2t) - \cos(2t) & \cos(2t)
+			\end{bmatrix} \begin{bmatrix}
+				0\\e^2\cos(2t)
+			\end{bmatrix}\\
+			&= \frac{e^{-t}}{2} \begin{bmatrix}
+				-e^t\cos(2t)\sin(2t)\\
+				e^t \cos^2(2t)
+			\end{bmatrix}\\
+			&= \frac{1}{2} \begin{bmatrix}
+				-\cos(2t)\sin(2t)\\
+				\cos^2(2t)
+			\end{bmatrix}\\
+			&= \frac{1}{2} \begin{bmatrix}
+				\nicefrac{1}{2}\sin(4t)\\
+				\nicefrac{1}{2} + \nicefrac{1}{2} \cos(4t)
+			\end{bmatrix}
+		\end{align}
+
+		And for our $C(t)$
+
+		\begin{align}
+			C(t) &= \int X^{-1}(t)b(t) \D t\\
+			&= \frac{1}{4} \int \begin{bmatrix}
+				-\sin(4t)\\
+				1 + \cos(4t)
+			\end{bmatrix} \D t\\
+			&= \frac{1}{4} \begin{bmatrix}
+				\nicefrac{1}{4} \cos(4t)\\t + \nicefrac{1}{4} \sin(4t)
+			\end{bmatrix}\\
+			&= \frac{1}{16} \begin{bmatrix}
+				\cos(4t)\\
+				4t + \sin(4t)
+			\end{bmatrix}
+		\end{align}
+
+		Now, by the variation of constant method:
+
+		\begin{align}
+			\begin{bmatrix}
+				y_P\\y_P'
+			\end{bmatrix} = \bv{y}_P &= X(t)C(t)\\
+			&= \left(e^t \begin{bmatrix}
+				\cos(2t) & \sin(2t)\\
+				\cos(2t) - 2\sin(2t) & \sin(2t) + 2\cos(2t)
+			\end{bmatrix}\right) \left(\frac{1}{16} \begin{bmatrix}
+				\cos(4t)\\
+				4t + \sin(4t)
+			\end{bmatrix}\right)\\
+			&= \frac{e^t}{16} \begin{bmatrix}
+				\cos(2t)\cos(4t) + 4t\sin(2t) + \sin(2t)\sin(4t)\\
+				*
+			\end{bmatrix}
+		\end{align}
+
+		The solution then is $y(t) = y_H(t) + y_P$.
+	\end{sol}
+
+	\begin{remark}
+		We need to be able to integrate most functions. e.g. $\int e^t\cos(2t) \D t$
+	\end{remark}
+
+	\begin{tcolorbox}
+		Regarding the final:
+
+		It will be like 30\% differential equations
+	\end{tcolorbox}
+
+	\section{Higher Order LDE}
+
+	\begin{example}
+		Find a fundamental set of solutions of the LDE of order 2
+
+		\[y'' + 4y' + 4y = 0\]
+	\end{example}
+	
+	\begin{sol}
+		Let $y$ be a solution of this LDE.\footnote{This is important! That is the reason we can construct the relation between $\bv{y}'$ and $\bv{y}$.}
+
+		\[\bv{y} = \begin{bmatrix}
+			y\\y'
+		\end{bmatrix} \implies \bv{y}' = \begin{bmatrix}
+			y'\\y''
+		\end{bmatrix}\]
+
+		we notice the relation
+
+		\[\begin{bmatrix}
+			y'\\y''
+		\end{bmatrix} = A \begin{bmatrix}
+			y\\y'
+		\end{bmatrix} = \begin{bmatrix}
+			0&1\\-4&-4
+		\end{bmatrix} \begin{bmatrix}
+			y\\y'
+		\end{bmatrix}\]
+
+		which is
+		
+		\[\bv{y}' = A \bv{y} \iff \begin{cases}
+			y' &= y'\\
+			y'' &= -4y - 4y'
+		\end{cases}\]
+		
+		Now to solve the equation, we decompose the matrix $A$
+
+		\begin{equation} \label{eq:hldepjp}
+			A = \begin{bmatrix}
+				0&1\\-4&-4
+			\end{bmatrix} = \begin{bmatrix}
+				2&1\\-4&0
+			\end{bmatrix} \begin{bmatrix}
+				-2&1\\0&-2
+			\end{bmatrix} P^{-1}
+		\end{equation}
+
+		\textit{Since $A(t) = A$ is constant}, any solution of the 1st order differential equation is of the form (according to \cref*{theo:homoform})
+
+		\begin{equation}
+			\bv{y}(t) = e^{tA} . C, C \in \mathbb{R}^2
+		\end{equation}
+
+		\begin{align}
+			\bv{y}(t) &= e^{tA} \cdot C\\
+			&= Pe^{tJ}P^{-1} &\text{since } A = PJP^{-1}\\
+			&= P e^{tD} e^{tN} P^{-1} &\text{since } J = D + N, DN = ND\\
+			&= \begin{bmatrix}
+				2&1\\-4&0
+			\end{bmatrix} e^{-2t} I_2 \begin{bmatrix}
+				1&t\\0&1
+			\end{bmatrix} P^{-1} C &\text{since } N^2 = 0\\
+			&= e^{-2t} \begin{bmatrix}
+				2 & 2t + 1\\-4 & -4t
+			\end{bmatrix} C' &\text{where } C' = \begin{bmatrix}
+				c'_1\\c'_2
+			\end{bmatrix}\\
+			&= c'_1 e^{-2t} \begin{bmatrix}
+				2\\-4
+			\end{bmatrix} + c'_2 e^{-2t} \begin{bmatrix}
+				2t + 1\\-4t
+			\end{bmatrix}
+		\end{align}
+
+		Thus, recall that we are trying to find $y$, not $\bv{y}$.
+
+		\begin{equation}
+			y \in \mathcal{S}_H \iff y(t) = 2 c'_1 e^{-2t} + c'_2 (2t + 1) e^{-2t}
+		\end{equation}
+
+		Basis of $\mathcal{S}_H$ is fundamental set of solutions.
+
+		\begin{align}
+			\mathcal{S}_H &= \spn\left\{2e^{-2t}, (2t + 1) e^{-2t}\right\}\\
+			&= \spn\left\{e^{-2t}, te^{-2t}\right\}
+		\end{align}
+
+		To prove that these two spans are indeed the same.
+
+		First we observer that the first span can be easily expressed as linear combination of elements in the second
+
+		\begin{equation} 
+			\spn\left\{2e^{-2t}, (2t + 1) e^{-2t}\right\} \subseteq \spn\left\{e^{-2t}, te^{-2t}\right\}		
+		\end{equation}
+
+		Since the dimension of the right-hand side span is at most 2, we just have to prove that the left-hand side span is 2 to show that they aveh the same dimensions and is thus the same.
+	\end{sol}
+
+	\section{Applications in Sequences}
+
+	\begin{example}
+		Let $\{y_n\}_{n \geq 0}$ be the sequence defined by
+
+		\[\begin{cases}
+			y_{n+2} &= 4u_{n+1} - 7 u_{n}\\
+			u_0 &= 0\\
+			u_1 &= 1
+		\end{cases}\]
+
+		\begin{enumerate}[1)]
+			\item Calculate $u_2, u_3, u_4, \ldots$
+			\item Find an equivalent expression for $u_n$.
+		\end{enumerate}
+	\end{example}
+
+	\begin{sol}
+		\begin{enumerate}[1)]
+			\item 4, 9, 8
+			\item Let us set $U_n = \begin{bmatrix}
+				u_{n+1}\\u_n
+			\end{bmatrix}$, where $u_n$ is the general term of the above sequence.
+
+			Observe that 
+
+			\[\begin{bmatrix}
+				u_{n+2}\\u_{n+1}
+			\end{bmatrix} = \begin{bmatrix}
+				4&-7\\1&0
+			\end{bmatrix} \begin{bmatrix}
+				u_{n+1}\\u_{n}
+			\end{bmatrix}\]
+
+			Let $U_0 = \begin{bmatrix}
+				1\\0
+			\end{bmatrix}$
+			
+			Let the matrix be $A$, then $U_n = A^n U_0$.\footnote{This can be proven with induction.}
+
+			We find the decomposition of matrix $A = PDP^{-1}$ 
+			
+			where $P = \begin{bmatrix} 
+				 2-i \sqrt{3} & 2+i \sqrt{3} \\
+				 1 & 1 \\
+			\end{bmatrix}, D = \begin{bmatrix}
+				2 - i\sqrt{3}&\\
+				&2 + i\sqrt{3}
+			\end{bmatrix}$
+
+			After further simplification we find that
+
+			\[\forall n \geq 0, u_n = \frac{-1}{2\sqrt{3}} \begin{bmatrix}
+				(2+i\sqrt{3})^n - (2-i\sqrt{3})^n
+			\end{bmatrix}\]
+
+			It looks complex, but if we prove that $u_n = \bar{u_n}$, then we show that it is real. \footnote{Worth noting is that the conjugate of the product is the product of the conjugate, etc. so it is very easy to do so.}
+		\end{enumerate}
+	\end{sol}

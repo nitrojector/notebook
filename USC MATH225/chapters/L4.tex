@@ -1,0 +1,192 @@
+\chapter{The Vector Space}
+
+\section{Definition and Equations}
+
+\begin{definition}
+	$\mathbb{R}^n$ denotes the set of $n\cross 1$ matrices with real coefficients.
+\end{definition}
+
+\begin{equation} \label{eq:rn}
+	\mathbb{R}^n = \left\{\begin{bmatrix}
+		x_1\\
+		x_2\\
+		\vdots\\
+		x_n
+	\end{bmatrix}:x_i \in \mathbb{R}\right\}
+\end{equation}
+
+\begin{example}
+	$u = \begin{bmatrix}
+		1\\
+		2
+	\end{bmatrix}, v = \begin{bmatrix}
+		-5\\
+		3
+	\end{bmatrix}, w = \begin{bmatrix}
+		\pi\\
+		\sqrt{2}
+	\end{bmatrix}$ are vectors in $\mathbb{R}^2$
+
+	We can express $\mathbb{R}^2$ on the plane and $\mathbb{R}^3$ in a 3D space.
+\end{example}
+
+\begin{remark}
+	An immediate, yet fundamental feature of the elements of $\mathbb{R}^n$ is that we can add them, multiply them by scalars, and still obtain a vector in $\mathbb{R}^n$.
+
+	In other words, $\mathbb{R}^n$ is closed \textbf{under linear combinations of vectors}
+
+	\begin{tcolorbox}
+		\textbf{i.e.}
+
+		if 
+		
+		\begin{equation} \label{eq:lc-e}
+			\begin{cases}
+				u_1, u_2,\ldots, u_p \in \mathbb{R}^n\\
+				\alpha_1, \alpha_2,\ldots, \alpha_p \in \mathbb{R}\\
+			\end{cases}
+		\end{equation}
+		
+		then $\alpha_1 u_1 + \alpha_2 u_2 + ... + \alpha_p u_p \in \mathbb{R}^n$
+
+		which can also be expressed also
+
+		\begin{equation} \label{eq:lc}
+			\sum_{i=0}^{p} \alpha_i u_i
+		\end{equation}
+
+		are linear combinations of $u_i$
+	\end{tcolorbox}
+
+	Note that $\mathbb{R}^n$ contains a \textbf{zero} element (zero vector), namely $\begin{bmatrix}
+		0\\
+		\vdots\\
+		0
+	\end{bmatrix}$
+
+	Multiplying the zero vector by any vector should be the zero vector.
+\end{remark}
+
+\section{Vector Equations in $\mathbb{R}^n$}
+
+\begin{definition}
+	Let $a_1, \ldots, a_p, b \in \mathbb{R}^n$
+
+	A \textbf{vector equation} in $\mathbb{R}^n$ is an equation of the form:
+
+	\begin{equation} \label{eq:vecEq}
+		x_1 a_1 + x_2a_2 + \cdots + x_p a_p = b, x_i \in \mathbb{R}
+	\end{equation}
+\end{definition}
+
+The scalars $x_i$ are the \textbf{unknowns}
+
+% \begin{tcolorbox}
+%     Can we obtain $b$ as a linear combination of the vectors $a_i$?
+% \end{tcolorbox}
+
+\begin{remark}
+	Solving the vector equation \cref*{eq:vecEq} is checking whether the vector $b$ can be obtained as a linear combination of the vectors $a_i$
+\end{remark}
+
+\begin{remark}
+	Solving \cref*{eq:vecEq} $\iff$ Solving the linear system $Ax=b$
+
+	where
+
+	\begin{equation} \label{eq:lc-equiv-sys}
+		A = \begin{bmatrix}
+			a_1 \mid a_2 \mid \cdots \mid a_p
+		\end{bmatrix}, x = \begin{bmatrix}
+			x_1\\
+			x_2\\
+			\vdots\\
+			x_p
+		\end{bmatrix} \in \mathbb{R}^n
+	\end{equation}
+
+	Conversely, the linear system $Ax = b$ has solutions if $b$ can be obtained as a linear combination of the columns.
+\end{remark}
+
+\begin{example}
+	Let
+
+	\begin{equation} \label{eq:ex-lc-sys}
+		a_i = \begin{bmatrix}
+			1\\0\\-4
+		\end{bmatrix}, a_2=\begin{bmatrix}
+			-2\\2\\5
+		\end{bmatrix}, a_3=\begin{bmatrix}
+			1\\-8\\-9
+		\end{bmatrix}, b=\begin{bmatrix}
+			0\\8\\9
+		\end{bmatrix}
+	\end{equation}
+
+	Solve the vector equation
+	
+	\begin{equation} \label{eq:ex-lc-sys-eq}
+		x_1 a_1 + x_2 a_2 + x_3 a_3 = b, x_i \in \mathbb{R}
+	\end{equation}
+\end{example}
+
+\begin{sol}
+	\cref*{eq:ex-lc-sys-eq} is equivalent to the linear system $Ax=b$ with
+
+	\[A = \begin{bmatrix}
+		1&-2&1\\0&2&-8\\-4&5&-9
+	\end{bmatrix}, b=\begin{bmatrix}
+		0\\8\\9
+	\end{bmatrix}\]
+
+	$\det(A) = -34$ which means that \cref*{eq:ex-lc-sys-eq} has a \textbf{unique} solution.
+
+	Let us find $x_1$ using Cramer's Rule.
+
+	\begin{equation} \label{eq:replace-matrix-det}
+		\det(A_1(b)) = \begin{vmatrix}
+			0&-2&1\\8&2&-8\\9&5&-9
+		\end{vmatrix} = 22
+	\end{equation}
+
+	Thus,
+
+	\begin{equation} \label{eq:x_1-sol}
+		x_1 = \frac{\det(A_1(b))}{\det(A)} = -\frac{11}{17}
+	\end{equation}
+\end{sol}
+
+\section{Span of a Family of Vectors}
+
+\begin{definition}
+	Let $v_1, \ldots, v_p$ be a family of vectors in $\mathbb{R}^n$.
+
+	The \textbf{span} of $v_1, \ldots, v_p$ is the set of all linear combinations of $v_1, \ldots, v_p$.
+
+	\begin{equation} \label{eq:span}
+		\mathrm{span}\{v_1, \ldots, v_p\} =
+		\begin{cases}
+			\alpha_1v_1 + \ldots + \alpha_pv_p\\
+			\alpha_i \in \mathbb{R}
+		\end{cases} = \left\{\sum_{i=1}^{p} \alpha_i v_i \mid \alpha_i \in 
+		\mathbb{R}\right\}
+	\end{equation}
+
+	Given a vector $v \in \mathbb{R}^n$ one may want to know, if $v$ lies in $\mathrm{span}\{\mu_1, \ldots, \mu_p\}$. This means solving the vector equation
+
+	\begin{equation} \label{eq:span-vec-eq}
+		v = \alpha_1\mu_1 + \ldots + \alpha_p\mu_p
+	\end{equation}
+
+	In particular $v \in \mathrm{span}\{\mu_1, \ldots, \mu_p\}$ if \cref*{eq:span-vec-eq} has a solution.
+\end{definition}
+
+\begin{example}
+	$\mu_1=\begin{bmatrix}
+		1\\2\\1
+	\end{bmatrix}, \mu_2=\begin{bmatrix}
+		3\\-1\\1
+	\end{bmatrix}$, does $v = \begin{bmatrix}
+		3\\1\\0
+	\end{bmatrix}$ lie in $\mathrm{span}\{\mu_1, \mu_2\}$? 
+\end{example}
