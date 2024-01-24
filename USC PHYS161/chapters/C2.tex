@@ -284,15 +284,17 @@ We want to obtain $\vec v(t)$ and $\vec r(t)$ given $\vec a(t)$.
 
 \section{Constant Acceleration Motion}
 
-There are many cases of constant $\vec a$ motion. With our previous analysis, the cases of when $\vec a =$ const gives:
+\begin{theorem}[Kinematic Equations with Constant $\vec a$]
+	There are many cases of constant $\vec a$ motion. With our previous analysis, the cases of when $\vec a =$ const gives:
 
-\begin{equation}
-	\begin{cases}
-		\vec v(t) &= \vec v_0 + \int_0^t \vec a \D t' = \vec v_0 + \vec a t\\
-		\vec r(t) &= \vec r_0 + \vec v_0 t + \frac{1}{2} \vec a t^2\\
-		v^2 &= {v_0}^2 + 2 \vec a \cdot \Delta \vec r
-	\end{cases}
-\end{equation}
+	\begin{equation}
+		\begin{cases}
+			\vec r(t) &= \vec r_0 + \vec v_0 t + \frac{1}{2} \vec a t^2\\
+			\vec v(t) &= \vec v_0 + \int_0^t \vec a \D t' = \vec v_0 + \vec a t\\
+			v^2 &= {v_0}^2 + 2 \vec a \cdot \Delta \vec r
+		\end{cases}
+	\end{equation}
+\end{theorem}
 
 \begin{remark}
 	if $t_0 \neq 0$, the $t \to \Delta t$ in formulas.
@@ -323,4 +325,196 @@ Then, we take the difference, we have
 
 \subsection{Components of the Equations}
 
+\begin{remark}
+	These laws are also applicable in components.
+\end{remark}
 
+% !TBA
+
+\section{Two-Dimensional Motion}
+
+\subsection{Free Fall}
+
+All objects regardless of mass, shape, composition, etc., fall downward towards earth with same motion -- \textit{free fall}.
+
+Free fall is vertical motion subject \textit{only} to earth's gravity, which is constant acceleration motion.
+
+The acceleration due to gravity, $g$, is 
+
+\begin{equation}
+	g = \SI{9.8}{\m\per\s^2} \qquad \vec a = -g \hat z\footnotemark
+\end{equation} \footnotetext{True near earth's surface}
+
+\subsection{Projectile Motion}
+
+\textit{Projectile motion} is motion subject only to gravity, that is, motion for which $\vec a = -g \hat z$.
+
+\begin{remark}
+	Projectile motion lies in the plane formed by $\vec v_0$ and $\vec a$. This implies 2D motion.
+\end{remark}
+
+Now, the equations:
+
+% \begin{align}
+% 	\vec r(t) &= \vec r_0 + \vec v_0 t - \frac{1}{2} (\g \hat z) t^2\footnotemark\\
+% 	\vec v(t) &= \vec v_0 - (g \hat z) t\\
+% 	v^2 &= {v_0}^2 + 2 \vec (g \hat z) \cdot \Delta \vec r
+% \end{align}
+% \footnotetext[2]{We substitute the acceleration of gravity}
+
+But a lot of times what we do is to consider the two components in Cartesian.
+
+\begin{align}
+	\text{$x$ component} &\implies x(t) = x_0 + v_{0x}t\\
+	\text{$y$ component} &\implies 0\\
+	\text{$z$ component} &\implies \begin{cases}
+		z(t) &= z_0 + v_{0z} t - \frac{1}{2}gt^2\\
+		v_z(t) &= v_{0z} - gt\\
+		{v_z}^2 &= {v_{0z}}^2 - 2g\Delta z
+	\end{cases}
+\end{align}
+
+\begin{example}
+	Consider a projectile launched with initial velocity $\vec v_0$ that makes angle $\theta$ with the horizontal. Choose coordinates s.t. $(x_0, y_0, z_0) = (0,0,h)$ with the plane of motion the $xz$-plane.
+
+	Find:
+	\begin{enumerate}[a)]
+		\item the trajectory of the projectile, $z = z(x)$
+		\item the maximum height and horizontal distance (i.e. range) of the projectile
+		\item the velocity of the projectile when it hits the ground
+		\item the launch angle, $\phi$, that maximizes the range. Here, let $h = 0$.
+	\end{enumerate}
+\end{example}
+
+\begin{sol}
+	\begin{enumerate}[a)]
+		\item Equations for the motion are:
+		
+		\begin{equation}
+			\begin{cases}
+				z(t) &= h + v_0 \sin\theta t + \frac{1}{2} g t^2\\
+				v_z(t) &= v_0 \sin\theta + gt\\
+				{v_z}^2 &= {v_0}^2 \sin^2\theta - 2g(z-h)\\
+				x(t) &= v_0 \cos\theta t
+			\end{cases}
+		\end{equation}
+
+		We simply have to find $z$ in terms of $x$, notice how $z(x) = z(t(x))$. We just need $t(x)$.
+
+		We find that 
+
+		\begin{align}
+			x &= v_0\cos\theta t\\
+			t &= \frac{x}{v_0\cos\theta}
+		\end{align}
+
+		Now we substitute
+
+		\begin{align}
+			z(t) &= h + v_0 \sin\theta t + \frac{1}{2} g t^2\\
+			z(t) &= h + v_0 \sin\theta \left(\frac{x}{v_0\cos\theta}\right) + \frac{1}{2} g \left(\frac{x}{v_0\cos\theta}\right)^2\\
+			&= \boxed{h + x\tan\theta + \frac{gx^2}{2{v_0}^2\cos^2\theta}}
+		\end{align}
+
+		\item \textbf{Maximum Heigh $z_{\mathrm{max}}$}
+		
+		Obtained when $v_z = 0$
+		
+		\begin{align}
+			\implies 0 &= v_0 \sin\theta - gt_{\mathrm{max}}\\
+			t_{\mathrm{max}} &= \frac{v_0 \sin\theta}{g}
+		\end{align}
+
+		Sub into $z$-equation
+
+		\begin{align}
+			z_{\mathrm{max}} &= h + v_0\sin\theta\left(\frac{v_0\sin\theta}{g}\right) - \frac{1}{2} g \left(\frac{v_0\sin\theta}{g}\right)^2\\
+			&= \boxed{h + \frac{{v_0}^2\sin^2\theta}{2g}}
+		\end{align}
+
+		Alternatively,
+
+		\begin{align}
+			0 &= {v_0}^2\sin^2\theta - 2g(z_{\mathrm{max}} - h)\\
+			z_{\mathrm{max}} &= \boxed{h + \frac{{v_0}^2\sin^2\theta}{2g}}
+		\end{align}
+
+		\textbf{Range $x_{\mathrm{max}}$}
+
+		Occurs when $z = 0$
+
+		\begin{align}
+			0 &= h + v_0\sin\theta t_f - \frac{1}{2}g{t_f}^2\\
+			t_f &= \frac{-v_0\sin\theta \pm \sqrt{{v_0}^2\sin^2\theta + 2gh}}{-g}\\
+			&= \frac{v_0\sin\theta}{g} \mp \sqrt{\left(\frac{v_0\sin\theta}{g}\right)^2 + \frac{2h}{g}}
+		\end{align}
+
+		\begin{remark}
+			We have to chose the positive of the $\mp$ because larger time.
+		\end{remark}
+
+		We notice that if $h = 0$ (more generally, $\Delta z = z_f - z_0 = 0$)
+
+		\begin{equation}
+			t_f = \frac{2v_0\sin\theta}{g} = 2t_\mathrm{max} \implies \text{symmetry of $z(t)$ parabola}
+		\end{equation}
+
+		From $x$-equation:
+
+		\begin{equation}
+			x_\mathrm{max} = \frac{{v_0}^2\sin\theta\cos\theta}{g} + v_0 \cos\theta \sqrt{\left(\frac{v_0\sin\theta}{g}\right)^2 + \frac{2h}{g}}
+		\end{equation}
+
+		Use the identity $2\sin\theta\cos\theta = \sin(2\theta)$
+
+		Which gives us
+
+		\begin{align}
+			x_\mathrm{max} &= \boxed{\frac{{v_0}^2\sin(2\theta)}{2g} + \sqrt{\left(\frac{{v_0}^2\sin(2\theta)}{2g}\right)^2 + \frac{2h{v_0}^2\cos^2\theta}{g}}}\\
+			&= \frac{{v_0}^2\sin(2\theta)}{2g} \left[1 + \sqrt{1 + \frac{2gh}{{v_0}^2\sin^2\theta}}\right]
+		\end{align}
+
+		Now, if we solve for the case wehre $h = 0$, we get
+
+		\begin{equation}
+			x_\mathrm{max} = \frac{{v_0}^2 \sin(2\theta)}{g}
+		\end{equation}
+
+		\item We want $\vec v_f$, which is $\vec v_f = \vec v_0 - gt_f \hat z$
+		
+		\begin{align}
+			\vec v_f &= v_0\cos\theta\hat x - \left(v_0\sin\theta \sqrt{1 + \frac{2gh}{{v_0}^2\sin^2\theta}}\right) \hat z
+		\end{align}
+
+		We can also write it in terms of magnitude and angle:
+
+		First to find the magnitude
+
+		\begin{align}
+			{v_f}^2 &= {v_0}^2\cos^2\theta + {v_0}^2\sin^2\theta \left(1 + \frac{2gh}{{v_0}^2\sin^2\theta}\right)\\
+			&= {v_0}^2 + 2gh\\
+			\implies v_f &= \sqrt{{v_0}^2 + 2gh}
+		\end{align}
+
+		Now, for the angle of the projectile when it hits the ground
+
+		\begin{align}
+			\tan\theta_f &= \abs{\frac{v_{fz}}{v_{fx}}} = \tan\theta\sqrt{1 + \frac{2gh}{{v_0}^2\sin^2\theta}}\\
+			\theta_f &= \arctan\left[\tan\theta \sqrt{1 + \frac{2gh}{{v_0}^2\sin^2\theta}}\right]
+		\end{align}
+
+		\begin{remark}
+			Notice now when $h = 0$, $\theta_f = \theta$.
+		\end{remark}
+
+		\item Since $h = 0$, the range is $x_\mathrm{max} = \frac{{v_0}^2\sin(2\theta)}{g}$
+		
+		We want to maximize, so we can think that $x_\mathrm{max} = x_\mathrm{max}(\theta)$ and find $\theta = \phi$ s.t. $\left.\frac{\D x_\mathrm{max}}{\D \theta} \right|_\phi = 0$
+
+		\begin{align}
+			\left.\frac{2{v_0}^2 \cos(2\theta)}{g}\right|_\phi = \frac{2{v_0}^2}{g}\cos(2\phi) &= 0\\
+			\implies \cos(2\phi) &= 0\\
+			\phi &= \frac{\pi}{4} = 45\deg
+		\end{align}
+	\end{enumerate}
+\end{sol}
