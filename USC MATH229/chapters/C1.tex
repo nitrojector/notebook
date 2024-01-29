@@ -428,3 +428,134 @@ Move an an object from $P$ to $Q$ with a force $\vec F$ forming an angle $\theta
 \begin{sol}
 	Simply find a vector that ``connects'' the two planes, let that vector be $\vec v$. Then, calculate $\abs{\vec v \cdot \hat n}$ where $\hat n$ is the normal vector of the plane.
 \end{sol}
+
+\section{Cylinders and Quadric Surfaces}
+
+\subsection{Cylinders}
+
+The perimeter of different cross sections of a cylinder are called \textbf{traces}, and the lines parallel to the cylindrical axis are called \textbf{???}.
+
+
+\begin{example}
+	\begin{equation}
+		x = z^2
+	\end{equation}
+
+	This is a parabolic cylinder; we see a parabolic curve on the $xz$-plane.
+\end{example}
+
+\begin{example}
+	\begin{equation}
+		\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1
+	\end{equation}
+	
+	This is a cylindrical surface with intersect $a$ and $b$ on $x$ and $y$ respectively.
+\end{example}
+
+\subsection{Quadric Surface}
+
+\begin{remark}
+	Spherical surfaces are a type of quadric surface.
+\end{remark}
+
+\begin{example}[Ellipsoid]
+	\begin{equation}
+		x^2 + \frac{y^2}{9} + \frac{z^2}{4} = 1
+	\end{equation}
+\end{example}
+
+\begin{sol}
+	Let $z = k$ some constant.
+
+	Then,
+
+	\begin{equation}
+		x^2 + \frac{y^2}{9} = 1 - \frac{k^2}{4}
+	\end{equation}
+
+	We observe that only $-2 \leq k \leq 2$ do we see a surface. So the $z$ intersects are $-2$ and $2$. Now we can solve for $x|_{y=0}$ and $y|_{x=0}$ and we find $\pm 1, \pm 3$
+
+	\textit{We can keep finding the range by turning the equation into the form $c_1{x_1}^2 + c_2{x_2}^2 = c_3$.}
+
+	When $x = k$ we get
+
+	\begin{equation}
+		\frac{y^2}{9} + \frac{z^2}{4} = 1 - k^2
+	\end{equation}
+
+	When $y = k$ we get
+
+	\begin{equation}
+		x^2 + \frac{z^2}{4} = 1 - \frac{y^2}{9}
+	\end{equation}
+
+	This is called an ellipsoid.
+\end{sol}
+
+\begin{example}[Elliptic Parabola]
+	\begin{equation}
+		z = 4x^2 + y^2
+	\end{equation}
+\end{example}
+
+\begin{sol}
+	We notice that this surface only exists when $z \geq 0$.
+
+	Then, we can just sketch traces and connect.
+
+	Let $z = k$
+
+	\begin{equation}
+		4x^2 + y^2 = k
+	\end{equation}
+
+	We see an ellipse cross section that grows as $k$ increases.
+
+	Let $x = 0$ or $y = 0$
+
+	We see a parabolic cross section.
+
+	This is an \textbf{elliptic parabola}.
+\end{sol}
+
+\begin{example}[Hyperbolic Parabola]
+	\begin{equation}
+		z = y^2 - x^2
+	\end{equation}
+\end{example}
+
+\begin{example}[Elliptic Cone]
+	\begin{equation}
+		\frac{z^2}{c^2} = \frac{x^2}{a^2} + \frac{y^2}{b^2}
+	\end{equation}
+\end{example}
+
+\section{Vector Functions}
+
+\begin{definition}[Vector Function]
+	\begin{equation}
+		\vec r(t) = \langle f(t), g(t), h(t) \rangle = f(t) \hat i + g(t) \hat j + h(t) \hat k
+	\end{equation}
+\end{definition}
+
+\begin{example}
+	The vector function of a line.
+	\begin{equation}
+		\vec r_0 + \vec v t = \langle x_0 + at, y_0 + bt, z_0 + ct \rangle
+	\end{equation}
+\end{example}
+
+\begin{definition}[Derivative of Vector Functions]
+	\begin{equation}
+		\frac{\D \vec r}{\D t} \equiv \vec r'(t) = \lim_{h \to 0} \frac{\vec r(t + h) \vec r(t)}{h} = \langle f'(t), g'(t), h'(t) \rangle
+	\end{equation}
+\end{definition}
+
+\begin{definition}[Rules of Differentiation]
+	\begin{align}
+		\frac{\D}{\D t} \left[a \vec u(t) + b \vec v(t)\right] &= a \vec u'(t) + b \vec v'(t)\\
+		\frac{\D}{\D t} \left[f(t) \vec u(t)\right] &= f'(t) \vec u(t) + f(t) \vec u'(t)\\
+		\frac{\D}{\D t} \left[\vec u(t) \cdot \vec v(t)\right] &= \vec u'(t) \cdot \vec v(t) + \vec u(t) \cdot \vec v'(t)\\
+		\frac{\D}{\D t} \left[\vec u(t) \cross \vec v (t)\right] &= \vec u'(t) \cross \vec v(t) + \vec u(t) \cross \vec v'(t)
+	\end{align}
+\end{definition}
