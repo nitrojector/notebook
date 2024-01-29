@@ -518,3 +518,85 @@ But a lot of times what we do is to consider the two components in Cartesian.
 		\end{align}
 	\end{enumerate}
 \end{sol}
+
+\begin{example}
+	A hunter is trying to hunt a bear on a tree with heigh $h$ distance $d$ away. The moment the hunter shoots, the bear is scared and drops from the tree. What angle relative to the bear should the hunter aim at to hit the bear?
+\end{example}
+
+\begin{sol}
+	We can consider the vertical component, which must match for the hunter's arrow to hit
+
+	\begin{align}
+		y+0 + v_{0_y} t - \frac{1}{2}gt^2&\\
+		v_0\sin\theta t - \frac{1}{2}gt^2 &= h - \frac{1}{2}gt^2\\
+		v_0\sin\theta t &= h\\
+		t &= \frac{h}{v_0\sin\theta}
+	\end{align}
+
+	then we plug the vertical to horizontal
+
+	\begin{align}
+		\frac{h}{v_0\sin\theta}\cos\theta &= d\\
+		d&= h\cot\theta\\
+		\theta &= \boxed{\arccotangent\left(\frac{d}{h}\right)}
+	\end{align}
+
+	We notice that $\theta$ then is essentially directly at the bear.
+
+	\begin{remark}
+		Another way of thinking about it, is if we consider $g = 0$, then consider the problem, we would come to the conclusion that we should aim at the bear too. Adding g to both bodies shouldn't change that fact.
+	\end{remark}
+
+	Since we also want the hunder to hit the bear before it hits the ground, we can find that
+
+	\begin{align}
+		h &= \frac{1}{2}gt^2\\
+		t &= \sqrt{\frac{2h}{g}}\\
+		t &< \sqrt{\frac{2h}{g}}
+	\end{align}
+
+	Consequently
+
+	\begin{align}
+		\sqrt{\frac{2h}{g}} v_0 \cos\theta &= \sqrt{\frac{2h}{g}} \frac{d}{d^2 + h^2} v_0\\
+		v_0 &> \boxed{\sqrt{\frac{g(d^2 + h^2)}{2d}}}
+	\end{align}
+\end{sol}
+
+\begin{remark}
+	The \textbf{Frenet-Serret Formulas} gives a way of finding motion only based on the particle's current motion relative to itself.
+\end{remark}
+
+\section{Kinematics in Plane Polar Coordinates}
+
+\begin{definition}
+	\begin{align}
+		\vec r(t) &= r \hat r = r(t) \hat r(t)\\
+		\dot{\vec r}(t) &= \dot r \hat r + r \dot{\hat r}\\
+		&= \dot r \hat r + r \dot \theta \hat \theta\\
+		&= \dot r \hat r + r \omega \hat \theta\\
+		\vec a &= \frac{\D \vec v}{\D t} = \ddot r \hat r + \dot r \dot{\hat r} + \dot r \dot \theta \hat \theta + r \ddot \theta \hat \theta + r \dot\theta \dot{\hat \theta}\\
+		&= (\ddot r - r \dot \theta^2) \hat r + (r \ddot \theta + 2 \dot r \dot \theta) \hat \theta
+	\end{align}
+	
+	\begin{remark}
+		If we have the trajectory being a circle, we have velocity $\vec v = r\omega\hat\theta$.
+	\end{remark}
+
+	$\ddot r$ is radial acceleration, and $-r\dot\theta^2 = -r\omega^2$ is the centripetal acceleration.
+
+	$r\ddot\theta$ is angular acceleration ($\alpha \equiv \ddot\theta, r\alpha$), and $2\dot r\dot\theta$ is the Coriolis Acceleration\footnote{This is related to the Coriolis Effect in non-inertial frames.}
+\end{definition}
+
+Once again, we can see for circular motion
+
+\begin{align}
+	\dot r &= \ddot r = 0\\
+	\implies \vec a &= (-r\dot\theta^2) \hat r + (r\ddot\theta)	\hat \theta = -r\omega^2\hat r + r\alpha\hat\theta
+\end{align}
+
+Note the above is from constant speed only
+
+\begin{remark}
+	Three examples from the notes are not included.
+\end{remark}
