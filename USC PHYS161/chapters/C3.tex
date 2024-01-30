@@ -1,0 +1,157 @@
+\chapter{Newton's Laws}
+
+\section{Dynamics}
+
+Newton's Laws provide the framework for the dynamics of classical particle motion.
+
+Question of Classical Mechanics:
+
+\begin{center}
+	\textit{Given $\vec r_0$ and $\vec v_0$ of the particle, with mass $m$, determine its subsequent motion, $\vec r(t)$, for all time $t$.}
+\end{center}
+
+\subsection{Within Context}
+
+Newton originally formulated the laws to solve the question of gravity -- along the way, he formulated concepts like forces and momentum.
+
+\section{Newton's Laws}
+
+\begin{definition}
+	The three laws of motion:
+
+	\begin{description}
+		\item[Law of Invertia] A particle remains at rest or moving with constant velocity unless influenced by a force.
+		\item[$\mathbf{F = m a}$] The change in a particle's motion (i.e. its acceleration) is proportional to the force impressed, as vectors. 
+		\item[Action / Reaction] Forces come in pairs: to every action by one particle on another, there is an equal and opposite force in return. 
+	\end{description}
+\end{definition}
+
+\subsection{First Law}
+
+There exist \textit{intertial frames of reference}, that is, a frame in which a \textit{free particle}\footnote{particle subject to absolutely no influences} has constant velocity.
+
+\begin{remark}
+	Essentially, a frame at rest and a frame with constant velocity are the same.
+\end{remark}
+
+Mathematically, this is expressed as
+
+\begin{equation}
+	\frac{\D^2 \vec r}{\D^2 t} = 0
+\end{equation}
+
+\subsection{Second Law}
+
+Denote the force by $\vec F$
+
+Two different particels subject to the same force (e.g. a spring). After the unfluence of the force (e.g. left spring), particle 1 has speed $v_1$ and particle 2 has speed $v_2$.
+
+Consider the ratio
+
+\begin{equation}
+	\frac{v_1}{v_2} \equiv \frac{m_2}{m_1}
+\end{equation}
+
+where $m_i$ is an intrinsic property of the $i$-th particle we call its mass [unit: kg].
+
+\textit{Assumption:} $m$ is independent of $\vec F$ and $\vec v$.
+
+So we can write a relation:
+
+\begin{equation}
+	m_1 v_1 = m_2 v_2
+\end{equation}
+
+Assume we start from rest and apply some force for some duration, then we have
+
+\begin{equation}
+	m_1 \Delta v_1 = m_2 \Delta v_2 = F \Delta t
+\end{equation}
+
+And thus we have
+
+\begin{equation} \label{eq:force-mv}
+	F \Delta t = m \Delta v \implies F = \frac{m \Delta v}{\Delta t} = \frac{\Delta (mv)}{\Delta t} 
+\end{equation}
+
+\begin{definition}
+	Define the (physical) \textbf{momentum} of a particle to be
+
+	\begin{equation}
+		\vec p = m \vec v
+	\end{equation}
+\end{definition}
+
+As so we have with \cref*{eq:force-mv} the following
+
+\begin{equation}
+	\vec F = \frac{\Delta \vec p}{\Delta t}
+\end{equation}
+
+\begin{enumerate}
+	\item As $\Delta t \to 0$, we have that
+	
+	\begin{equation}
+		\vec F = \frac{\D \vec p}{\D t}
+	\end{equation}
+
+	\item Forces (empirical) obey the \textit{principle of superposition}.
+
+	\begin{equation}
+		\vec F_\mathrm{net} = \sum_i \vec F_i
+	\end{equation}
+\end{enumerate}
+
+Altogether we have that
+
+\begin{equation}
+	\vec F_\mathrm{net} = \frac{\D \vec p}{\D t}
+\end{equation}
+
+If $m$ is constant, then we have
+
+\begin{equation}
+	\frac{\D \vec p}{\D t} = m \frac{\D \vec v}{\D t} = m \vec a \implies \boxed{\vec F_\mathrm{net} = m \vec a}
+\end{equation}
+
+mass is a measure of an object's inertia -- \textit{tendency to persist in its state of motion}.
+
+\subsection{Third Law}
+
+\begin{definition}
+	A force is a directed influence between pairs of particles.
+\end{definition}
+
+If force of 1 on 2 is $\vec F_{12}$,
+
+then force of 2 on 1 is $\vec F_{21} = - \vec F_{12}$.
+
+\textbf{IMPORTANT:} Forces always come in pairs! (e.g. When we are sitting on our seats, its us pushing on the seat, and the seat pushing on us. The force of us pushing on the seat comes from gravity.)
+
+\begin{example}
+	Given $\vec r_0$, $\vec v_0$, and $m$, fint $\vec r(t)$
+
+	Newton's laws:
+
+	\begin{enumerate}
+		\item go to an intertial frame: $\vec r(t)$
+		\item Identify forces acting on particle: $\vec F$
+		\item Then we just solve the differential equation.
+		
+		\begin{equation}
+			\vec F_\mathrm{net} = m\frac{\D^2 \vec r}{\D t^2}
+		\end{equation}
+
+		Our initial conditions are the two givens.
+	\end{enumerate}
+\end{example}
+
+\section{Scenarios of Newton's Laws}
+
+\subsection{Constant Forces}
+
+\subsection{Variable Forces with Time}
+
+\subsection{Variable Forces with Position}
+
+\subsection{Variable Forces with Velocity}

@@ -89,7 +89,7 @@
 \newtheorem{corollary}[theo]{Corollary}
 \newtheorem{lemma}[theo]{Lemma}
 \newtheorem{defi}{Definition}[section]
-\newtheorem*{remark}{Remark}
+\newtheorem*{rmrk}{Remark}
 \newtheorem{examp}{Example}[section]
 
 \newtcolorbox{theorembox}{
@@ -103,9 +103,13 @@
 	boxrule=0pt
 }
 
+\newenvironment{remark}
+	{\begin{rmrk}}
+	{\end{rmrk}\vspace{10pt}}
+
 \newenvironment{theorem}
-  {\begin{theorembox}\begin{theo}}
-  {\end{theo}\end{theorembox}}
+	{\begin{theorembox}\begin{theo}}
+	{\end{theo}\end{theorembox}}
 
 \newenvironment{definition}
 	{\begin{defbox}\begin{defi}}
@@ -121,6 +125,8 @@
 
 \newenvironment{sol}
 	{\bigskip\textbf{\textit{Solution:}}\begin{indt}}{\end{indt}}
+
+\numberwithin{equation}{section}
 
 
 \title{PHYS 161 Lecture Notes\\
@@ -140,6 +146,8 @@
 	\include{chapters/C1}
 
 	\include{chapters/C2}
+
+	\include{chapters/C3}
 
 	\appendix
 
