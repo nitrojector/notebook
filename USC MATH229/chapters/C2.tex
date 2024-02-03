@@ -1,0 +1,33 @@
+\chapter{Partial Derivatives}
+
+\section{Functions of Several Variables}
+
+\begin{definition}[Function of 2 Variables]
+	\begin{equation}
+		z = f(x, y)
+	\end{equation}
+
+	Where $z$ is the dependent variable and $x, y$ are independent variables.
+
+	Defines a point $(x, y, f(x, y))$ in $\mathbb{R}^3$
+
+	We have the domain of $f$ in $\mathbb{R}^2$ and its range in $\mathbb{R}$
+\end{definition}
+
+\section{Continuity}
+
+Skipped
+
+\section{Partial Derivatives}
+
+\begin{equation}
+	\frac{\D}{\D x} f(x, y) \implies \frac{\partial f}{\partial x} \equiv f_x(x, y)
+\end{equation}
+
+We simply hold all other variables as constant and derive with respect to $x$.
+
+\begin{definition}[Partial Derivative]
+	\begin{equation}
+		\frac{\partial f}{\partial x} \equiv f_x(x, y) = \lim_{h \to 0} \frac{f(x+h, y) - f(x, y)}{h}
+	\end{equation}
+\end{definition}

@@ -146,6 +146,85 @@ then force of 2 on 1 is $\vec F_{21} = - \vec F_{12}$.
 	\end{enumerate}
 \end{example}
 
+\section{Forces}
+
+There are two types of forces:
+
+\begin{enumerate}
+	\item Contact forces
+	\item Long range forces
+\end{enumerate}
+
+\subsection{Contact Forces}
+arises due to contact between bodies.
+
+Deconstruct the force into components parallel and perpendicular to the surface of contact.
+
+\begin{itemize}
+	\item The component $\perp$ is called the \textbf{normal force}, $\vec F_N$.
+	\item The component $\parallel$ is called the \textbf{frictional force}, $\vec F_f$.
+\end{itemize}
+
+\begin{remark}
+	Normal forces are constraint\footnote{They generally constraint the motion rather than ``generating'' the motion.} forces.
+\end{remark}
+
+\subsection{Tension Forces}
+
+arise due to internal elastic forces of a one-dimensional string (rope / chain / etc.)
+
+An ideal massless string has a uniform tension force throughout. (Otherwise parts of the string can have infinite acceleration.)
+
+\begin{remark}
+	If any body is considered to be massless, we assume automatically $F_\mathrm{NET} = 0$ for that body. 
+\end{remark}
+
+The direction of the force is:
+
+\begin{itemize}
+	\item Directed away from the string for the string
+	\item Directed away from the body if the string is attached to some
+\end{itemize}
+
+\subsection{Long-Range Forces}
+
+Forces exerted over a distance between bodies not in contact.
+
+e.g. gravity, electromagnetic, (strong nuclear, weak nuclear)
+
+\begin{itemize}
+	\item \textbf{Weight} $\vec F_g = -mg$ downward -- the downward force exerted by a body near earth's surface.
+
+	\begin{remark}
+		Why does the specific force $F_g$ involved $m$, when $m$ is part of the 2nd law and independent of forces?
+
+		Perhaps, $F_g = m_g g$, then free fall means $m_g g = m_I a = m_I g$ which means
+
+		\begin{equation}
+			m_g = m_I
+		\end{equation}
+
+		The above is called the \textbf{Principle of Equivalence}
+	\end{remark}
+\end{itemize}
+
+\subsection{Comments}
+
+These forces are \textit{phenomenological} in character.
+
+That is, models based on empirical observation disregarding their fundamental origin.
+
+However, so far as we know, there are only 4 fundamental forces in nature:
+
+\begin{itemize}
+	\item Gravity
+	\item Electromagnetic
+	\item Strong Nuclear
+	\item Weak Nuclear
+\end{itemize}
+
+All these 4 forces are long range and position dependent.
+
 \section{Scenarios of Newton's Laws}
 
 \subsection{Constant Forces}
@@ -155,3 +234,26 @@ then force of 2 on 1 is $\vec F_{21} = - \vec F_{12}$.
 \subsection{Variable Forces with Position}
 
 \subsection{Variable Forces with Velocity}
+
+\section{Examples}
+
+\subsection{Algorithm for Solving Constant-Force Newton's Laws Problems}
+
+\begin{enumerate}[1)]
+	\item Isolate relevant bodies for analysis
+	\item For each body in 1), draw a free body diagram (FBD) which includes
+	
+	\begin{enumerate}[(a)]
+		\item \textit{all} forces acting on body (may on occassion ignore some forces)
+		\item an inertial coordinate system for analysis
+	\end{enumerate}
+	\item Write down the equations of motion for each body in 1) using the FBD in 2); i.e. write Newton's 2nd Law in component form.
+	\item Impose any kinematic constraints on the bodies in your equations from 3), along with Newton's 3rd law relation.
+	\item Solve for desired unknowns. Treat the equations from 4) as a system of algebraic equations, regardless of the origin.
+\end{enumerate}
+
+\subsection{Problems}
+
+\begin{example}
+	Three masses are in contact on a horizontal frictionless surface.
+\end{example}
