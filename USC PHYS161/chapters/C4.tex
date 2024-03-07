@@ -1,0 +1,517 @@
+\chapter{Energy}
+
+\section{Derivation from Newton's Laws}
+
+FILL
+
+\begin{theorem}[Work-Energy Theorem]
+	In simple form:
+	\begin{equation}
+		W = \Delta K
+	\end{equation}
+
+	In general form:
+	\begin{equation}
+		\int_C \vec F \cdot \D \vec l = \frac{1}{2}mv^2 - \frac{1}{2}m{v_0}^2
+	\end{equation}
+\end{theorem}
+
+\section{Work \& Energy}
+
+We know $\vec F \propto \vec a \implies \vec F \parallel \D \vec r$ changes speed; $\vec F \perp \D \vec r$ changes direction.
+
+In our process of deriving $W = \Delta K$, we turned a vector equation into a scalar equation. Hence, here we are concerned only with $\vec F_\parallel$ (moreover, if I draw trajectory I know what $\vec F_\perp$ does but not $\vec F_\parallel$)
+
+Evidently, $\vec F_\parallel \implies \vec F \cdot \D \vec r \propto$ change in speed.
+
+\begin{equation}
+	\D \vec v \cdot \vec v \sim \frac{1}{2}\D(v^2)
+\end{equation}
+
+More precisely, the 2nd law of motion:
+
+\begin{equation}
+	\vec F \cdot \D \vec r = \frac{1}{2} m \D(v^2)
+\end{equation}
+
+Infinitesimally, this would be:
+
+\begin{equation}
+	\vec F(\vec r_j) \cdot \D \vec r_j = \frac{1}{2} m \left[{v_{j+1}}^2 - {v_j}^2\right]
+\end{equation}
+
+We can informally sum all these parts as
+
+\begin{equation}
+	\sum_{\vec r = \vec r_0}^{\vec r} \vec F(\vec r_j) \cdot \D \vec r_j = \frac{1}{2} m \left(v^2 - v_0^2\right) = \int_{\vec r_0}^{\vec r} \vec F(\vec r) \cdot \D \vec r
+\end{equation}
+
+\textbf{Conclusion}
+
+$W$ is adding up all the infinitesimal contributions of the force tangent to the trajectory (i.e. ones that change the speed) along the trajectory from start to finish.
+
+$K$ measures the change in speed due to $\vec F$ as required by Newton's 2nd law.
+
+$W$ is a sum of infinitesimal scalar quantities along a curve which is a line integral.
+
+In cartesian:
+
+\begin{equation}
+	\int \vec F(\vec r) \cdot \D \vec r = \int \vec F(x, y, z) \cdot \left[\D x \hat x + \D y \hat y + \D z \hat z\right]
+\end{equation}
+
+\subsection{Kinetic Energy}
+
+\begin{equation}
+	K \equiv \frac{1}{2}mv^2
+\end{equation}
+
+\begin{itemize}
+	\item Kinetic energy is, well, energy associated with motion.
+
+	\item $K$ is frame-dependent.
+	
+	\item And the units are Joules.
+\end{itemize}
+
+\subsection{Work}
+
+\begin{equation} \label{eq:work}
+	W = \int_C \vec F \cdot \D \vec l
+\end{equation}
+
+Since $W = \Delta K$ is the change in energy of our particle/system.
+
+\begin{itemize}
+	\item If $W > 0 \implies K > K_0 \implies$ gained energy/speed
+	\item If $W < 0 \implies K < K_0 \implies$ loses energy/speed
+	\item If $W = 0 \implies K = K_0 \implies$ no change in energy/speed
+\end{itemize}
+
+Work is the energy transferred into/out-of a system by mechanical means (i.e. application of a fore over a displacement)
+
+We say ``Work is done by force $\vec F$ along the path'' when writing \cref*{eq:work}.
+
+It is useful to measure rate at which work is done -- called the \textbf{power} [units: Watts 1 W = 1 J/s]
+
+\begin{align} 
+	\frac{\D W}{\D t} &= \frac{\D}{\D t}(W)\\
+	&= \frac{\D}{\D t} \left[\int_{\vec r_0}^{\vec r} \vec F(\vec r') \cdot \D \vec r'\right]\\
+	&= \frac{\D}{\D t} \left[\int_{t_0}^t \vec F(\vec v) \cdot \vec v(t') \D t'\right]
+\end{align}
+
+And so we have:
+
+\begin{equation} \label{eq:power}
+	\frac{\D W}{\D t} = \vec F \cdot \vec V
+\end{equation}
+
+in this case, $\D W$ refers to an infinitesimal amount of work instead of it's change. It is technically $\mathrm{d}\hspace*{-0.08em}\bar{}\hspace*{0.1em} W$ -- inexact differential.
+
+\begin{example}
+	Consider constant force $\vec F = F_0 \hat n$, $F_0 = \mathrm{const}$, $\hat n$ constant unit vector.
+
+	Compute work done over displacement $\Delta \vec r = \vec f - \vec f_0$
+\end{example}
+
+\begin{sol}
+	\begin{equation}
+		W = \vec F \cdot \Delta \vec r
+	\end{equation}
+\end{sol}
+
+\begin{example}
+	Consider a central force, $\vec F(\vec r) = f(r) \hat r$ work in 2-dim
+
+	\begin{enumerate}[(a)]
+		\item Show W is independent of path
+		\item Let $f(r) = - A/r^2$ for $A > 0$ a constant. Find $v(r)$ if $v(r = r_0) = 0$.
+	\end{enumerate}
+\end{example}
+
+\begin{sol}
+	\begin{enumerate}[(a)]
+		\item Work in polar coords
+		
+		$\D \vec l = \D r \hat r + r \D \theta \hat \theta$
+
+		Thus, 
+
+		\begin{align}
+			W &= \int_C \vec F cdot \D \vec l\\
+			&= \int_C f(r) \hat r \cdot (\D r \hat r + r \D \theta \hat \theta)\\
+			&= \int_{r_0}^r f(r) \D r
+		\end{align}
+
+		Since it only requires the endpoints, it does not require the path, it is independent.
+
+		\item $f(r) = -\frac{A}{r^2}$
+		
+		\begin{equation}
+			W = \int_{r_0}^r -\frac{A}{r^2} \D r = A(\frac{1}{r} - \frac{1}{r_0})
+		\end{equation}
+
+		We can apply $W = \Delta K$
+
+		\begin{align}
+			A\left(\frac{1}{r} - \frac{1}{r_0}\right) &= \frac{1}{2}mv^2(r)\\
+			\Aboxed{v(r) &= \pm \sqrt{\frac{2A}{m}\left(\frac{1}{r} - \frac{1}{r_0}\right)}}
+		\end{align}
+	\end{enumerate}
+\end{sol}
+
+\begin{example}
+
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}[scale=1,>=Stealth,
+			% Define style for the arrows along the path
+			arrow on path/.style={
+				postaction={
+					decorate,
+					decoration={
+						markings,
+						mark=at position #1 with {\arrow{>}}
+					}
+				}
+			}]
+		
+			% Set unit length
+			\def\d{1cm} % Change 1cm to your unit length if different
+		
+			% Draw axes
+			\draw[->] (-0.5,0) -- (5*\d,0) node[anchor=north] {$x$};
+			\draw[->] (0,-0.5) -- (0,5*\d) node[anchor=east] {$y$};
+		
+			% Define points
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (4*\d,4*\d);
+			\coordinate (C) at (4*\d,0);
+		
+			% Draw path segments
+			% Segment C_1
+			\draw[arrow on path=0.5,thick] (A) -- node[above left] {$C_1$} (B);
+		
+			% Segment C_2
+			\draw[arrow on path=0.5,thick] (B) -- (C);
+			\draw[arrow on path=0.5,thick] (C) -- node[below] {$C_2$} (A);
+		
+			% Label points
+			\foreach \point/\position in {A/below left, B/above, C/below right}
+				\draw (\point) node[\position] {$\point$};
+		\end{tikzpicture}
+	\end{figure}
+
+	A particle, mass $m$, is pulled across a horizontal force with coefficient of kinetic friction $\mu_k$. First it is posted along $C_1$, then pushed along $C_2$, bringing it back to where it started. Compute $W$ along total path by friction.
+
+	where $B = (4d, 4d)$.
+\end{example}
+
+\begin{sol}
+	Find $W_{C_1}$:
+
+	We know that
+
+	\begin{equation}
+		\vec F_{fk} = \mu_k mg \left[-\alpha (\hat x + \hat y)\right]
+	\end{equation}
+
+	then
+
+	\begin{equation}
+		\vec F_{fk} \cdot \D \vec l = \left[-\frac{\mu_k mg}{\sqrt{2}} (\hat x + \hat y)\right] \cdot \left[\frac{1}{\sqrt{2}} \D s \hat x + \frac{1}{\sqrt{2}} \D s \hat y\right] = -\mu_k mg \D s
+	\end{equation}
+
+	Then we calculate
+
+	\begin{align}
+		W_{C_1} &= \int_{C_1} \vec F_{fk} \cdot \D \vec l\\
+		&= -4\sqrt{2}\mu_k mgd
+	\end{align}
+
+	$W_{C_2}$ is trivial.
+
+	\begin{align}
+		W_{C_2} &= -8 \mu_k mgd
+	\end{align}
+
+	If we sum it up, we realize that it is not equal to 0.
+
+	\textbf{Conclusion:}
+
+	Friction is not a nonconservative force.
+\end{sol}
+
+\section{Conservative Force Fields}
+
+\begin{theorem}
+	The following statements are equivalent:
+	
+	\begin{enumerate}
+		\item The work done by $\vec F$ is path-independent
+		\item The work done by $\vec F$ along any closed path is 0.
+		\begin{equation}
+			\oint_C \vec F \cdot \differential \vec l = 0
+		\end{equation}
+
+		\item $\nabla \cross \vec F = 0$
+		\item There exists a scalar function $u(\vec r)$ s.t. $\vec F = -\nabla u$
+		
+		\begin{equation}
+			u(\vec r_a) - u(\vec r_b) = - \int_{\vec r_a}^{\vec r_b} \vec F \cdot \differential \vec l
+		\end{equation}
+	\end{enumerate}
+
+	We call $u(\vec r)$ the \textbf{potential energy} associated with force $\vec F$. Moreover:
+
+	\begin{equation}
+		W = - \Delta u
+	\end{equation}
+
+	If $u$ exist for $\vec F$ we say $\vec F$ is a \textbf{conservative force}.
+\end{theorem}
+
+Recall $\forall \vec F, W = \Delta K$
+
+If $\vec F$ is conservative, then $W = -\Delta u = \Delta K$
+
+Thus,
+
+\begin{equation}
+	\Delta K + \Delta u = 0
+\end{equation}
+
+Three examples of conservative forces are:
+
+\begin{enumerate}
+	\item Constant force
+	\item Spring force
+	\item Central force
+\end{enumerate}
+
+\section{Different Potential Energies}
+
+\subsection{Gravitational Potential Energy}
+
+\begin{definition}[Gravitational Potential Energy]
+	The gravitational potential energy is defined as
+
+	\begin{equation}
+		U_g(y) = mgy
+	\end{equation}
+\end{definition}
+
+obtained via
+
+\begin{align}
+	U_g(y) - U_g(y_0) &= - \int_{y_0}^y \vec F_g \cdot \left(\D y \hat y\right)\\
+	&= mg (y - y_0)\\
+	&= mgy - mgy_0
+\end{align}
+
+Note that
+
+\begin{itemize}
+	\item It is typical to take $U_g = 0$ at $y = 0$; i.e. reference point $y_0$ is $y_0 = 0$
+	\item Physically, only the difference in $u$ matters, so shifting $u$ by a consstant leaves physics unaltered.
+\end{itemize}
+
+\subsection{Spring/Elastic Potential Energy}
+
+\begin{definition}[Spring/Elastic Potential Energy]
+	The spring potential energy is defined as
+
+	\begin{equation}
+		U_s(x) = \frac{1}{2} k \Delta x^2
+	\end{equation}
+
+	but it is usually referred to as
+
+	\begin{equation}
+		U_s(x) = \frac{1}{2} k x^2
+	\end{equation}
+
+	where it is assumed $x_0 = l_0$ where $x = 0$ is rest length.
+\end{definition}
+
+We know that $\vec F_s = -k\Delta \vec r$, so we choose coordinates so that $\Delta \vec r = \Delta x \hat x = (x - l_0) \hat x$.
+
+\begin{align}
+	U_s(x) - U_s(x_0) &= - \int_{x_0}^x \vec F_s \cdot (\D x \hat x)\\
+	&= +k \int_{x_0}^x (x - l_0) \D x\\
+	&= \frac{1}{2} k (x - l_0)^2 - \frac{1}{2} k (x_0 - l_0)^2
+\end{align}
+
+\subsection{Central Force}
+
+\begin{definition}[Central Force Potential Energy]
+	The general form for potential energy related to central forces is
+
+	\begin{equation} U_c(r) - U_c(r_0) = -\frac{A}{r} + \frac{A}{r_0}
+	\end{equation}
+
+	which means
+
+	\begin{equation}
+		U_c(r) = - \frac{A}{r}
+	\end{equation}
+\end{definition}
+
+We have $\vec F = f(r) \hat r = - \nicefrac{A}{r^2} \hat r$
+
+\begin{align}
+	U_c(r) - U_c(r_0) &= - \int_{r_0}^r \vec F \cdot \left(\D r \hat r\right)\\
+	&= - \int_{r_0}^r f(r) \D r\\
+	&= A \int_{r_0}^r \frac{1}{r^2} \D r
+\end{align}
+
+Typically speaking, we take $r_0 = \infty$ s.t. $U_c(r_0 = \infty) = 0$.
+
+\begin{remark}
+	Both Newton's law of universal gravitation and Coulomb's law for electrostatics are of the form $\vec F \propto \frac{1}{r^2} \hat r \implies u \propto - \frac{1}{r}$.
+\end{remark}
+
+\section{Definition of Energy}
+
+\begin{definition}[Mechanical Energy]
+	We define
+
+	\begin{equation}
+		E = K + U \qquad \Delta E = 0
+	\end{equation}
+
+	Then, $\Delta E = 0$ a dynamical quantity that does not change in time is called ``conserved''.
+
+	If $\vec F$ is conservative, then, energy is conserved.
+\end{definition}
+
+Now, consider a system of particles interacting only via conservative forces.
+
+A \textbf{system} is an arbitrary division of a collection of particles declared to be either in the system or not and hence part of the environment.
+
+Supposed there are no external forces on the system, then:
+
+\begin{equation}
+	W_\mathrm{total} = \Delta K_\mathrm{total} = - \Delta U_\mathrm{total}
+\end{equation}
+
+where \textit{total} refers to sum over all particles \& interactions.
+
+This means, then, 
+
+\begin{equation}
+	\Delta K_\mathrm{total} + \Delta U_\mathrm{total} = 0
+\end{equation}
+
+Potential energy is energy \textit{stored in a system} due to \textit{conservative interactions} that is reversibly transmutable to other forms (i.e. kinetic energy).
+
+In other terms, potential energy exist with regards to fields (e.g. EM fields, gravitational fields).
+
+\begin{definition}[Law of Conservation of Mechanical Energy]
+	In a closed and isolated system, all of whose internal interactions are conservative, the total mechanical energy is constant in time, or conserved, along the motion.
+\end{definition}
+
+\begin{proof}
+	Consider a closed and isolated system with only a conservative force. Then, $E = K + U = \frac{1}{2}mv^2 + U(\vec r)$.
+
+	\begin{align}
+		\frac{\D E}{\D t} &= m\vec v \cdot \frac{\D \vec v}{\D t} + \nabla u \cdot \frac{\D \vec r}{\D t}\\
+		&= \vec v \cdot \left[m \frac{\D \vec v}{\D t} + \nabla u\right]\\
+		&= \vec v \cdot \left[\frac{\D \vec p}{\D t} - \vec F\right]
+	\end{align}
+
+	but Newton's 2nd law says $\frac{\D \vec p}{\D t} = \vec F$ i.e. $\frac{\D E}{\D t} = 0$.
+
+	Note if $U = U(\vec r, t)$, then $\frac{\D E}{\D t} = \frac{\partial U}{\partial t}$ and so not conserved.
+
+	Think of my dynamical law as 
+
+	\begin{equation}
+		\frac{\D \vec p}{\D t} = -\nabla U
+	\end{equation}
+
+	then if $U$ does not depend explicitly on time, $E$ is conserved. We say that law that time-translation symmetry.
+\end{proof}
+
+\begin{definition}[A Definition of Energy]
+	Energy is the quantity that is constant in time because the laws of physics has time-translation symmetry.
+
+	An extention from \href{https://en.wikipedia.org/wiki/Noether%27s_theorem}{\textbf{Noether's Theorem}}.
+\end{definition}
+
+A slight extension:
+
+\begin{itemize}
+	\item Symmetry in space/location -- conservation of momentum
+	\item Symmetry in angles/rotation -- conservation of angular momentum
+	\item Gauge symmetry -- electric charge
+\end{itemize}
+
+\section{Examples}
+
+\begin{example}
+	Segway to the average of a periodic function over time (i.e. $\sin(t), \cos(t)$) for integral number of periods.
+\end{example}
+
+\begin{sol}
+	\begin{align}
+		\overline{K} &= \frac{1}{nT} \int_0^{nT} K \D t\\
+		&= \frac{1}{nT} \cdot \frac{1}{2} m \int_0^{nT} \dot x^2 \D t\\
+		&= \frac{m\omega^2}{2nT}A^2 \int_0^{nT} \sin^2\left(\omega t + \phi\right)\D t\\
+		&= \frac{m\omega^2}{2nT}A^2 \int_0^{nT} \frac{1}{2} \left(1 - \cos\left[2(\omega t + \phi)\right]\right)\D t\\
+		&= \frac{m\omega^2}{2nT}A^2 \left[\frac{1}{2}nT + \left.\frac{\sin\left[2(\omega t + \phi)\right]}{2\omega}\right|_0^{nT}\right]\\
+		&= \left(\frac{1}{2}m\omega^2 A^2\right) \cdot \frac{1}{2} + \frac{m\omega^2A^2}{4nT\omega} \left[\sin(2n\omega T + 2\phi) - \sin(2\phi)\right] \footnotemark\\
+		&= \frac{1}{2} \left(\frac{1}{2}kA^2\right) = \frac{1}{2}E
+	\end{align}
+	\footnotetext{Note that this, if we expand with sum of angles, evaluates to 0 (the expression in the square brackets)}
+
+	Similarly, $\overline{U_s} = \frac{1}{2} E = \overline{K}$.
+
+	\textbf{Conclusion:}
+
+	$K$ and $U$ are $\frac{\pi}{2}$ out of phase, and follows the above relation.
+\end{sol}
+
+\begin{example}
+	Example of central force
+\end{example}
+
+\begin{sol}
+	omitted
+\end{sol}
+
+\begin{example}
+	Use energy methods to show the motion of a simple pendulum (mass $m$, length $l$) is simple harmonic for small angles. What is the first correction to period if $\theta$ is not small?
+\end{example}
+
+\begin{sol}
+	\begin{enumerate}[a)]
+		\item From the figure,\footnote{TBA}
+
+		\begin{equation}
+			U_g = mg(l - l\cos\theta) = mgl(1-\cos\theta)
+		\end{equation}
+
+		Let the initial angle be $\theta_0$, then $\theta = \theta_0 \implies K = 0$ and $U_g = mgl(1-\cos\theta)$.
+
+		TBF
+
+		\item Given the original equation:
+		
+		\begin{equation}
+			\dot \theta^2 = -2\left(\frac{g}{l}\right) \left[\cos\theta_0 - \cos\theta\right]
+		\end{equation}
+
+		which becomes
+
+		\begin{equation}
+			\int_{\theta_0}^\theta \frac{\D \theta}{\sqrt{\cos\theta - \cos\theta_0}} = \sqrt{2} \sqrt{\frac{g}{l}} t
+		\end{equation}
+
+		For a period, $t = T$ change variables in integral: $\sin u \equiv \sin(\theta / 2) / \sin(\theta_0 / 2)$ and $K \equiv \sin(\theta_0 / 2)$. Then show
+
+		\begin{equation}
+			\sqrt{2} \int_0^{2\pi} \frac{\D u}{\sqrt{1 - k^2\sin^2 u}} = \sqrt{2} \sqrt{\frac{g}{l}} T = \sqrt{2} \left(\frac{2\pi}{T_0}\right) T
+		\end{equation}
+	\end{enumerate}
+\end{sol}

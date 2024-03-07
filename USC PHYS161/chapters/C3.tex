@@ -16,7 +16,7 @@ Newton originally formulated the laws to solve the question of gravity -- along 
 
 \section{Newton's Laws}
 
-\begin{definition}
+\begin{definition}[Newton's Laws]
 	The three laws of motion:
 
 	\begin{description}
@@ -208,6 +208,43 @@ e.g. gravity, electromagnetic, (strong nuclear, weak nuclear)
 	\end{remark}
 \end{itemize}
 
+\subsection{Friction}
+
+Component of contact force parallel to surface of contact.
+
+Based on experiment, friction has two behaviors:
+
+\begin{itemize}
+	\item \textbf{Static} -- when \textit{no} relative motion between objects in contact. Acts to balance forces to ensure constant relative velocity. Has max value.
+	\item \textbf{Kinetic} -- \textit{is} relative motion between objects in contact. Acts in opposition to relative motion (i.e. to decelerate the object). Constant in magnitude (independent of relative speed \& surface area).
+\end{itemize}
+
+The phenomenological models are:
+
+\textbf{Static Friction}
+
+\begin{equation}
+	F_{f_s} \leq \mu_s F_N
+\end{equation}
+
+\begin{itemize}
+	\item $\mu_s$ is coefficient of static friction.
+	\item $F_N$ is between the objects in contact.
+\end{itemize}
+
+\begin{equation}
+	F_{f_k} = \mu_k F_N
+\end{equation}
+
+\begin{itemize}
+	\item $\mu_k$ is coefficient of kinetic friction
+	\item $F_N$ is between the objects in contact.
+\end{itemize}
+
+\begin{remark}
+	Generally, $\mu_s \geq \mu_k$.
+\end{remark}
+
 \subsection{Comments}
 
 These forces are \textit{phenomenological} in character.
@@ -235,9 +272,7 @@ All these 4 forces are long range and position dependent.
 
 \subsection{Variable Forces with Velocity}
 
-\section{Examples}
-
-\subsection{Algorithm for Solving Constant-Force Newton's Laws Problems}
+\section{Algorithm for Solving Constant-Force Newton's Laws Problems}
 
 \begin{enumerate}[1)]
 	\item Isolate relevant bodies for analysis
@@ -252,8 +287,99 @@ All these 4 forces are long range and position dependent.
 	\item Solve for desired unknowns. Treat the equations from 4) as a system of algebraic equations, regardless of the origin.
 \end{enumerate}
 
-\subsection{Problems}
+\section{Pulleys}
+
+Mechanical device used to redirect tension forces. An ideal pulley is massless and frictionless. If pulley doesn't rotate, then $F_{T_1} = F_{T_2}$. Redirects $F_T$. If they are not equal, the pulley rotates.
+
+\section{Newton's Laws in Polar Coordinates}
+
+%! TODO
+\section{Simple Harmonic Motion}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{assets/spring2wall.jpg}
+	\caption{DALLE is Smart}
+\end{figure}
+A spring (massless) exerts a linear restoring force, $\vec F_s$, given by (Hooke's Law):
+
+\begin{equation}
+	\vec F_S = - k \Delta \vec r
+\end{equation}
+
+where $k$ is the spring constant ($\si{\N\m}$) and $\Delta \vec r$ is displacement of spring from equilibrium length.
 
 \begin{example}
-	Three masses are in contact on a horizontal frictionless surface.
+	We have a block of mass $M$ connected to a wall by a spring of constant $k$.
 \end{example}
+
+If we setup Newton's second law:
+
+\begin{equation}
+	\sum F = ma \implies -kx = m \ddot x
+\end{equation}
+
+Let $\omega \equiv \sqrt{\frac{k}{m}}$, the this equation is 
+
+\begin{equation}
+	\boxed{\ddot x = -\omega^2 x}
+\end{equation}
+
+Our guess ansatz for the solution:
+
+\begin{equation} \label{eq:shm-general-sol}
+	x(t) = c_1 \cos(\omega t) + c_2 \sin(\omega t)
+\end{equation}
+
+Aside: Euler identity $e^{i\theta} = \cos\theta + i\sin\theta$ allows us to construct complex solutions
+
+\begin{equation}
+	\tilde{x} = \tilde{c}_1 e^{i\alpha t} + \tilde{c}_2 e^{i\beta t}
+\end{equation}
+
+If we have initial conditions $x(0) = x_0$ and $\dot x(0) = 0$, then we have:
+
+\begin{equation}
+	x(t) = x_0\cos(\omega t)
+\end{equation}
+
+\begin{example}
+	We have a mass $m$ hung from the ceiling by a spring with spring constant $k$.
+\end{example}
+
+\begin{sol}
+	CHECK TABLET FILL
+\end{sol}
+
+We have $\cos(\theta + 2\pi) = \cos(\theta)$,
+
+here, $\cos(\omega t + 2 \pi) = \cos(\omega t)$
+
+let $t = t_0 - T$
+
+\begin{align}
+	\cos(\omega t_0 - \omega T + 2\pi) &= \cos(\omega t_0)\\
+	\omega T - 2\pi &= 0\\
+	T &= \frac{2\pi}{\omega}
+\end{align}
+
+$T$ is the \textbf{period}: time to complete one oscillation.
+
+Then, $T = \frac{2\pi}{\omega}$
+
+$f$ is the \textbf{frequency}, $f \equiv \frac{1}{T}$: number of oscillations per unit time ($[f] = s^{-1} \equiv \si{\Hz}$)
+
+\begin{equation}
+	\omega = 2\pi f
+\end{equation}
+
+One is angular, one is frequency.
+
+\begin{example}
+	The pendulum
+\end{example}
+
+\begin{sol}
+	CHECK TABLET
+	%! TODO
+\end{sol}
