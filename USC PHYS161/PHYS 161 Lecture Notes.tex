@@ -28,6 +28,10 @@
 \usepackage{bm}
 \usepackage{stmaryrd}
 \usepackage{mathtools}
+\usepackage{xcolor}
+
+% xcolor
+\definecolor{softgreen}{RGB}{188, 255, 91}
 
 % cleveref setup
 \crefname{figure}{Figure}{Figure}
@@ -70,6 +74,10 @@
 % vector bold text
 \newcommand{\bv}[1]{\bm{\mathrm{#1}}}
 
+% underline
+% \usepackage{accents}
+% \newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
 % add environments for different theorems and definitions
 \newtheoremstyle{break}
   {\topsep}{\topsep}%
@@ -104,9 +112,19 @@
 	boxrule=0pt
 }
 
+\newtcolorbox{rmkbox}{
+	breakable,
+	colback=softgreen,
+	boxrule=0pt
+}
+
+% \newenvironment{remark}
+% 	{\begin{rmrk}}
+% 	{\end{rmrk}\vspace{10pt}}
+
 \newenvironment{remark}
-	{\begin{rmrk}}
-	{\end{rmrk}\vspace{10pt}}
+	{\begin{rmkbox}\begin{rmrk}}
+	{\end{rmrk}\end{rmkbox}}
 
 \newenvironment{theorem}
 	{\begin{theorembox}\begin{theo}}
@@ -151,6 +169,8 @@
 	\include{chapters/C3}
 
 	\include{chapters/C4}
+
+	\include{chapters/C5}
 
 	\appendix
 

@@ -1,0 +1,458 @@
+\chapter{Momentum}
+
+\section{Introduction}
+
+Recall that we mentioned that what Newton actually defined for the 2nd law is:
+
+\begin{equation}
+	\vec F = \frac{\D \vec p}{\D t} \qquad \boxed{\vec p = m \vec v}
+\end{equation}
+
+Consider a system of $N$ particles, unconstrained in their motion (i.e. do not necessarily have kinematic constraints)
+
+For the $j$-th particle, the 2nd law says:
+
+\begin{equation}
+	\vec F_j  = \frac{\D \vec v_j}{\D t} \left(= m_j \frac{\D \vec v_j}{\D t}\right)
+\end{equation}
+
+By superposition, 
+
+\begin{equation}
+	\vec F_j = \sum_{i\neq j}^N \vec F_{ij} + {\vec F_j}^\mathrm{ext}
+\end{equation}
+
+where $\vec F_{ij}$ is the force of the $i$-th particle (in system) on $j$-th particle, and ${\vec F_j}^\mathrm{ext}$ is the (net) external (i.e. not in system) of $j$-th particle.
+
+Consider the total force of the system $\sum_{j=1}^{N} \vec F_j$, then
+
+\begin{equation}
+	\sum_j \vec F_j = \sum_j \sum_{i \neq j} \vec F_{ij} + \sum_j {\vec F_j}^\mathrm{ext} \equiv \sum_j \sum_{i\neq j} \vec F_{ij} + {\vec F}^\mathrm{ext}
+\end{equation}
+
+where ${\vec F}^\mathrm{ext}$ is the total external force on system.
+
+If we look at first terms
+
+\begin{equation}
+	\sum_j \sum_{i\neq j} \vec F_{ij} = \vec F_{12} + \vec F_{13} + \cdots + \vec F_{21} + \vec F_{23} + \cdots
+\end{equation}
+
+Note that Newton's 3rd Law $\vec F_{ij} = - \vec F_{ji}$, so all the terms in the sum cancels out.
+
+\begin{remark}
+	Since $\vec F_{ij}$ is a antisymmetric quantity, the sum over it is zero.
+\end{remark}
+
+Hence, 
+
+\begin{equation}
+	\vec F_\mathrm{tot} = \sum_j \vec F_j = \vec F^\mathrm{ext}
+\end{equation}
+
+We apply Newton's 2nd law:
+
+\begin{equation}
+	\vec F^\mathrm{ext} = \sum_j \frac{\D \vec p_j}{\D t} = \frac{\D}{\D t} \left(\sum_j \vec p_j\right)
+\end{equation}
+
+So we define the total momentum $\vec p_\mathrm{tot}$ to be
+
+\begin{equation}
+	\vec p_\mathrm{tot} \equiv \sum_{j = 1}^N \vec p_j
+\end{equation}
+
+which means that
+
+\begin{equation}
+	\vec F^\mathrm{ext} = \frac{\D \vec p_\mathrm{tot}}{\D t}
+\end{equation}
+
+\section{Center of Mass (COM)}
+
+\subsection{Discrete Masses}
+
+The total external force on the system changes the total momentum of the system as if it were a point particle, let's try to write that in the form $\vec F^\mathrm{ext} = M \vec A$.
+
+\begin{align}
+	\vec F^\mathrm{ext} &= \frac{\D \vec p_\mathrm{tot}}{\D t} = \frac{\D}{\D t} \left(\sum_j m_j \vec v_j\right) = \sum_j m_j \frac{\D \vec v_j}{\D t}\\
+	&= \sum_j m_j \frac{\D^2 \vec r_j}{\D t^2} = \frac{\D^2}{\D t^2} \sum_j m_j \vec r_j\\
+	&= \left(\frac{\sum m_j}{\sum m_j}\right) \frac{\D^2}{\D t^2} \sum_j m_j \vec r_j
+\end{align}
+
+So we define the \textit{total mass} $M$ by
+
+\begin{equation}
+	M \equiv \sum_j m_j
+\end{equation}
+
+and define the (position of) \textit{center of mass}, $\vec R$ by
+
+\begin{equation}
+	\vec R \equiv \frac{1}{M} \sum_j m_j \vec r_j
+\end{equation}
+
+THen,
+
+\begin{equation}
+	\vec F = M \frac{\D^2 \vec R}{\D t^2}
+\end{equation}
+
+or if $\vec V = \frac{\D \vec R}{\D t}$ and $\vec A = \frac{\D \vec V}{\D t}$, that means $\vec F^\mathrm{ext} = M \vec A$, and so there we have it.
+
+\begin{example}
+	Say a combined particle of A ($m_A = \frac{1}{4} M$) and B ($m_B = \frac{3}{4} M$) is launched at some angle $\theta$ with initial velocity $v_0$ under the influence of gravity. At the apex of the trajectory, an internal explosion occurs, repelling the two particles in opposite direction horizontally.
+
+	Relative to the launch position, if $x_{B} = d$, find $x_A$.
+\end{example}
+
+\begin{sol}
+	Let's use $\vec F^\mathrm{ext} = M \frac{\D^2 \vec R}{\D t^2}$
+
+	we have center of mass
+
+	\begin{equation}
+		\begin{cases}
+			R_x &= \frac{1}{M} (m_A x_A + m_B x_B)\\
+			R_y &= \frac{1}{M} (m_A y_A + m_B y_B)\\ 
+		\end{cases}
+	\end{equation}
+
+	And $\vec F^\mathrm{ext} = - Mg\hat y$
+
+	Looking at the 2nd law of the COM:
+
+	\begin{equation}
+		\ddot R_x = 0 \qquad \ddot R_y = -g
+	\end{equation}
+
+	\begin{equation}
+		\begin{cases}
+			0 &= \frac{1}{M} (m_A \ddot x_A + m_B \ddot x_B)\\
+			-g &= \frac{1}{M} (m_A \ddot y_A + m_B \ddot y_B)\\ 
+		\end{cases}
+	\end{equation}
+
+	Our solution for COM is:
+
+	\begin{equation}
+		\vec R(t) = \vec R_0 + \vec V_0 t - \frac{1}{2} \vec g t^2
+	\end{equation}
+
+	\begin{equation}
+		\begin{cases}
+			R_x &= v_0 \cos \theta t\\
+			R_Y &= v_0 \sin\theta t - \frac{1}{2} gt^2
+		\end{cases}
+	\end{equation}
+
+	Particles hit the ground at
+
+	\begin{equation}
+		t_f = \frac{2v_0\sin\theta}{g}
+	\end{equation}
+
+	Hence
+
+	\begin{equation}
+		R_{xf} = v_0 \cos\theta \left(\frac{2v_0 \sin\theta}{g}\right) = \frac{v_0^2 \sin(2\theta)}{g}
+	\end{equation}
+
+	Consequently:
+
+	\begin{align}
+		R_{xf} &= \frac{1}{M} (m_A x_{Af} + m_B x_{Bf})\\
+		\frac{v_0^2 \sin(2\theta)}{g} &= \frac{1}{M} (\frac{1}{4} M x_{Af} + \frac{3}{4} M d) = \frac{1}{4} x_{Af} + \frac{3}{4} d\\
+		x_{Af} &= \boxed{\frac{4v_0^2 \sin(2\theta)}{g} - 3d}
+	\end{align}
+\end{sol}
+
+\subsection{Continuous Distribution}
+
+For a body that is (to good approximation) continuous, i.e. its mass is continuously distributed throughout its volume $V$, its center of mass becomes
+
+\begin{equation}\label{eq:com-cont}
+	\vec R = \frac{1}{M} \int_V \vec r \D m
+\end{equation}
+
+where $M = \int \D m$
+
+Now we want to practically evaluate \cref*{eq:com-cont}, we can replace $\D m$ by:
+
+\begin{equation}
+	\D m = \begin{cases}
+		\lambda(\vec r) \D l &\implies \text{1-dim distribution [mass/length]}\\
+		\sigma(\vec r) \D \partial &\implies \text{2-dim distribution [mass/area]}\\
+		\rho(\vec r) \D V &\implies \text{3-dim distribution [mass/vol]}
+	\end{cases}
+\end{equation}
+
+\begin{remark}
+	What if we have a point mass in 1-dim?
+
+	\begin{equation}
+		\int_V \D m = M
+	\end{equation}
+
+	There's the \href{https://en.wikipedia.org/wiki/Dirac_delta_function}{\textbf{Dirac Delta}} $\delta (\vec r)$ s.t.
+
+	\begin{equation}
+		\int_{\mathbb{R}^3} \delta^3(\vec r) \D^3 \vec r = 1
+	\end{equation}
+
+	So, for a point pass
+
+	\begin{equation}
+		m = m \int_{-\infty}^\infty \delta (x-a) \D x
+	\end{equation}
+\end{remark}
+
+\begin{example}
+	Take some example 2D object with density $\sigma$ that is a triangle of height $h$ and length $b$ with the right angle side away from the origin.
+\end{example}
+
+\begin{sol}
+	\begin{align}
+		\vec R &= \frac{1}{M} \int \vec r \D m\\
+		&= \frac{1}{M} \vec r \sigma \D A\\
+		&= \frac{\sigma}{M} \int \vec r \D A
+	\end{align}
+
+	Area is $\frac{1}{2}bh$ so $\sigma = \frac{2M}{bh}$
+
+	\begin{align}
+		\vec R &= \frac{2}{bh} \int \vec r \D A\\
+		&= \frac{2}{bh} \left[\hat x \iint x \D x \D y + \hat y \iint y \D x \D y\right]\\
+		&= \frac{2}{bh} \left[\hat x \int_0^b\int_0^{hx/b} x \D x \D y + \hat y \int_0^b\int_0^{hx/b} y \D x \D y\right]\\
+		&= \frac{2}{3} b \hat x + \frac{1}{3} h \hat y
+	\end{align}
+\end{sol}
+
+\subsection{Center of Mass Frame}
+
+Given two particles $m_1$ and $m_2$, the center of mass is given by
+
+\begin{equation}
+	\vec R = \frac{m_1 \vec r_1 + m_2 \vec r_2}{m_1 + m_2}
+\end{equation}
+
+The center of mass frame is the frame whose origin is $\vec R$.
+
+\begin{equation}
+	\begin{cases}
+		\vec r_{1_\mathrm{COM}} &= \vec r_1 - \vec R\\
+		\vec r_{2_\mathrm{COM}} &= \vec r_2 - \vec R
+	\end{cases}
+\end{equation}
+
+If $\ddot{\vec{R}} = 0$ that means that the frame is inertial (which is to also say that $\vec F^\mathrm{ext} = 0$)
+
+Note also that the \textbf{momentum in the COM frame is always 0!} It ends up much easier to analyze collisions in the COM frame.
+
+\section{Variable Mass Situations}
+
+\begin{example}
+	Let the speed oft he exhaust be $u$ relative to the rocket -- this is an inertial frame. The rocket has mass $M_R$. The fuel is ejected at a rate $\D M_F$ for small interval $\D t$.
+\end{example}
+
+\begin{sol}
+	Note that $\D M_F = - \D M_R$ where $M_R$ is the mass of the rocket.
+
+	This results in increase in rocket velocity: $v \rightarrow v + \D v$
+
+	Assume that $u$ is constant.
+
+	The initial momentum is then $P_0 = M_R v$.
+
+	Final momentum, which is 
+
+	\begin{equation}
+		P_f = (M_R - \D M_F) (v + \D v) + \D M_F (v - u)
+	\end{equation}
+
+	\begin{align}
+		\Delta P &= P_f - P_0\\
+		&= M_R v + M_R \D v - V \D M_F - \D M_F \D v\footnotemark + V \D M_F - u \D M_F - M_R v\\
+		&= M_R \D v - u \D M_F\\
+		F &= M_R \frac{\D v}{\D t} - u \frac{\D M_F}{\D t}\\
+	\end{align}
+
+	\footnotetext{Note that $\D M_F \D v$ we are considering as negligible since the two differentials are both rather small}
+
+	which, given out initial inversion statement
+
+	\begin{equation}
+		F = M_R \frac{\D v}{\D t} + u \frac{\D M_R}{\D t}
+	\end{equation}
+\end{sol}
+
+\begin{example}
+	A rocket of mass $m_0$ at $t = 0$, exhausts mass backward, accelerating the rocket forward in free empty space. If exhaust velocity $u$ is constant, determine the rocket's velocity as function of it's mass.
+\end{example}
+
+\begin{sol}
+	We have that $F = 0$, and therefore
+
+	\begin{equation}
+		M_R \frac{\D v}{\D t} - u \frac{\D M_F}{\D t} = 0 \longrightarrow  m \frac{\D v}{\D t} + u \frac{\D m}{\D t} = 0
+	\end{equation}
+
+	Then, we can solve
+
+	\begin{align}
+		m \D v &= - u \D m\\
+		\frac{\D v}{u} &= -\frac{\D m}{m}\\
+		\int_0^v \frac{\D v}{u} &= - \int_{m_0}^{m} \frac{\D m}{m}\\
+		\frac{v}{u} &= - \log\left(\nicefrac{m}{m_0}\right)\\
+		v(m) &= \boxed{- u \log\left(\nicefrac{m}{m_0}\right)}
+	\end{align}
+\end{sol}
+
+\begin{example}
+	A rocket of total mass $m_0$ in empty space has speed $v_0$ when it must slow down to speed $\nicefrac{v_0}{2}$ to intercept an asteroid. how much fuel must be burned?
+\end{example}
+
+\begin{sol}
+	In this case, the fuel must be ejected forward, so relative velocity of the fuel is $v + u$. We get an alter version
+
+	\begin{equation}
+		M_R \frac{\D v}{\D t} + u \frac{\D M_F}{\D t} = 0 \longrightarrow  m \frac{\D v}{\D t} = u \frac{\D m}{\D t}
+	\end{equation}
+
+	So we have
+
+	\begin{align}
+		m \D v &= u \D m\\
+		\int_{m_0}^{m_f} \frac{\D m}{m} &= \int_{v_0}^{\nicefrac{v_0}{2}} \frac{\D v}{u}\\
+		\log\left(\nicefrac{m_f}{m_0}\right) = - \frac{v_0}{2u}\\
+		m_f &= m_0 e^{-\nicefrac{v_0}{2u}}
+	\end{align}
+
+	Amount of fuel is $m_0 - m_f$
+
+	\begin{equation}
+		\Delta m = m_0 \left(1 - e^{-\nicefrac{v_0}{2u}}\right)
+	\end{equation}
+
+	This is also known as the Tsiolkovsky rocket equation
+
+	\begin{equation}
+		m_0 = m_f e^{\nicefrac{\Delta v}{u}}
+	\end{equation}
+\end{sol}
+
+\section{Impulse}
+
+We know that $\vec F = \frac{\D \vec p}{\D t}$, then
+
+\begin{equation}
+	\Delta \vec p = \int_{t_0}^{t_f} \vec F \D t
+\end{equation}
+
+\begin{definition}
+	We defined impulse to be
+
+	\begin{equation}
+		\vec J = \int_{t_0}^{t_f} \vec F \D t = \Delta \vec p
+	\end{equation}
+\end{definition}
+
+\begin{remark}
+	Consider $\vec F = \mathrm{const}$, then $\vec J = \vec F \Delta t$
+
+	\begin{itemize}
+		\item So large $\vec F$ over short time means a large $\vec J$
+		\item A large $\Delta t$ and small $\vec F$ also means a large $\vec J$
+	\end{itemize}
+\end{remark}
+
+\section{Conservation}
+
+For a system of particles
+
+\begin{equation}
+	\vec F_\mathrm{ext} = \frac{\D \vec p}{\D t}
+\end{equation}
+
+If $\vec F_\mathrm{ext} = 0$, then $\nicefrac{\D \vec p}{\D t} = 0$, which means $\vec p$ is constant in time.
+
+\begin{definition}[The Law of Conservation of Momentum]
+	For a system of particles such that the total external force on the system is zero, then the total linear momentum $\vec P = \sum_i \vec p_i$ is conserved -- $\Delta \vec p = 0$.
+\end{definition}
+
+Recalled that energy $E$ is conserved b/c $u$ is time-independent. Supposed $u = u(y, z)$ that is, $u$ is independent of $x$.
+
+Then,
+
+\begin{equation}
+	\vec F = - \nabla u = - \left[\frac{\partial u}{\partial x} \hat x + \frac{\partial u}{\partial y} \hat y + \frac{\partial u}{\partial z} \hat z\right] = \frac{\partial u}{\partial y} \hat y + \frac{\partial u}{\partial z} \hat z
+\end{equation}
+
+Hence,
+
+\begin{equation}
+	-\nabla u = \frac{\D \vec p}{\D t} \implies \begin{cases}
+		0 &= \frac{\D \vec p_x}{\D t}\\
+		- \frac{\partial u}{\partial y} &= \frac{\D p_y}{\D t}\\
+		- \frac{\partial u}{\partial z} &= \frac{\D p_z}{\D t}
+	\end{cases}
+\end{equation}
+
+\begin{itemize}
+	\item If $u$ is space-translation invariant $\implies$ momentum is conserved.
+	\item Because $\vec p$ is a vector, it may be that only some components are conserved.
+\end{itemize}
+
+\section{Collisions}
+
+A collision is a short duration interaction between two objects, such that external forces are negligible in comparison to internal forces of interaction over that duration and hence momentum is conserved for this interaction.
+
+We will classify collisions into three categories, based on the kinetic energy difference. Let $Q \equiv K_0 - K_f$ (total K.E.)
+
+\begin{description}
+	\item[Q > 0] Inelastic Collision
+	
+	Kinetic energy is ``lost'' to other forms.
+
+	\textit{If particles stick together after collision, we have \textbf{perfectly inelastic collision}}
+
+	\item[Q = 0] Elastic Collision
+
+	Kinetic energy is conserved.
+
+	*note, typically the internal interaction is conservative, so $KE_0 \to PE \to KE_f$, meaning energy conserved.
+
+	\item[Q < 0] Superelastic Collision
+	
+	Kinetic energy is gained (i.e. an explosion)
+\end{description}
+
+\begin{example}
+	Two particles masses $m_1$ and $m_2$ with initial velocities $\vec v_1$ and $\vec v_2$ collide in a perfectly inelastic collision. Fidn the velocity $\vec v'$ of the combined mass after the collision and the kinetic energy lost.
+\end{example}
+
+\begin{sol}
+	Conservation of momentum:
+
+	\begin{align}
+		\vec p &= \vec p'\\
+		m_1 \vec v_1 + m_2 \vec v_2 &= (m_1 + m_2) \vec v'\\
+		v' = \boxed{\frac{m_1 \vec v_1 + m_2 \vec v_2}{m_1 + m_2}}
+	\end{align}
+
+	Let's find $Q$:
+
+	\begin{align}
+		Q &= K - K'\\
+		&= \frac{1}{2} m_1 {v_1}^2 + \frac{1}{2} m_2 {v_2}^2 - \frac{1}{2} (m_1 + m_2) {v'}^2\\
+		&= \frac{1}{2} \left[m_1 - \frac{{m_1}^2}{m_1 + m_2}\right] {v_1}^2 + \frac{1}{2} \left[m_2 - \frac{{m_2}^2}{m_1 + m_2}\right] {v_2}^2 - \left(\frac{m_1 m_2}{m_1 + m_2}\right) \vec v_1 \cdot \vec v_2\\
+		&= \boxed{\frac{1}{2} \left(\frac{m_1 m_2}{m_1 + m_2}\right) (\vec v_1 - \vec v_2)^2}
+	\end{align}
+
+	There are several cases
+
+	\begin{itemize}
+		\item If $v_1 = v_2$, they never collide!
+		\item If $v_1 = - v_2$, they collide with energy lost, which is the total energy.
+	\end{itemize}
+\end{sol}
