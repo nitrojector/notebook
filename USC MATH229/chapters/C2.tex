@@ -31,3 +31,128 @@ We simply hold all other variables as constant and derive with respect to $x$.
 		\frac{\partial f}{\partial x} \equiv f_x(x, y) = \lim_{h \to 0} \frac{f(x+h, y) - f(x, y)}{h}
 	\end{equation}
 \end{definition}
+
+\section{Tangent Planes and Linear Derivatives}
+
+%!!TBA
+
+\section{The Chain Rule}
+
+\begin{definition}
+	If
+
+	\begin{equation}
+		y = f(x_1, x_2, x_3, \cdots, x_n) \qquad x_i = g_i(t_1, t_2, t_3, \cdots, t_n), i = \llbracket 1, n \rrbracket
+	\end{equation}
+
+	then
+
+	\begin{equation}
+		\frac{\partial u}{\partial t_k} = \frac{\partial u}{\partial x_1} \frac{\partial x_1}{\partial t_k} + \frac{\partial u}{\partial x_2} \frac{\partial x_2}{\partial t_k} + \cdots + \frac{\partial u}{\partial x_n} \frac{\partial x_n}{\partial t_k}
+	\end{equation}
+\end{definition}
+
+\begin{theorem}[Implicit Function]
+	\begin{description}
+		\item[Case 1] Single Variable Case
+		
+		\item[Case 2] Multivariable Case
+		
+		We have
+
+		\begin{equation}
+			F(x, y, z) = C, z = z(x, y)
+		\end{equation}
+
+		We want $\frac{\partial z}{\partial x}$ \& $\frac{\partial z}{\partial y}$.
+
+		\begin{align}
+			F(x, y, z(x, y)) &= C \qquad \frac{\partial}{\partial x}\\
+			\frac{\partial F}{\partial x} \frac{\partial x}{\partial x} + \frac{\partial F}{\partial y} \frac{\partial y}{\partial x} + \frac{\partial F}{\partial z} \frac{\partial z}{\partial x} &= 0
+		\end{align}
+
+		We obtain
+
+		\begin{equation}
+			\boxed{\frac{\partial z}{\partial x} = - \frac{F_x}{F_z}}
+		\end{equation}
+	\end{description}
+\end{theorem}
+
+\section{Maxima and Minima}
+
+\subsection{Local Maxima and Minima}
+
+
+\subsection{Absolute Maxima and Minima}
+
+In single variable Caluclus, we find all the critical points and the endpoints of interval, then compare the values.
+
+\begin{example}
+	$f(x, y) = xy - x - 2y + 8$
+
+	Find absolute max/min in $D$. Let $D$ be the region in the first quadrant bounded by the curve $y = -x + 4$.
+\end{example}
+
+\begin{sol}
+	\begin{equation}
+		\begin{cases}
+			f_x &= y - 1 = 0\\
+			f_y &= x - 2 = 0
+		\end{cases}
+	\end{equation}
+
+	Re interpret the critical point as $(2, 1)$
+
+	$f(2, 1) = 6$
+
+	Then we have to look at different segments of the boundaries:
+
+	\begin{enumerate}
+		\item $x = 0, 0 \leq y \leq 4$
+		
+		$f(0, y) = -2y + 8$
+
+		$f(0, 0) = 8$
+
+		$f(0, 4) = 0$
+
+		\item $y = 0, 0 \leq x \leq 4$
+		
+		$f(x, 0) = -x + 8$
+
+		$f(4, 0) = 4$
+
+		\item $y = 4 - x, 0 \leq x \leq 4$
+		
+		$f\vert_{y=4-x} = -x^2 + 5x$
+
+		Now we can find the critical points of this function to find the extrema on the edge.
+	\end{enumerate}
+\end{sol}
+
+\section{Lagrange Multiplier}
+
+\begin{example}
+	Find the extrema of $f(x, y)$ subject to constraint $g(x, y) = k$.
+\end{example}
+
+This is the general from of the problem we are trying to solve -- of course this could be of three variables.
+
+The condition for optimization is
+
+\begin{equation}
+	\nabla f(x, y, z) = \lambda \nabla g(x, y, z)
+\end{equation}
+
+where $\lambda$ is called the \textbf{Lagrangian Multiplier}.
+
+\begin{remark}
+	This statement means that the gradient of the constraint function is parallel to the gradient of the function we are trying to optimize. Why is the point at which this is true the point where the function $f$ is maximized on the curve?
+
+	We can agree that when the gradient of level curve/surface of constraint $g(x, y, z) = k$ is parallel to the gradient of the function at some point, the tangent (plane) to that level curve/surface is perpendicular to the gradient of function at that point. At an infinitesimal scale, some increment at that point along the tangent (plane) of constraint will not result in an increase in the value of the function since, given the definition of the gradient, we are currently perpendicular to steepest rate of change, which also mean we are moving on an infinitesimal level segment. In other words, the tangent (planes) of the constraint and the function are parallel (this statement is equivalent to what we started with, but is another way to understand it). Again, any movement along the tangent of the the constraint curve would result in no change in value of the function, thus we must be at an extrema.
+\end{remark}
+
+Now, continuing with how to utilize the lagrangian multiplier, we can obtain $n$ equations for $n$ dimensions, and an additional equation from our constraint. So we have $n + 1$ unknowns (with the addition of $\lambda$) and $n + 1$ equations.
+
+We then have to solve by guessing possible values while thinking about whether certain variable values make sense.
