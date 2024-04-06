@@ -1,0 +1,383 @@
+\chapter{Rigid Body Motion}
+
+\section{Introduction}
+
+When we talk about rigid body motion, at least at our current level, will be subject to several constraints:
+
+\begin{itemize}
+	\item The axis of rotation will be fixed in direction, though it may translate.
+	\item The body is rigid and thus do not deform.
+\end{itemize}
+
+\begin{theorem}[Chasles' Theorem]
+	Most general rigid body displacement can be produced by a translation along a line (called its screw axis or Mozzi axis) followed (or preceded) by a rotation about an axis parallel to that line.
+\end{theorem}
+
+\section{Rotational Kinematics}
+
+% !!TBA
+
+We can categorize rotation into two categories:
+
+\begin{description}
+	\item[Orbiting] Rotation about an axis external to the body
+	\item[Spinning] Rotation about axis internal to the body
+\end{description}
+
+Consider coordinates s.t. the axis of rotation of rigid body is the $z$-axis. Then, the rotation view down the $z$-axis is either clockwise (CW) or counterclockwise (CCW).
+
+Angular speed $\omega$ measures rate of rotation. To include direction of rotation, we promote $\omega$ to a vector: $\vec\omega$.
+
+The direction of $\vec\omega$ is along axis of rotation (i.e. $\pm z$-axis) s.t. rotation follows the RHR.
+
+We do a similar thing with $\alpha$ to $\vec\alpha$.
+
+\begin{remark}
+	For fixed axis rotation i.e. 1-dim motion
+
+	\begin{itemize}
+		\item If $\alpha$ and $\omega$ have the same sign, the body is rotating faster
+		\item If they have opposite signs, then the body is rotating slower.
+	\end{itemize}
+
+	Also, technically $\vec\omega$ and $\vec\alpha$ are ``pseudovectors'' and if we change around the axes, then there would be a sign change on the vector.
+\end{remark}
+
+\section{Rotational Dynamics}
+
+The rotational analogue of force is \textbf{torque}, $\vec\tau$, s.t.
+
+\begin{equation}
+	\vec \tau = \vec r \cross \vec F
+\end{equation}
+
+where $\vec r$ is the position vector
+
+\begin{description}
+	\item[orbiting] $\vec r$ is from origin to particle (which is the point of application of the force). If we change the origin, then we are changing the torque.
+	\item[spinning] $\vec r$ is from origin to point of application of the force. 
+\end{description}
+
+and $\vec F$ is the force.
+
+Thus, in conclusion, $\vec tau$ depends on the point of origin, i.e. the point about which it is computed (via $\vec r$).
+
+Typically we choose the origin to lie on axis of rotation.
+
+A body in \textbf{static equilibrium} requires that $\sum \vec F = 0$ and $\sum \vec\tau = 0$.
+
+\begin{example}
+	Show that the torque due to gravity about any point always acts at the center of mass: $\vec \tau = \vec R \cross \vec F_g$, where $\vec R$ is the center of mass (measured from the point) and $\vec F_g$ is the weight.
+\end{example}
+
+\begin{sol}
+	Torque due to gravity on $m_j$: $\vec\tau_j = \vec r_j \cross \vec F_{gj} = \vec r_j \cross m_j \vec g$.
+
+	Net torque on body is then
+
+	\begin{equation}
+		\vec \tau_g = \sum_j \vec r_j \cross m_j \vec g
+	\end{equation}
+
+	Given that
+
+	\begin{equation}
+		\vec R = \frac{1}{M} \sum m_j \cdot \vec r_j
+	\end{equation}
+
+	we can rearrange
+
+	\begin{align}
+		\vec \tau_g &= \sum \vec r_j \cross m_j \vec g\\
+		&= \sum_j (m_j \vec r_j) \cross \vec g\\
+		&= M\vec R \cross \vec g\\
+		&= \vec R \cross \vec F_g
+	\end{align}
+
+	Thus, in any coordinates, the torque due to gravity acts at the center of mass of the object, i.e. we can take the point of application of $\vec F_g$ to be at C.O.M. (sometimes center of mass is called center of gravity)
+\end{sol}
+
+\begin{example}
+	A uniform of length $\frac{\pi R}{2}$ is bent into a quadrant of a circle of radius $R$.
+
+	It touches ground and wall -- there is no friction with the wall but there is friction with the ground. 
+
+	The rod is in static equilibrium. Find the force the wall exerts on the rod.
+\end{example}
+
+\begin{sol}
+	Static equilibrium implies that $\sum \vec \tau = 0$ and $\sum \vec F = 0$. We choose to compute $\vec \tau$ about center point with the floor.
+
+	\begin{equation}
+		\vec\tau = \vec r_w \cross \vec F_{NW} + \vec R \cross \vec F_g
+	\end{equation}
+
+	We can take care of direction of rotation automatically.
+
+	We weite $\abs{\vec r \cross \vec F} = r_\perp F = r F_\perp = rF\sin\phi$
+
+	Taking the perpendicular component of $r$ is easiest for this problem. Thus, we need the $y$-component of $\vec r_w$ and need the $x$-component of $\vec R$.
+
+	The $y$-component of $\vec F_W = R$
+
+	The $x$-component of $\vec R = R - R\cos\frac{\pi}{4}$
+
+	Taking everything together:
+
+	\begin{align}
+		0 &= -RF_{NW} + R(1 - \frac{\sqrt{2}}{2})Mg\\
+		F_{NW} &= \boxed{(1 - \frac{\sqrt{2}}{2})Mg}
+	\end{align}
+\end{sol}
+
+\section{Angular Momentum \& Rotational 2nd Law}
+
+We have established rotational analogue of force -- torque.
+
+We know the linear 2nd law and given $\vec \tau = \vec r \cross \vec F$, we can try to $\vec r \cross \text{2nd law}$.
+
+\begin{align}
+	\vec \tau &= \vec r \cross \vec F\\
+	&= \vec r \cross \frac{\D \vec p}{\D t}\\
+	&= \frac{\D}{\D t}\left(\vec r \cross \vec p\right) - \frac{\D \vec r}{\D t} \cross \vec p\\
+	&= \frac{\D}{\D t}\left(\vec r \cross \vec p\right)
+\end{align}
+
+Thus, we define the \textbf{angular momentum}
+
+\begin{definition}[Angular Momentum \& Rotational 2nd Law]
+	We defined angular momentum to be
+
+	\begin{equation}
+		\vec L = \vec r \cross \vec p
+	\end{equation}
+
+	and the 2nd law to be
+
+	\begin{equation}
+		\vec \tau = \frac{\D \vec L}{\D t}
+	\end{equation}
+\end{definition}
+
+\begin{remark}
+	With regards to angular momentum
+	\begin{itemize}
+		\item Depends on the point about which it is computed/origin of coordinates
+		\item A particle moving in a straight line may have angular momentum
+		\item Direction of $\vec L$ is $\perp$ to $\vec r$ and $\vec p$, thus perpendicular plane of motion. The positive and negative sense of $\vec L$ is similar to what we mentioned with $\vec \omega$ and $\vec \alpha$.
+		\item The magnitude is $L = rp\sin\phi = r_\perp p = rp_\perp$
+		\item A userful expression to recognize:
+		
+		\begin{align}
+			\vec L = \vec r \cross \vec p &= \langle x, y \rangle \cross \langle p_x, p_y \rangle\\
+			&= (xp_y - yp_x) \hat z\\
+			&= m (x\dot y - y \dot x) \hat z
+		\end{align}
+	\end{itemize}
+
+	Thus,
+
+	\textit{angular momentum gives a measure of the sense of rotation of the motion of a particle in given coordinates.}
+\end{remark}
+
+\begin{example}
+	Consider a block of mass $m$ sliding along a straight line, say $+x$-axis, with velocity $\vec v = v \hat x$. Suppose it is subject to a friction force $\vec F_f = - f \hat x$.
+
+	Find:
+
+	\begin{enumerate}
+		\item $\vec L_A$ and $\vec \tau_A$
+		\item $\vec L_B$ and $\vec \tau_B$
+		\item Show $\vec \tau = \frac{\D \vec L}{\D t}$ for both A and B.
+	\end{enumerate}
+\end{example}
+
+\begin{sol}
+	\begin{enumerate}
+		\item $\vec L_A = (x \hat x) \cross (mv \hat x) = 0$
+		
+		and $\vec \tau_A = (x \hat x) \cross (- f \hat x) = 0$
+
+		Thus it is obvious that part 3 is true for this case.
+
+		\item In this case $\vec r_B = x \hat x - l \hat y$.
+
+		Hence, 
+		\begin{align}
+			\vec L_B = \vec r_B \cross \vec p &= (x \hat x - l \hat y) \cross (mv \hat x)\\
+			&= mvl\hat z\\
+			\vec \tau_B = \vec r_B \cross \vec F_f &= - fl \hat z
+		\end{align}
+
+		\item We tested for part 1 (A), for B:
+		
+		\begin{align}
+			\frac{\D \vec L_B}{\D t} &= ml \frac{\D v}{\D t} \hat z = l \frac{\D (mv)}{\D t} \hat z = l \frac{\D p}{\D t} \hat z\\
+			\vec F &= \frac{\D \vec p}{\D t} \implies - f = \frac{\D p}{\D t}
+		\end{align}
+
+		\begin{equation}
+			\frac{\D \vec L_B}{\D t} = l (-f) \hat z
+		\end{equation}
+	\end{enumerate}
+\end{sol}
+
+%!! TBA Apr 2 Lecture
+
+\begin{example}
+	A ball of mass $M$ and radius $b$ rolls without slipping.
+\end{example}
+
+\begin{sol}
+	\begin{align}
+		L_z &= \pm I_\mathrm{cm} \omega + (\vec R \cross M\vec V)_z\\
+		&=  - I_\mathrm{cm} \omega + \left[(x \hat x + b \hat y) \cross M (v \hat x)\right]_z\\
+		&= - \left(\frac{2}{5} Mb^2\right) \omega + \left[-Mvb \hat z\right]_z\\
+		&= - \frac{2}{5} Mb^2 \omega - M(\omega b) b\\
+		&= -\left(\frac{2}{5} + 1\right) Mb^2\omega\\
+		\Aboxed{L_z &= - \frac{7}{5} Mb^2 \omega}
+	\end{align}
+\end{sol}
+
+\begin{example}
+	Disk of mass $M$ and radius $b$ pulled by constant force $F$ (at the bottom) slides on ice without friction. What is its motion?
+\end{example}
+
+\begin{sol}
+	Compute $\tau_z = \tau_0 + (\vec R \cross \vec F)_z$
+
+	Here $\tau_\mathrm{cm} = + I_\mathrm{cm} \alpha  = \frac{1}{2} Mb^2 \alpha = bF \implies \alpha = \frac{2F}{Mb}$
+
+	\begin{equation}
+		(\vec R \cross \vec F)_z = \left[(x \hat x + b \hat y) \cross (F \hat x)\right] = -bF
+	\end{equation}
+
+	Thus, $\tau_z = bF - bF = 0$. So the torque with respect to the origin is 0.
+
+	For angular momentum
+
+	\begin{equation}
+		L_z = I_\mathrm{cm} \omega + (\vec R \cross M \vec V)_z = \frac{1}{2} Mb^2 \omega - Mvb
+	\end{equation}
+
+	and
+
+	\begin{align}
+		\frac{\D L_z}{\D t} &= \frac{1}{2} Mb^2 \alpha - Mba = \tau_z = 0\\
+		\frac{1}{2} Mb^2 (\frac{2F}{Mb}) - Mba &= bF - Mba \implies F = Ma
+	\end{align}
+\end{sol}
+
+\section{Collection of Particles}
+
+Our rotational 2nd law states that
+
+\begin{equation}
+	\sum \vec \tau = \frac{\D \vec L}{\D t}
+\end{equation}
+
+Consider a system of $N$ particles, with positions $\vec r_i$ subject to forces $\vec F_i = \vec F_i^\mathrm{ext} + \sum_{j\neq i} \vec F_{ji}$ Their momenta are $\vec P_i$.
+
+Compute $\vec\tau_i$:
+
+\begin{equation}
+	\vec\tau_i = \vec r_i \cross \vec F_i = \vec r_i \cross \vec F_i^\mathrm{ext} + \vec r_i \cross \sum_{j\neq i} \vec F_{ji}
+\end{equation}
+
+The total torque is
+
+\begin{equation}
+	\vec\tau = \sum\vec\tau_i = \sum \vec r_i \cross \vec F_i^\mathrm{ext} + \sum_i \vec r_i \cross \left(\sum_{j\neq i} \vec F_{ji}\right)
+\end{equation}
+
+For our second term, consider torque on $i$-th particle due to particke $k$
+
+\begin{equation}
+	\vec\tau_{k_i} = \vec r_i \cross \vec F_{k_i}
+\end{equation}
+
+now consider torque on $k$ due to $i$:
+
+\begin{equation}
+	\vec\tau_{ik} = \vec r_{k} \cross \vec F_{ik}
+\end{equation}
+
+Now, with Newton's 3rd law $\vec F_{ik} = \vec F_{ki}$, so:
+
+\begin{align}
+	\vec\tau_{ki} + \vec\tau_{ik} &= \vec r_i \cross \vec F_{ki} + \vec r_k \cross \vec F_{ik}\\
+	&= (\vec r_i - \vec r_k) \vec F_{ki}
+\end{align}
+
+
+This expression is not immediately 0, however, if the force $\vec F_{ik}$ is in the direction connecting the two objects, then the torque sums up to 0.
+
+Consequently we have is that
+
+\begin{equation}
+	\vec \tau = \vec\tau_\mathrm{ext} + \frac{1}{2} \sum_i \sum_j (\vec r_i - \vec r_j) \cross \vec F_{ji} 
+\end{equation}
+
+If all internal forces are central, the second term is zero and (this seems reasonable for a rigid body consisting of $n$ particles, but is not so reasonable for free particles.)
+
+\begin{equation}
+	\vec\tau = \vec\tau_\mathrm{ext}
+\end{equation}
+
+If we consider the right hand side of the 2nd law
+
+\begin{align}
+	L_i &= \vec r_i \cross \vec P_i\\
+	&= \sum_i \vec r_i \cross \vec P_i\\
+	&= \sum \vec L_i\\
+	&= \vec L_\mathrm{tot}
+\end{align}
+
+So, if $\vec\tau_\mathrm{ext} = 0$, we have that
+
+\begin{equation}
+	\frac{\D \vec L_\mathrm{tot}}{\D t} = 0
+\end{equation}
+
+Thus, $\vec L_\mathrm{tot} = \text{const}$
+
+\begin{theorem}[Law of Conservation of Angular Momentum]
+	If the total external torque on a system is zero, then the total angular momentum of the system is conserved:
+
+	\begin{equation}
+		\Delta \vec L_\mathrm{tot} = 0
+	\end{equation}
+
+	\begin{remark}
+		However, this is assuming all pairwise internal forces are central
+	\end{remark}
+\end{theorem}
+
+Recall $\vec F = -\nabla u$. Consider spherical coordinates: $u(r,\theta,\phi)$.
+
+%! Is rotational energy conserved for a wheel that is slipping
+%! in 7.13 are we not consider the rotational momentum wrt cm?
+
+\section{Rotational Energy}
+
+%! Derivations are omitted
+
+\begin{definition}
+	We have our new form of kinetic energy as
+
+	\begin{equation}
+		K = \frac{1}{2} I_\mathrm{cm} \omega^2 + \frac{1}{2} M {V_\mathrm{cm}}^2
+	\end{equation}
+
+	and rotational KE
+
+	\begin{equation}
+		K_\mathrm{rot} = \frac{1}{2} I \omega^2
+	\end{equation}
+\end{definition}
+
+There is also a work-energy equivalent in angular momentum
+
+\begin{equation}
+	W_\mathrm{torque} = int_{\theta_0}^\theta \tau_\mathrm{cm} \D \theta
+\end{equation}
