@@ -1,0 +1,116 @@
+\chapter{Gravitation}
+
+\section{Kepler's Laws}
+
+\begin{definition}[Kepler's Laws]
+	Kepler studied and culminated his study with 3 laws:
+	\begin{enumerate}
+		\item Planets move in elliptical orbits with the Sun at one focus (out of two possible foci).
+		\item Equal areas in equal times.
+		\item The period of revolution $T$ is related to the semi-major axis $A$ by
+		
+		\begin{equation}
+			T^2 = k A^3
+		\end{equation}
+
+		where $k$ is some constant for all planets.
+	\end{enumerate}
+\end{definition}
+
+\section{Newton's Law of Universal Gravitation}
+
+The \textbf{gravitational force} $F_g$ between two point masses $m_1$ and $m_2$ is given by
+
+\begin{equation}
+	\vec F_\mathrm{G12} = - \mathrm{G} \frac{m_1 m_2}{r^2} \hat r
+\end{equation}
+
+where $r = \abs{\vec r_1 - \vec r_2}$ is the distance between particles, and $\hat r$ is the direction of $\vec r_2 - \vec r_1$. and $\mathrm{G}$, \textbf{Newton's Constant}, is
+
+\begin{equation}
+	\mathrm{G} = \SI{6.67e-11}{N m^2 / kg^2}
+\end{equation}
+
+This is also an inverse square law
+
+\begin{equation}
+	F_\mathrm{G} \propto \frac{1}{r^2}
+\end{equation}
+
+Gravity is incredibly small compared to other fundamental forces.
+
+Often, one mass is significantly larger than the other (i.e. Sun \& Planet) in which case a language is used: supposed $m_1 \gg m_2$, write $M \equiv m$, $m \equiv m_2$, then
+
+\begin{equation}
+	F_G = - G \frac{Mm}{r^2} \hat r
+\end{equation}
+
+is force on $m$ due to $M$.
+
+Call $M$ the ``source'' mass and $m$ is the ``test'' mass because studying only motion of $m$.
+
+Law is for point masses, however it holds in same form for spherical masses where $u$ is the distance between their centers.
+
+\section{Connection to Weight / Surface Gravity}
+
+Consider a mass $m$ at/near the surface of $M$, let the distance from the center of $m$ to the surface of $M$ be $h$, then we have
+
+\begin{equation}
+	F_\mathrm{G} = - \mathrm{G} \frac{Mm}{r^2} \hat r = - \mathrm{G} \frac{Mm}{(R + h)^2} \hat r = - \left(\frac{GM}{R^2}\right) m \frac{1}{(1 + \nicefrac{h}{R})^2}
+\end{equation}
+
+If $h \ll R$, the $\nicefrac{h}{R} \ll 1$. Let $\delta \equiv \nicefrac{h}{R}$, then we have $\frac{1}{(1 + \delta)^2}$ with $\delta \ll 1$.
+
+Taylor expansion about $\delta = 0$ gives
+
+\begin{equation}
+	(1 + \delta)^{-2} \approx 1 - 2 \delta + O(\delta^2)
+\end{equation}
+
+Then,
+
+\begin{equation}
+	F_\mathrm{G} \approx  - \left(\frac{GM}{R^2}\right) m \left[1 - 2 \left(\frac{h}{R}\right) + O\left(\left(\frac{h}{R}\right)^2\right)\right] \hat r
+\end{equation}
+
+Since $\nicefrac{h}{R} \ll 1$, we can neglect the terms of order $\nicefrac{h}{R}$ and higher
+
+\begin{equation}
+	\vec F_\mathrm{G} \cong - \left(\frac{GM}{R^2}\right) m \hat r
+\end{equation}
+
+Consider Earth, then we have
+
+\begin{equation}
+	\frac{\mathrm{G} M_E}{{R_E}^2} = \SI{9.81}{m/s^2} \equiv \mathrm{g}
+\end{equation}
+
+Hence, $\vec F_\mathrm{G} = - mg\hat z$ is the weight.
+
+In general, we can write gravity as the \textbf{gravitational field}
+
+\begin{equation}
+	\vec{g} (r) \equiv - \frac{\mathrm{G} M}{r^2} \hat r
+\end{equation}
+
+sourced by $M$.
+
+\section{Principle of Equivalence}
+
+Let's consider $m_\mathrm{G} = \nicefrac{\vec F_\mathrm{G}}{\vec g}$ as the \textbf{gravitational mass} and $m_I = \nicefrac{\vec F_\mathrm{net}}{\vec a}$ to be the inertial mass.
+
+These have be repeatedly proven to be the same.
+
+Thus, for a particle accelerating via gravity
+
+\begin{equation}
+	\vec a = \vec g
+\end{equation}
+
+\begin{remark}
+	But, think of a situation where we are in a box, and we experience our own weight. Do we know if we are on Earth or being accelerated at gravitational acceleration on earth?
+
+	Also, when we are experiencing free-fall, we don't experience our own weight, and there doesn't seem to be a force on us.
+
+	We don't know. They are the same. So what Einstein figured was that gravity is not a force, but a curvature in spacetime. \footnote{If a man falls from the roof of a house, he would not feel his own weight.}
+\end{remark}
