@@ -222,7 +222,148 @@ Thus, we define the \textbf{angular momentum}
 	\end{enumerate}
 \end{sol}
 
+\section{Angular Momentum}
+
+Recall the rotational 2nd law, where
+
+\begin{equation}
+	\sum \vec \tau = \frac{\D \vec L}{\D t}
+\end{equation}
+
+where
+
+\begin{definition}[Angular Momentum]
+	\begin{equation}
+		\vec L = \vec r \cross \vec p
+	\end{equation}
+
+	is defined to be the angular momentum.
+\end{definition}
+
+For a fixed axis rigid body rotation (i.e. spinning), $\vec L$ takes a simplified form. All points within a rigid body have some $\omega$ since it is a rigid body. The angular momentum of a particle $i$ on the rigid body is
+
+\begin{equation}
+	\vec L_i = \vec r_i \cross \vec p_i \implies \left(\vec L_i\right)_z = \left(\vec r_i \cross \vec p_i \right)_z
+\end{equation}
+
+This means that (if we consider the linear momentum to tangential with radial $r_i$, i.e. $\vec r_i \perp \vec p_i$)
+
+\begin{equation}
+	L_i = s_i m_i v_i = s_i m_i (\omega s_i) = m_i {s_i}^2 \omega
+\end{equation}
+
+This is then defined to be the \textbf{moment of inertia} $I$ for a point particle.
+
+\begin{definition}[Moment of Inertia]
+	\begin{equation}
+		I_\mathrm{body} = \sum_i m_i {s_i}^2
+	\end{equation}
+
+	and to get a continuum description of body, we get
+
+	\begin{equation}
+		I = \int s^2 \D m
+	\end{equation}
+\end{definition}
+
+Now, coming back to angular momentum, we then have
+
+\begin{definition}
+	\begin{equation}
+		L = I\omega
+	\end{equation}
+
+	\begin{enumerate}
+		\item Which is equivalent expression for $L$ for fixed axis rigid body rotation.
+		\item Analogous to $p = mv$ with $I \leftrightarrow m, \omega \leftrightarrow v$.
+	\end{enumerate}
+\end{definition}
+
+\section{Moment of Inertia}
+
+\begin{enumerate}
+	\item $I$ is a measure of rotational inertia... rotational analogue of mass. Greater $I$ the greater ``resistance'' of body to changes in its rotational motion.
+	\item $I$ depends on axis of rotation (via $s^2$ factor), just like how $\tau$ and $L$ do as well. However, the relationships $L = I\omega$ and $\tau = \frac{\D l}{\D t}$ are \textbf{frame independent}.
+	\item $I$ depends not only on the mass, but how it is distributed within the body. If most of the mass is concentrated near axis of rotation, then $I$ is smaller compared to more mass concentrated further away.
+	\item Quantity of the form $\int s^n \D m$ is a ``moment'', so inertia is a ``second moment'' because $s^2$.
+	\item For non-fixed axis of rotation (rigid body), turns out that $v = \omega r$ no longer applies.
+
+	Instead, consider $\vec r_i$ position of mass $m_i$ relative to center of mass of the body.
+
+	Note that:
+
+	\begin{equation}
+		\dot{\vec r_i} = \vec \omega \cross \vec r_i \implies \vec v = \vec \omega \cross \vec r
+	\end{equation}
+
+	To compute $\vec L$ with respect to C.O.M.
+
+	\begin{align}
+		\vec L_\mathrm{CM} &= \sum_i \vec r_i \cross \vec p_i = \sum_i \vec r_i \cross \left(m_i \dot{\vec r_i}\right) = \sum_i \vec r_i \cross m_i \left(\vec \omega \cross \vec r_i\right)\\
+		\vec L_\mathrm{CM} &= \sum_i m_i \left(\vec r_i \cross \vec \omega \cross \vec r_i\right) = \sum_i m_i \left[{r_i}^2 \vec \omega - (\vec \omega \cdot \vec r_i) \vec r_i\right]\\
+		&= \sum_i \left[m_i {r_i}^2 \vec \omega - (\vec \omega \cdot \vec r_i) m_i \vec r_i\right]\footnotemark\\
+		&= I\omega
+	\end{align}
+	\footnotetext{Because the second term is zero for fixed axis rotation with $r_i = s_i$}
+\end{enumerate}
+
+A side note, moment of inertia $I$ can be written as a matrix multiplication with some $\vec \omega$.
+
+\begin{equation}
+	I = \begin{pmatrix}
+		I_{xx} & I_{xy} & I_{xz}\\
+		I_{yx} & I_{yy} & I_{yz}\\
+		I_{zx} & I_{zy} & I_{zz}
+	\end{pmatrix}
+\end{equation}
+
+But, $I$ is actually also not a matrix but rather a rank 2 tensor -- the \textbf{moment of inertia tensor}:
+
+\begin{equation}
+	I = \sum \left[m_i {r_i}^2 E_3 - m_i \vec r_i \otimes \vec r_i\right]
+\end{equation}
+
+where $E_3$ is the 3-by-3 identity matrix.
+
+\subsection{Parallel Axis Theorem}
+
+\begin{theorem}
+	The moment of inertia $I$ about an axis parallel to an axis through the center of mass, $I_0$, a distance $d$ apart, is given by
+
+	\begin{equation}
+		I = I_0 + Md^2
+	\end{equation}
+\end{theorem}
+
+\section{Dynamics of Fixed Axis Rigid Body Motion}
+
+In this case, $L = I\omega$ with $I = \text{const}$. Therefore, rotational 2nd law may be written as
+
+\begin{equation}
+	\sum \tau = \frac{\D L}{\D t} = I \frac{\D \omega}{\D t} \implies \sum \tau = I \alpha
+\end{equation}
+
 %!! TBA Apr 2 Lecture
+
+\begin{remark}
+	Note that Chasles' Theorem still applies when the center of mass is acceleration. That is to say the motion in the angular aspect is still valid given the net torque exerted on the object.
+\end{remark}
+
+\section{Examples of Rotational Motion}
+
+\subsection{Physical Pendulum}
+
+%! TBA
+
+\subsection{Dynamics of Translation \& Rotation}
+
+%! TBA
+
+\subsection{Examples}
+
+\begin{example}
+	Ramp mass pully example.
+\end{example}
 
 \begin{example}
 	A ball of mass $M$ and radius $b$ rolls without slipping.
