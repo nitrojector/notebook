@@ -1,0 +1,62 @@
+\chapter{Vector Calculus}
+
+\section{Vector Fields}
+
+\section{Line Integrals}
+
+\section{Fundamental Theorem of Line Integrals}
+
+Given a conservative vector field $\vec F = \nabla f$, how do we evaluate the following?
+
+\begin{align}
+	\int_C \vec F \cdot \D \vec r &= \int_a^b \nabla f(\vec r(t)) \cdot \vec r'(t) \D t\\
+	&= \int_a^b \left(\frac{\partial f}{\partial x} \frac{\partial x}{\partial t} + \frac{\partial f}{\partial y} \frac{\partial y}{\partial t} + \frac{\partial f}{\partial z} \frac{\partial z}{\partial t}\right) \D t\\
+	&= \int_a^b \frac{\D}{\D t} f(x(t), y(t), z(t)) \D t\\
+	&= f(x(b), y(b), z(b)) - f(x(a), y(a), z(a))
+\end{align}
+
+\begin{theorem}[Fundamental Theorem of Line Integrals]
+	\begin{equation}
+		\int_C \nabla f \cdot \D \vec r = f(B) - f(A)
+	\end{equation}
+\end{theorem}
+
+\begin{remark}
+	If $\vec F = \nabla f$, then $\int_C \vec F \cdot \D \vec r$ does not depend on the shape of path $C$.
+\end{remark}
+
+For a conservative field
+
+\begin{equation}
+	\oint_C \vec F \cdot \D \vec r = 0
+\end{equation}
+
+So when is a conservative field conservative?
+
+\begin{lemma}
+	$\mathbb{R}^2$ test: Given $\vec F(x, y) = P(x, y) \hat i + Q(x, y) \hat j$
+
+	$\vec F$ is conservative if $\frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x}$ in its domain.
+\end{lemma}
+
+\begin{proof}
+	If $\vec F$ is conservative, then $\nabla f = \vec F$ i.e. $f_x = P$ and $f_y = Q$.
+
+	Then we have that $P_y = (f_x)_y$ and $Q_x = (f_y)_x$, which should be equal.
+\end{proof}
+
+\section{Green's Theorem}
+
+Given some vector function
+
+\begin{equation}
+	\vec F(x, y) = P(x, y) \hat i + Q(x, y) \hat j
+\end{equation}
+
+and consider
+
+\begin{equation}
+	\oint_{C_1} \vec F \cdot \D \vec r + \oint_{C_2} \vec F \cdot \D \vec r = \oint_{C_{1+2}} \vec F \cdot \D \vec r \implies \sum_n \oint_{C_n} \vec F \cdot \D \vec r = \oint_C \vec F \cdot \D \vec r
+\end{equation}
+
+Green's Theorem looks at the circulation of a closed area in the positive orientation. 

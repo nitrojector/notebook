@@ -104,15 +104,15 @@
 }
 
 \newenvironment{theorem}
-  {\begin{theorembox}\begin{theo}}
+  {\begin{theorembox}\begin{theo}\leavevmode}
   {\end{theo}\end{theorembox}}
 
 \newenvironment{definition}
-	{\begin{defbox}\begin{defi}}
+	{\begin{defbox}\begin{defi}\leavevmode}
 	{\end{defi}\end{defbox}}
 
 \newenvironment{example}
-	{\begin{tcolorbox}[breakable]\begin{examp}}
+	{\begin{tcolorbox}[breakable]\begin{examp}\leavevmode}
 	{\end{examp}\end{tcolorbox}}
 
 \newenvironment{indt}
@@ -141,6 +141,8 @@
 	\include{chapters/C1}
 
 	\include{chapters/C2}
+
+	\include{chapters/C3}
 
 	\appendix
 
