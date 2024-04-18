@@ -114,3 +114,265 @@ Thus, for a particle accelerating via gravity
 
 	We don't know. They are the same. So what Einstein figured was that gravity is not a force, but a curvature in spacetime. \footnote{If a man falls from the roof of a house, he would not feel his own weight.}
 \end{remark}
+
+\section{Gravitational Potential}
+
+Gravity is a central force and hence conservative. The gravitational potential energy $U_\mathrm{G}$ is
+
+\begin{equation}
+	U_\mathrm{G}(r) - U_\mathrm{G}(\infty) = - \int_\infty^r \vec F_\mathrm{G} \cdot \D \vec l = \int_\infty^r \frac{\mathrm{G} M m}{r^2} \D r = - \frac{\mathrm{G} M m}{r}
+\end{equation}
+
+So, we have the gravitational potential.
+
+\begin{definition}[Gravitational Potential]
+	The gravitational potential is defined as
+	
+	\begin{equation}
+		U_\mathrm{G}(r) = - \frac{\mathrm{G} M m}{r} 
+	\end{equation}
+\end{definition}
+
+We define the gravitational potential (\textbf{not} energy) $\Phi$ by
+
+\begin{equation}
+	\Phi = \frac{U_\mathrm{G}}{m} = -\frac{\mathrm{G}M}{r}
+\end{equation}
+
+Now, if also find that
+
+\begin{equation}
+	- \nabla \Phi = - \frac{\partial \Phi}{\partial r} \hat r = - \frac{\mathrm{G}M}{r^2} \hat r = \vec g
+\end{equation}
+
+Hence, we have that
+
+\begin{equation}
+	\vec g = - \nabla \Phi
+\end{equation}
+
+and is analogous to
+
+\begin{equation}
+	\vec F_\mathrm{G} = - \nabla U_\mathrm{G}
+\end{equation}
+
+\begin{remark}
+	Note that in E\&M, we have something very similar:
+
+	\begin{equation}
+		\vec F_E = - \nabla U_E \quad \vec E = \frac{\vec F_E}{q} \quad V = \frac{U_E}{q} \quad \vec E = - \nabla V
+	\end{equation}
+\end{remark}
+
+\section{Two-Body Problem}
+
+A system of two masses $m_1$ and $m_2$ , that interact solely via a central force.
+
+\begin{align}
+	m_1 \ddot{\mathbf{r}}_1 &= f(r) \hat r\\
+	m_2 \ddot{\mathbf{r}}_2 &= - f(r) \hat r\\
+	\mathbf{r} &\equiv \mathbf{r}_1 - \mathbf{r}_2
+\end{align}
+
+expressed explicitly
+
+\begin{align}
+	m_1 \ddot{\mathbf{r}}_1 &= - \frac{\mathrm{G}m_1 m_2}{\abs{\mathbf{r}_1 - \mathbf{r}_2}^3} (\mathbf{r}_1 - \mathbf{r}_2)\\
+	m_2 \ddot{\mathbf{r}}_1 &= + \frac{\mathrm{G}m_1 m_2}{\abs{\mathbf{r}_1 - \mathbf{r}_2}^3} (\mathbf{r}_1 - \mathbf{r}_2)
+\end{align}
+
+instead, we can rewrite it as
+
+\begin{align}
+	\ddot{\mathbf{r}}_1 &= \frac{1}{m_1} f(r) \hat{\mathbf{r}}\\
+	\ddot{\mathbf{r}}_1 &= - \frac{1}{m_2} f(r) \hat{\mathbf{r}}
+\end{align}
+
+we combine these equations to obtain
+
+\begin{equation}
+	\ddot{\mathbf{r}}_1 - \ddot{\mathbf{r}}_2 = \ddot{\mathbf{r}} = \left(\frac{1}{m_1} + \frac{1}{m_2}\right) f(r) \hat{\mathbf{r}}
+\end{equation}
+
+Where
+
+\begin{equation}
+	\mu \equiv \frac{m_1 m_2}{m_1 + m_2}
+\end{equation}
+
+is the reduced mass.
+
+Our tw-body problem is equivalent to the one-body problem
+
+\begin{equation}
+	\mu \ddot{\mathbf{r}} = - f(r) \hat{\mathbf{r}}
+\end{equation}
+
+If we look at the C.O.M. frame
+
+\begin{equation}
+	\mathbf{R} = \frac{m_1 \mathbf{r}_1 + m_2 \mathbf{r}_2}{m_1 + m_2}
+\end{equation}
+
+We have
+
+\begin{align}
+	\mathbf{r}_1 &= \mathbf{r}_1' + \mathbf{R}\\
+	\textbf{r}_1' &= \textbf{r}_1 - \mathbf{R}\\
+	&= \frac{(m_1 + m_2) \mathbf{r}_1 - m_1 \mathbf{r}_1 - m_2 \mathbf{r}_2}{m_1 + m_2}\\
+	&= \frac{m_2 (\mathbf{r}_1 - \mathbf{r}_2)}{m_1 + m_2}\\
+	&= \frac{\mu}{m_1} \mathbf{r}
+\end{align}
+
+so we have
+
+\begin{equation}
+	\mu \mathbf{r} = m_1 \mathbf{r}_1'
+\end{equation}
+
+hence if we know $\mathbf{r}$ we know $\mathbf{r}_1 \& \mathbf{r}_2$.
+
+Now, we should consider the \textbf{conservation of angular momentum}:
+
+%!----
+
+Since $\mathbf{L}$ is constant
+
+\begin{align}
+	\abs{\mathbf{L}} &= \abs{\mathbf{r} \cross \mu \dot{\mathbf{r}}} = \abs{\mathbf{r} \cross \mu (\dot r \hat{\mathbf{r}} + r \dot\theta \hat{\mathbf{\theta}})}\\
+	&= \mu r^2 \dot \theta
+\end{align}
+
+This is basically Kepler's 2nd Law!
+
+Conservation of Energy or the frist integral of motion:
+
+We have total energy $E$, a constant, as:
+
+\begin{equation}
+	E = \frac{1}{2} \mu \dot{\mathbf{r}}^2 + U(r)
+\end{equation}
+
+where $f(r) \hat{\mathbf{r}} = - \nabla U$.
+
+In polar coordinates:
+
+\begin{align}
+	\dot{\mathbf{r}} &= \dot r \hat r + r \dot\theta \hat\theta \implies \dot{\mathbf{r}}^2 = \dot r^2 + r^2 \dot \theta^2\\
+	E &= \frac{1}{2} \mu \dot r^2 + \frac{1}{2}\mu r^2 \dot\theta^2 + U(r)
+\end{align}
+
+Since $L$ is constant, we write $\dot \theta = \frac{L}{\mu r^2}$ and substitute:
+
+\begin{align}
+	E &= \frac{1}{2} \mu \dot r^2 + \frac{1}{2}\mu r^2 \left(\frac{L}{\mu r^2}\right)^2 + U(r)\\
+	&= \frac{1}{2} \mu \dot r^2 + U_\mathrm{eff}(r)
+\end{align}
+
+where
+
+\begin{equation}
+	U_\mathrm{eff}(r) = \frac{L^2}{2 \mu r^2} + U(r)
+\end{equation}
+
+which is the effective potential.
+
+For gravity $U(r) = - \nicefrac{C}{r}$ where $C = \mathrm{G} m_1 m_2$
+
+The effective potential is:
+
+\begin{equation}
+	U_\mathrm{eff}(r) = \frac{L^2}{2 \mu r^2} - \frac{C}{r}
+\end{equation}
+
+Now, we return to solving for the motion of the bodies; we want the trajectory $r = r(\theta)$.
+
+\begin{equation}
+	\frac{\D \theta}{\D t} = \frac{\D \theta}{\D r} \frac{\D r}{\D t} = \frac{\D \theta}{\D r} \dot r
+\end{equation}
+
+From energy we have
+
+\begin{align}
+	E &= \frac{1}{2} \mu \dot r^2 + \frac{L^2}{2\mu r^2} - \frac{C}{r}\\
+	\dot r &= \sqrt{\frac{2}{\mu} \left(E + \frac{C}{r} - \frac{L^2}{2\mu r^2}\right)}
+\end{align}
+
+From angular momentum, we have
+
+\begin{align}
+	\dot \theta &= \frac{L}{\mu r^2}\\
+	\frac{\D \theta}{\D r} &= \frac{L}{\mu r^2}\\
+	\frac{\D \theta}{\D r} &= \frac{L}{\mu r^2} \frac{1}{\sqrt{\frac{2}{\mu} \left(E + \frac{C}{r} - \frac{L^2}{2\mu r^2}\right)}}\\
+	&= \frac{L}{r \sqrt{2 \mu \left(Er^2 + Cr - \nicefrac{L^2}{2\mu}\right)}}\\
+	\Aboxed{\frac{\D \theta}{\D r} &= \frac{L}{r \sqrt{2 \mu E r^2 + 2 \mu Cr - L^2}}}
+\end{align}
+
+Then we want to find
+
+\begin{equation}
+	\int_{\theta_0}^\theta \D \theta = \theta - \theta_0 = \int_{r_0}^r \frac{L \D r}{r \sqrt{2 \mu E r^2 + 2 \mu Cr - L^2}}
+\end{equation}
+
+The result is (process not shown):
+
+\begin{equation}
+	\theta - \theta_0 = - \arcsin \left[\left(- \frac{\mu C}{L^2}\right) \sqrt{\frac{L^4}{2\mu E L^2 + (\mu C)^2}}\right]
+\end{equation}
+
+We invert and rearrange to obtain
+
+\begin{equation}
+	r = \frac{r_0}{1 - \epsilon \cos\theta}
+\end{equation}
+
+where
+
+\begin{align}
+	r_0 &\equiv \frac{L^2}{\mu C}\\
+	\epsilon &\equiv \sqrt{1 + \frac{2 E L^2}{\mu C^2}}
+\end{align}
+
+\begin{remark}
+	$r_0$ is minimum of $U_\mathrm{eff}(r)$ if $E = U_\mathrm{min}$ then $\epsilon = 0 \implies r = r_0$
+
+	If $E = U_\mathrm{min}$ the orbits are then circles.
+
+	If $E < 0$, then $0 \leq \epsilon \leq 1$
+
+	\medskip
+
+	\begin{align}
+		\sqrt{x^2 + y^2} &= \frac{r_0}{1 - \frac{\epsilon x}{r}}\\
+		\sqrt{x^2 + y^2} \left(1 - \frac{\epsilon x}{r}\right)&= r_0\\
+		\sqrt{x^2 + y^2} - \epsilon x &= r_0\\
+		x^2 + y^2 &= {r_0}^2 + \epsilon^2 x^2 + 2 \epsilon r_0 x\\
+		(1 - \epsilon^2)x^2 + y^2 - 2 \epsilon r_0 x &= {r_0}^2
+	\end{align}
+
+	Notice that this is the equation of an ellipse!
+
+	$\epsilon$ is \textbf{eccentricity} of the ellipse, which is basically Kepler's 1st Law!
+\end{remark}
+
+Now, with the period of orbit
+
+\begin{align}
+	\left(\frac{\D r}{\D t}\right)^2 &= \frac{2}{\mu} (E - U_\mathrm{eff})\\
+	t_a - t_b &= \int_{r_a}^{r_b} \frac{\D r}{\sqrt{\frac{2}{\mu} (E - U_\mathrm{eff})}}
+\end{align}
+
+If we compute the integral and take $r_a = r_b \implies t_a - t_b = T$ period.
+
+\begin{align}
+	T &= - \frac{\mu C \pi}{E} \frac{1}{\sqrt{-2\mu E}}\\
+	T^2 &= \frac{\mu \pi^2}{2 C} \left(- \frac{C^3}{E^3}\right)
+\end{align}
+
+Since $-1 < \cos\theta < 1 \implies r_\mathrm{min} < r < r_\mathrm{max}$ where $r_\mathrm{max} = \frac{r_0}{1 - \epsilon}$ and $r_\mathrm{min} = \frac{r_0}{1 + \epsilon}$
+
+\begin{equation}
+	T^2 = \frac{\pi^2}{2G(m_s + m_p)} A^3
+\end{equation}
+
