@@ -1,0 +1,391 @@
+\chapter{Thermodynamics}
+
+%! Prequel to add
+
+\section{Ideal Gas Law}
+
+\begin{definition}[Ideal Gass Law]
+	The ideal gas law describes the relationship between pressure, volume, and temperature.
+
+	\begin{equation}
+		PV=nRT
+	\end{equation}
+
+	or
+
+	\begin{equation}
+		PV = N k_B T
+	\end{equation}
+
+	where
+
+	\begin{itemize}
+		\item $P$ = pressure ($\si{Pa}$)
+		\item $V$ = volume ($\si{m^3}$)
+		\item $T$ = temperature (K)
+		\item $n$ = number of moles
+		\item $N$ = number of molecules
+	\end{itemize}
+
+	where
+
+	\begin{equation}
+		N = n N_A \qquad N_A = 6.022 \cross 10^{23}
+	\end{equation}
+
+	We also have the \textit{universal gas constant} $R = \SI{8.314}{J/mol K}$ and the \textit{Boltzmann's Constant} $k_B = \SI{1.381e-23}{J/K}$.
+
+\end{definition}
+
+\textbf{Ideal} means the gas is law-density, non-interacting, and above equation of state holds.
+
+\section{Kinetic Theory of Gases}
+
+Assumptions:
+
+\begin{itemize}
+	\item non-interacting \& low-density
+	\item monatomic gas
+	\item collision of gas with container are elastic
+\end{itemize}
+
+Let there be a piston forming a section of length $L$ with a container.
+
+Volume of the cylinder is $V = LA$
+
+Average pressure particle exerts on the piston:
+
+\begin{equation}
+	\overline{P} = \frac{\overline{F}_{x\text{, piston}}}{A} = -\frac{\overline{F}_{x\text{, particle}}}{A} = - \frac{\Delta P_x / \Delta t}{A}
+\end{equation}
+
+The momentum change
+
+\begin{equation}
+	\Delta P_x = mv_{fx} - mv{ix} = - mv_{ix} - mv_{ix} = -2 mv_{ix} = -2mv_x
+\end{equation}
+
+The time between collisions would be
+
+\begin{equation}
+	\Delta t = \frac{2L}{v_x}
+\end{equation}
+
+Hence,
+
+\begin{equation}
+	\overline{P} = \frac{2m{v_x}^2}{2LA} = \frac{m{v_x}^2}{V} \implies \overline{P}V = m{v_x}^2
+\end{equation}
+
+When we consider $N$ particles:
+
+\begin{equation}
+	\overline{P}V = \sum_{i=1}^N m{v_{ix}}^2 = N \overline{m{v_x}^2}
+\end{equation}
+
+For $N$ that is very large, $P$ is approximately continuous so $\overline{P} \to P$ and
+
+\begin{equation}
+	PV = Nm \overline{{v_x}^2} \implies Nk_BT = N m \overline{{v_x}^2}
+\end{equation}
+
+We then obtain the aoverage $x$-direction kinetic energy
+
+\begin{equation}
+	\frac{1}{2}k_B T = \overline{\frac{1}{2}m{v_x}^2} = \overline{K_x}
+\end{equation}
+
+where we can apply the same argument to all three walls
+
+\begin{equation}
+	\overline{K} = \overline{K_x} + \overline{K_y} + \overline{K_z} = \frac{3}{2} k_B T
+\end{equation}
+
+We should mention a \textbf{quadratic degree of freedom} is any energy that is quadratic in a variable
+
+\begin{equation}
+	\text{For example: } \frac{1}{2}mv^2, \frac{1}{2} I \omega^2, \frac{1}{2}kx^2
+\end{equation}
+
+\begin{theorem}[Equipartition Theorem]
+	At temperature $T$, the average energy per quadratic degree of freedom is $\frac{1}{2}k_B T$.
+\end{theorem}
+
+Monatomic Ideal Gas: $f = 3 \to$ translation K, so $\frac{3}{2}k_BT$.
+
+Diatomic Ideal Gas: $f = \text{trans} + \text{rot} = 3 + 2 = 5$, so $\frac{5}{2}k_BT$
+
+Let's define a new form of energy, the \textbf{thermal} or \textbf{internal} energy,
+
+\begin{equation}
+	U_\mathrm{th} = N \frac{f}{2} k_BT
+\end{equation}
+
+Monatomic Ideal Gas Energy: $f = 3 \to$ translation K, so $\frac{3}{2}Nk_BT$.
+
+Diatomic Ideal Gas Energy: $\frac{5}{2}Nk_BT$
+
+\section{First Law of Thermodynamics}
+
+\begin{definition}[First Law of Thermodynamics]
+	\begin{equation}
+		\Delta U_\mathrm{th} = W + Q
+	\end{equation}
+
+	where
+
+	\begin{enumerate}
+		\item $W$ is work: Here we consider only compression-expansion work (e.g. of the piston in the example) $\vec F \cdot \D \vec r \to PA\D l = P\D V$
+
+		\begin{equation}
+			W = -\int_{V_0}^V P \D V
+		\end{equation}
+
+		When we have decrease in volume, we should have increase in temperature, which is increase in energy, so we need the negative sign.
+
+		\begin{remark}
+			In some context (i.e. engineering), the first law has $-W$ instead, and there is no negative sign in the work. This works out ultimately the same, but we think more of the work done on our gas, not the gas on the environment, so we stick with this convention/definition.
+		\end{remark}
+
+		\item $Q$ is heat: spontaneous energy exchange due to a temperature difference.
+	\end{enumerate}
+\end{definition}
+
+\section{Heat}
+
+\begin{definition}[Heat]
+	Let \textbf{heat capacity}, $C$, is
+
+	\begin{equation}
+		C = \frac{Q}{\Delta T}
+	\end{equation}
+
+	and \textbf{specific heat}, $c$, is
+
+	\begin{equation}
+		c = \frac{Q}{m\Delta T} = \frac{C}{m}
+	\end{equation}
+
+	where there is also a mole variant \textbf{molar specific heat}
+
+	\begin{equation}
+		c = -\frac{C}{n} = \frac{Q}{n \Delta T}
+	\end{equation}
+
+	Specific heat at constant volume: $Q = m c_V \Delta T$ (implies $W = 0$)
+
+	Specific heat at constant pressure: $Q = m c_P \Delta T$ (note $W = -P\Delta V$)
+\end{definition}
+
+\section{Phase Transition}
+
+During a phase transition, $\Delta T = 0$. Between solid, liquid, and gas.
+
+There is the \textbf{latent heat} of \textbf{fusion} (solid $\leftrightarrow$ liquid)
+
+\begin{equation}
+	Q = \pm m L_f
+\end{equation}
+
+and of \textbf{vaporization} (liquid $\leftrightarrow$ gas)
+
+\begin{equation}
+	Q = \pm m L_v
+\end{equation}
+
+\section{Thermodynamic Processes}
+
+Our system is characterized by state variables $(P,V,T,N,S)$, where $S$ is entropy and $N$ is fixed, $U$ is always a function of state $U = U(P,V)$
+
+Generally, only need three variables and an equation of state. (e.g. the ideal gas law)
+
+We can represent our system on a diagram, such as a PV-diagram.
+
+Since we have 3 variables, we can use any point to compute all the state variables of the system at some time. (so we don't necessarily have to use P and V)
+
+The process which state changes occur is a sequence of infinitesimal changes, so a continuous curve on the diagram.
+
+We will now talk about four such processes for monatomic ideal gas.
+
+\subsection{Isobaric}
+
+An \textbf{isobaric} process occurs at constant pressure. ($P = \mathrm{const}$)
+
+\begin{align}
+	W &= -P \Delta V\\
+	Q = n C_P \Delta T\\
+	\Delta U_\mathrm{th} &= \frac{f}{2}nR\Delta T
+\end{align}
+
+We can combine these expressions together to obtain
+
+\begin{align}
+	\Delta U_\mathrm{th} &= Q + W\\
+	\frac{f}{2}nR\Delta T &= nC_P \Delta T - P \Delta V\\
+	&= nC_P\Delta T - nR\Delta T\\
+	\frac{f}{2}nR\Delta T + nR \Delta T &= nC_p\Delta T\\
+	C_P &= \frac{f}{2} R + R = \frac{f + 2}{2}R
+\end{align}
+
+\subsection{Isochoric}
+
+An \textbf{isochoric} process is when we ahve constant volume.
+
+We have the following condition for the process.
+
+\begin{align}
+	W &= 0\\
+	Q &= nC_V\Delta T\\
+	\Delta U_\mathrm{th} &= \frac{f}{2} nR\Delta T
+\end{align}
+
+We can solve for these to obtain the relation:
+
+\begin{align}
+	\Delta U_\mathrm{th} &= Q\\
+	\frac{f}{2}nR\Delta T &= nC_V\Delta T\\
+	C_V &= \frac{f}{2} R
+\end{align}
+
+Thus, note that $C_P = C_V + R$
+
+\subsection{Isothermal}
+
+An \textbf{isothermal} process is when temperature is held constant, as a result, PV is constant.
+
+We basically have a curve that is $P \propto \frac{1}{V}$.
+
+%! Add later
+
+\begin{align}
+	W = ...
+\end{align}
+
+\subsection{Adiabatic}
+
+An \textbf{adiabatic} process is one where there is no heat exchange.
+
+From our later calcualtions, we would know that the path for such a cycle is between two isothermal processes of a certain temperature, and present itself as a steeper slope than $P \propto \frac{1}{V}$ as $P \propto \frac{1}{V^\gamma}, \gamma > 1$.
+
+Our conditions are
+
+\begin{align}
+	Q &= 0\\
+	W &= - \int_{V_0}^V P\D V\\
+	\Delta U_\mathrm{th} &= \frac{f}{1}nR\Delta T\\
+	PV &= nRT
+\end{align}
+
+Now we can setup the infinitesimal first law:
+
+\begin{align}
+	\D U_\mathrm{th} &= \D W + \D Q\\
+	&= \D W\\
+	\frac{f}{2}nR\D T &= -P \D V
+\end{align}
+
+Note that we consider an ideal gas
+
+\begin{equation}
+	P\D V + V \D P = nR\D T
+\end{equation}
+
+So we can substitute and obtain the differential equation which solves to
+
+\begin{align}
+	\frac{f}{2} P \D V + \frac{f}{2}V \D P &= - P \D V\\
+	\ln\left[\frac{{V_f}^{1 + \frac{2}{f}} P_f}{{V_i}^{1 + \frac{2}{f}} P_f}\right] &= 0
+\end{align}
+
+So we know that $PV^\gamma = \mathrm{const}$.
+
+Hence, 
+
+\begin{equation}
+	\gamma = 1 + \frac{2}{f} = \frac{2 + f}{f} = \frac{C_P}{C_V}
+\end{equation}
+
+which is called the \textbf{adiabatic ratio}.
+
+Let $PV^\gamma = A$ a constant, then, $P = AV^{-\gamma}$ so that
+
+\begin{align}
+	W &= - \int_{V_0}^V  P \D V\\
+	&= - \int_{V_0}^V A V^{-\gamma} \D V\\
+	&= \frac{A}{\gamma - 1}({V_f}^{1-\gamma} - {V_i}^{1-\gamma})\\
+	&= \frac{P_i {V_i}^\gamma}{\gamma - 1} \left({V_f}^{1-\gamma} - {V_i}^{1-\gamma}\right)
+\end{align}
+
+Note that $\Delta U_\mathrm{th} = W = \frac{f}{2} nR\Delta T$
+
+\section{Cycle}
+
+A \textbf{cycle} is a sequence of processes that take system from an initial state back to that same initial state.
+
+Since $U_\mathrm{th}$ is a function of state, $\Delta U_\mathrm{th}$ for whole cycle is zero.
+
+\section{Heal Engines and Refrigerators}
+
+A heat engine is a device that takes a working substance (e.g. ideal gas) through a cycle such that it converts a portion of input heat into work done by system on its surroundings.
+
+The idea is that the heat comes from a heat reservoir $T_H$ and it goes into the engine through heat $Q_H$, but then there must be some heat dissipated $Q_C$ to a cold reservoir $T_C$ while doing work $W$.
+
+So, there must be some efficiency, written as
+
+\begin{equation}
+	\eta = \frac{W_\mathrm{out}}{Q_H} = 1 - \frac{\abs{Q_C}}{\abs{Q_H}}
+\end{equation}
+
+Now let's look at it through the first law:
+
+\begin{align}
+	0 &= W + \abs{Q_H} - \abs{Q_C}\\
+	-W &= \abs{Q_H} - \abs{Q_C}\\
+	W_\mathrm{out} &= \abs{Q_H} - \abs{Q_C}
+\end{align}
+
+A refrigerator or heat pump, is a heat engine run in reverse.
+
+We have coefficient of performance C.O.P. which is
+
+\begin{equation}
+	\mathrm{C.O.P.} = \frac{Q_C}{W_\mathrm{in}} = \frac{1}{\abs{Q_H} / \abs{Q_C} - 1}
+\end{equation}
+
+\section{Most Efficient Heat Engine}
+
+This is the \textbf{Carnot Cycle}.
+
+This consists of two isotherm process and adiabatic process.
+
+The efficiency can be proven to be
+
+\begin{equation}
+	\eta_C = 1 - \frac{T_C}{T_H} \geq \eta
+\end{equation}
+
+\section{Entropy}
+
+The things that increases as heat $Q$ is added to system at temperature $T$ is $Q/T$. Defined the entropy, $S$, for a process involving \textbf{no} work to be,
+
+\begin{equation}
+	\Delta S = \int \frac{Q}{T} \implies \D S = \frac{\D Q}{T}
+\end{equation}
+
+\begin{definition}[Second Law of Thermodynamics]
+	Entropy is non-decreasing (globally).
+\end{definition}
+
+The \textbf{multiplicity}, $\Omega$, of a state is the number of microscopic configurations that have some macroscopic state variables (if we think about it, this number is really really big).
+
+Because $\Omega$ tends to be a \textbf{very} large number, work with $\ln \Omega$ define
+
+\begin{equation}
+	S \equiv k_B \ln \Omega
+\end{equation}
+
+The thing that is the same between two systems A \& B in equilibrium is
+
+\begin{equation}
+	\left(\frac{\partial S}{\partial U}\right)_A = \left(\frac{\partial S}{\partial U}\right)_B \implies \frac{1}{T} = \left.\frac{\partial S}{\partial U}\right|_{\mu, V}
+\end{equation}
