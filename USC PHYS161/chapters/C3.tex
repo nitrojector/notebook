@@ -262,15 +262,14 @@ However, so far as we know, there are only 4 fundamental forces in nature:
 
 All these 4 forces are long range and position dependent.
 
-\section{Scenarios of Newton's Laws}
+In general, if we characterize the behavior of forces, there are four categories
 
-\subsection{Constant Forces}
-
-\subsection{Variable Forces with Time}
-
-\subsection{Variable Forces with Position}
-
-\subsection{Variable Forces with Velocity}
+\begin{enumerate}
+	\item Constant force
+	\item Variable force with time (e.g. This could be anything, say an electric field formed by an EMF that decreases in voltage over time moving a charge.)
+	\item Variable force with position (e.g. Gravity)
+	\item Variable force with velocity (e.g. Drag force)
+\end{enumerate}
 
 \section{Algorithm for Solving Constant-Force Newton's Laws Problems}
 
@@ -293,7 +292,44 @@ Mechanical device used to redirect tension forces. An ideal pulley is massless a
 
 \section{Newton's Laws in Polar Coordinates}
 
-%! TODO
+When we reconsider our forces in polar coordinates, they just manifest in (we have already discussed this in polar kinematics)
+
+\begin{equation}
+	\begin{cases}
+		\vec r &= r \hat r\\
+		\vec v &= \dot r \hat r + r \dot \theta \hat \theta\\
+		\vec a &= (\ddot r - r \dot \theta^2) \hat r + (r \ddot \theta + 2 \dot r \dot \theta) \hat \theta
+	\end{cases}
+\end{equation}
+
+\begin{example}
+	Consider a case where $\dot r = \ddot r = \ddot \theta = 0$ and $\dot \theta = \omega$
+\end{example}
+
+\begin{sol}
+	We apply Newton's Law in this situation, we obtain 
+
+	\begin{equation}
+		\sum \vec F = m \vec a \implies \begin{cases}
+			\sum F_r &= m(\ddot r - r \dot \theta^2)\\
+			\sum F_\theta &= m(r\ddot \theta + 2 \dot r \dot \theta)
+		\end{cases}
+	\end{equation}
+
+	we apply our conditions to obtain
+
+	\begin{align}
+		F_R &= - m(r\omega^2)\\
+		F_\theta &= 0
+	\end{align}
+
+	If we apply the condition that $v = \omega r$, we obtain
+
+	\begin{equation}
+		F_R = - -m r \left(\frac{v}{r}\right)^2 = - \frac{mv^2}{r}
+	\end{equation}
+\end{sol}
+
 \section{Simple Harmonic Motion}
 
 \begin{figure}[H]
@@ -343,14 +379,6 @@ If we have initial conditions $x(0) = x_0$ and $\dot x(0) = 0$, then we have:
 	x(t) = x_0\cos(\omega t)
 \end{equation}
 
-\begin{example}
-	We have a mass $m$ hung from the ceiling by a spring with spring constant $k$.
-\end{example}
-
-\begin{sol}
-	CHECK TABLET FILL
-\end{sol}
-
 We have $\cos(\theta + 2\pi) = \cos(\theta)$,
 
 here, $\cos(\omega t + 2 \pi) = \cos(\omega t)$
@@ -376,10 +404,55 @@ $f$ is the \textbf{frequency}, $f \equiv \frac{1}{T}$: number of oscillations pe
 One is angular, one is frequency.
 
 \begin{example}
-	The pendulum
+	We have a mass $m$ hung from the ceiling by a spring with spring constant $k$.
 \end{example}
 
 \begin{sol}
-	CHECK TABLET
-	%! TODO
+	This situation is actually really easy to consider. Consider when the mass is at the equilibrium position (currently at rest), this position, is displacement $y_0$ from the equilibrium position of the massless spring. Let's take downwards as the positive direction, then the forces at play here are:
+
+	\begin{align}
+		\sum F_y &= 0\\
+		mg + (-ky_0) &= 0\\
+		y_0 &= \frac{mg}{k}
+	\end{align}
+
+	which is what we expect.
+
+	Then, define our new coordinate system where $y_n = y - y_0$, and let find the solution for this situation:
+
+	We would realize that any displacement from the new coordinate $y_n$ causes a net force of
+
+	\begin{equation}
+		\sum F_y = - k y_n
+	\end{equation}
+	
+	on the hanging block, which is the same for our normal harmonic oscillator. If we apply Newton's 2nd law and rearrange, we obtain
+
+	\begin{align}
+		m \ddot y_n &= - k y_n\\
+		\ddot y_n &= - \left(\sqrt{\frac{k}{m}}\right)^2 y_n
+	\end{align}
+\end{sol}	
+
+\begin{example}
+	The simple pendulum.
+\end{example}
+
+\begin{sol}
+	We find our force in terms of polar coordinates:
+
+	\begin{align}
+		F_r &= mg\cos\theta - F_T = m (\ddot r - r\dot\theta^2) = 0\\
+		F_\theta &= -mg\sin\theta = mr\ddot\theta
+	\end{align}
+
+	If $\theta \ll 1$, $\sin\theta \approx \theta$, so we have
+
+	\begin{align}
+		-mg\theta &= ml \ddot \theta\\
+		\ddot \theta &= - \frac{g}{l}\theta \qquad \omega = \sqrt{\frac{g}{l}}\\
+		\ddot \theta &= - \omega^2\theta
+	\end{align}
+	
+	so we have motion of a simple harmonic oscillator.
 \end{sol}

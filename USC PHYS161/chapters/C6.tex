@@ -268,7 +268,7 @@ This is then defined to be the \textbf{moment of inertia} $I$ for a point partic
 
 Now, coming back to angular momentum, we then have
 
-\begin{definition}
+\begin{definition}[Angular Momentum]
 	\begin{equation}
 		L = I\omega
 	\end{equation}
@@ -343,8 +343,6 @@ In this case, $L = I\omega$ with $I = \text{const}$. Therefore, rotational 2nd l
 	\sum \tau = \frac{\D L}{\D t} = I \frac{\D \omega}{\D t} \implies \sum \tau = I \alpha
 \end{equation}
 
-%!! TBA Apr 2 Lecture
-
 \begin{remark}
 	Note that Chasles' Theorem still applies when the center of mass is acceleration. That is to say the motion in the angular aspect is still valid given the net torque exerted on the object.
 \end{remark}
@@ -353,17 +351,73 @@ In this case, $L = I\omega$ with $I = \text{const}$. Therefore, rotational 2nd l
 
 \subsection{Physical Pendulum}
 
-%! TBA
+Take positive orientation, we have forces
+
+\begin{equation}
+	\begin{cases}
+		\tau_T &= 0 \qquad \text{because } F_T \parallel l\\
+		\tau_g &= \vec r \cross \vec F_g \implies\tau_T = -lmg\sin\theta
+	\end{cases}
+\end{equation}
+
+Now, we solve for the motion of the pendulum
+
+\begin{align}
+	\tau_g &= I\alpha\\
+	-lmg\sin\theta &= I \ddot \theta\\
+	-lmg\theta &= I \ddot\theta \qquad \theta \ll 1 \implies \sin\theta \approx \theta\\
+	\ddot\theta &= - \left[\frac{lmg}{I}\right] \theta
+\end{align}
+
+so we have that the frequency is
+
+\begin{equation}
+	\omega = \sqrt{\frac{lmg}{I}} \qquad I = ml^2 \implies \omega = \sqrt{\frac{g}{l}}
+\end{equation}
+
+Now, let us consider a physical pendulum, defined to be a pendulum with an unrestricted bob and string.
+
+The torque due to gravity comes from gravity at the center of mass, so its basically the same deal as what we solved just now.
+
+Well, we have a difference moment of inertia $I$ for our new axis of rotation, we can find that via the Parallel Axis Theorem:
+
+\begin{equation}
+	I = I_0 + Ml^2
+\end{equation}
+
+So we have
+
+\begin{align}
+	\omega &= \sqrt{\frac{lMg}{I_0 + Ml^2}}\\
+	&= \sqrt{\frac{lg}{\nicefrac{I_0}{M} + l^2}}\\
+	&= \sqrt{\frac{lg}{k^2 + l^2}}
+\end{align}
+
+where $k$ is the \textbf{radius of gyration} defined as
+
+\begin{equation}
+	k = \sqrt{\frac{I_0}{M}}
+\end{equation}
 
 \subsection{Dynamics of Translation \& Rotation}
 
-%! TBA
+This section talks about the angular momentum of some continuously distributed body about the origin (i.e. the center of mass is in motion WRT the origin).
+
+\textbf{TL;DR;}
+
+Basically, angular momentum about the origin is the sum of the angular momentum about the center of mass of an object and the angular momentum of its center of mass about the origin.
+
+Wikipedia covers this pretty well:
+
+\url{https://en.wikipedia.org/wiki/Angular_momentum#Collection_of_particles}
 
 \subsection{Examples}
 
 \begin{example}
-	Ramp mass pully example.
+	Ramp mass pulley.
 \end{example}
+
+Reference provided lecture notes for this example.
 
 \begin{example}
 	A ball of mass $M$ and radius $b$ rolls without slipping.
@@ -496,18 +550,35 @@ Thus, $\vec L_\mathrm{tot} = \text{const}$
 
 Recall $\vec F = -\nabla u$. Consider spherical coordinates: $u(r,\theta,\phi)$.
 
-%! Is rotational energy conserved for a wheel that is slipping
-%! in 7.13 are we not consider the rotational momentum wrt cm?
+\begin{example}
+	Considering the rolling wheel.
+\end{example}
+
+\begin{sol}
+	Let's consider the dynamics of a rolling wheel. When the wheel is given a non-zero net force at its center to accelerate it across some frictional surface, the wheel also starts to accelerate rotationally due to the frictional force that is acting on it.
+
+	Say positive direction is to the right, we apply a force to the right, friction would act to the left at the contact point of the wheel with the ground, which provides a torque that accelerates the wheel rotationally.
+
+	If the translational acceleration is greater than the maximum providable by friction with our relations, then the wheel will start to slip, which is when
+
+	\begin{equation}
+		a > \frac{RF_f}{I_w}R
+	\end{equation}
+
+	Now, if we simply consider a wheel rolling, with no net force acting on it other than friction, we would have linear and angular acceleration either both to be 0, or both trying to reach agreement to the relation $v = \omega r$.
+
+	Once they reach this agreement, there is no longer any net force acting on the rolling object since the relative motion between the surface of the wheel and the ground is 0. This means that the wheel in this state would keep rolling on forever, in an ideal situation.
+
+	Now, you might be wondering what then causes the wheel to slow down as it rolls? Well, there is \href{https://en.wikipedia.org/wiki/Rolling_resistance}{rolling resistance} which has a nice explanation on Wikipedia. There is also possible air drag.
+\end{sol}
 
 \section{Rotational Energy}
-
-%! Derivations are omitted
 
 \begin{definition}
 	We have our new form of kinetic energy as
 
 	\begin{equation}
-		K = \frac{1}{2} I_\mathrm{cm} \omega^2 + \frac{1}{2} M {V_\mathrm{cm}}^2
+		K = K_\mathrm{rot} + K_\mathrm{trans} = \frac{1}{2} I_\mathrm{cm} \omega^2 + \frac{1}{2} M {V_\mathrm{cm}}^2
 	\end{equation}
 
 	and rotational KE
